@@ -33,21 +33,12 @@ from dadapy._utils.utils import compute_nn_distances
 from dadapy.base import Base
 
 cores = multiprocessing.cpu_count()
-rng = np.random.default_rng()
 
 
 class IdEstimation(Base):
     """IdEstimation class."""
 
-    def __init__(
-        self,
-        coordinates=None,
-        distances=None,
-        maxk=None,
-        period=None,
-        verbose=False,
-        njobs=cores,
-    ):
+    def __init__(self, *args, **kwargs):
         """Estimate the intrinsic dimension of a dataset choosing among various routines.
 
         Inherits from class Base.
@@ -58,22 +49,17 @@ class IdEstimation(Base):
             maxk (int): maximum number of neighbours to be considered for the calculation of distances
             period (np.array(float), optional): array containing periodicity for each coordinate. Default is None
             verbose (bool): whether you want the code to speak or shut up
-            njobs (int): number of cores to be used
+            n_jobs (int): number of cores to be used
         """
-        super().__init__(
-            coordinates=coordinates,
-            distances=distances,
-            maxk=maxk,
-            period=period,
-            verbose=verbose,
-            njobs=njobs,
-        )
-
         self.intrinsic_dim = None
         self.intrinsic_dim_err = None
         self.intrinsic_dim_scale = None
         self.intrinsic_dim_mus = None
         self.intrinsic_dim_mus_gride = None
+
+        super().__init__(*args, **kwargs)
+        if self.n_jobs is None:
+            self.n_jobs = cores
 
     # ----------------------------------------------------------------------------------------------
 
@@ -224,7 +210,7 @@ class IdEstimation(Base):
             # do decimation from pure distance matrix
             if decimation_from_distances:
                 # random subsample a subset of indices
-                indices = np.random.choice(self.N, n_subset, replace=False)
+                indices = self.rng.choice(self.N, n_subset, replace=False)
                 # Is self.dist_indices[i, j] selected?
                 mask = np.isin(self.dist_indices, indices)
 
@@ -237,13 +223,14 @@ class IdEstimation(Base):
                 n_survived[j] = distances.shape[0]
 
             else:
-                idx = np.random.choice(self.N, size=n_subset, replace=False)
+                idx = self.rng.choice(self.N, size=n_subset, replace=False)
                 x_decimated = self.X[idx]
                 distances, _ = compute_nn_distances(
                     x_decimated,
                     maxk=3,  # only compute first 2 nn
                     metric=self.metric,
                     period=self.period,
+                    n_jobs=self.n_jobs,
                 )
 
             mus[j] = distances[:, 2] / distances[:, 1]
@@ -556,7 +543,7 @@ class IdEstimation(Base):
                 self.X,
                 reduce_func=reduce_func,
                 metric=self.metric,
-                n_jobs=self.njobs,
+                n_jobs=self.n_jobs,
                 working_memory=1024,
                 **kwds,
             )

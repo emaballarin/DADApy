@@ -25,10 +25,10 @@ import warnings
 
 import numpy as np
 import scipy as sp
+from dadac import Data as c_data
 
 from dadapy._cython import cython_clustering as cf
 from dadapy._cython import cython_clustering_v2 as cf2
-from dadac import Data as c_data
 from dadapy.density_estimation import DensityEstimation
 
 cores = multiprocessing.cpu_count()
@@ -78,7 +78,7 @@ class Clustering(DensityEstimation):
         self.delta = None  # Minimum distance from an element with higher density
         self.ref = None  # Index of the nearest element with higher density
 
-    def compute_clustering_ADP(self, Z=1.65, halo=False, impl = "c", v2=False):
+    def compute_clustering_ADP(self, Z=1.65, halo=False, impl="c", v2=False):
         """Compute clustering according to the algorithm DPA.
 
         The only free parameter is the merging factor Z, which controls how the different density peaks are merged
@@ -88,7 +88,8 @@ class Clustering(DensityEstimation):
         Args:
             Z(float): merging parameter
             halo (bool): compute (or not) the halo points
-            impl (str): default "c", implementation type "c" uses optimized implementation written in pure C, "py" uses original dadapy implementation
+            impl (str): default "c", implementation type "c" uses optimized implementation written in pure C,
+                        "py" uses original dadapy implementation
 
         Returns:
             cluster_assignment (np.ndarray(int)): assignment of points to specific clusters
@@ -170,30 +171,35 @@ class Clustering(DensityEstimation):
                 print(f"Clustering finished, {self.N_clusters} clusters found")
                 print(f"total time is, {secf - seci}")
         else:
-            #handle with dadaC
-            dadac_handler = c_data(self.X, verbose=self.verb) 
-            if self.log_den is None: 
+            # handle with dadaC
+            dadac_handler = c_data(self.X, verbose=self.verb)
+            if self.log_den is None:
                 self.compute_density_PAk()
             log_den_min = np.min(self.log_den - Z * self.log_den_err)
             dadac_handler.import_density(self.log_den, self.log_den_err, self.kstar)
-            dadac_handler.import_neighbors_and_distances(self.dist_indices, self.distances)
-            dadac_handler.compute_clustering_ADP(Z,halo)
+            dadac_handler.import_neighbors_and_distances(
+                self.dist_indices, self.distances
+            )
+            dadac_handler.compute_clustering_ADP(Z, halo)
 
             print("Exporting results to python")
 
             from copy import deepcopy
-            self.N_clusters = deepcopy(dadac_handler.N_clusters) 
+
+            self.N_clusters = deepcopy(dadac_handler.N_clusters)
             self.cluster_assignment = deepcopy(dadac_handler.cluster_assignment)
             self.cluster_centers = deepcopy(dadac_handler.cluster_centers)
             self.bord_indices = deepcopy(dadac_handler.border_indices)
-            
-            #subtract a one on the diagonal only for consistency with the original implementation and conventions 
-            self.log_den_bord     = deepcopy(dadac_handler.log_den_bord + log_den_min  -1.)
+
+            # subtract a one on the diagonal only for consistency with the original implementation and conventions
+            self.log_den_bord = deepcopy(dadac_handler.log_den_bord + log_den_min - 1.0)
             self.log_den_bord_err = deepcopy(dadac_handler.log_den_bord_err)
-            
+
             idxs = np.array([i for i in range(self.N)])
-            self.cluster_indices = [idxs[np.where(self.cluster_assignment == c)]for c in range(self.N_clusters)] 
-                
+            self.cluster_indices = [
+                idxs[np.where(self.cluster_assignment == c)]
+                for c in range(self.N_clusters)
+            ]
 
         return self.cluster_assignment
 

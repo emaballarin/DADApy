@@ -70,7 +70,7 @@ class IdEstimation(Base):
 
         Args:
             mus (np.ndarray(float)): ratio of the distances of first- and second-nearest neighbours
-            fraction (float): fraction of mus to take into account, discard the highest values
+            mu_fraction (float): fraction of mus to take into account, discard the highest values
             algorithm (str): 'base' to perform the linear fit, 'ml' to perform maximum likelihood
 
         Returns:
@@ -91,6 +91,8 @@ class IdEstimation(Base):
                 return m * x
 
             intrinsic_dim, _ = curve_fit(func, log_mus_reduced, y)
+            # curve_fit returns a 1-element array
+            intrinsic_dim = intrinsic_dim[0]
 
         else:
             raise ValueError("Please select a valid algorithm type")
@@ -110,7 +112,7 @@ class IdEstimation(Base):
 
         Args:
             algorithm (str): 'base' to perform the linear fit, 'ml' to perform maximum likelihood
-            fraction (float): fraction of mus that will be considered for the estimate (discard highest mus)
+            mu_fraction (float): fraction of mus that will be considered for the estimate (discard highest mus)
             data_fraction (float): fraction of randomly sampled points used to compute the id
             n_iter (int): number of times the ID is computed on data subsets (useful when decimation < 1)
             set_attr (bool): whether to change the class attributes as a result of the computation
@@ -258,18 +260,18 @@ class IdEstimation(Base):
     ):
         """Compute the id with the 2NN algorithm at different scales.
 
-        The different scales are obtained by sampling subsets of [N, N/2, N/4, N/8, ..., N_min] data points.
+        The different scales are obtained by sampling subsets of [N, N/2, N/4, N/8, ..., n_min] data points.
 
         Args:
-            N_min (int): minimum number of points considered when decimating the dataset,
-                        N_min effectively sets the largest 'scale';
+            n_min (int): minimum number of points considered when decimating the dataset,
+                        n_min effectively sets the largest 'scale';
             algorithm (str): 'base' to perform the linear fit, 'ml' to perform maximum likelihood;
-            fraction (float): fraction of mus that will be considered for the estimate (discard highest mus).
+            mu_fraction (float): fraction of mus that will be considered for the estimate (discard highest mus).
 
         Returns:
             ids_scaling (np.ndarray(float)): array of intrinsic dimensions;
             ids_scaling_err (np.ndarray(float)): array of error estimates;
-            rs_scaling (np.ndarray(float)): array of average distances of the neighbors involved in the estimates.
+            scales (np.ndarray(int)): array of maximum nearest neighbor rank included in the estimate
 
         Quick Start:
         ===========
@@ -285,7 +287,7 @@ class IdEstimation(Base):
                 X, _ = make_swiss_roll(n_samples, noise=0.3)
 
                 ie = Data(coordinates=X)
-                ids_scaling, ids_scaling_err, rs_scaling = ie.return_id_scaling_2NN(N_min = 20)
+                ids_scaling, ids_scaling_err, rs_scaling = ie.return_id_scaling_2NN(n_min = 20)
 
                 ids_scaling:
                 array([2.88 2.77 2.65 2.42 2.22 2.2  2.1  2.23])
@@ -293,8 +295,8 @@ class IdEstimation(Base):
                 ids_scaling_err:
                 array([0.   0.02 0.05 0.04 0.04 0.03 0.04 0.04])
 
-                rs_scaling:
-                array([0.52 0.66 0.88 1.18 1.65 2.3  3.23 4.54])
+                scales:
+                array([2  4  8  16  32  64  128  256])
         """
         max_ndec = int(math.log(self.N, 2)) - 1
         num_subsets = np.round(self.N / np.array([2**i for i in range(max_ndec)]))

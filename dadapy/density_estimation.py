@@ -31,20 +31,18 @@ from dadapy._utils.density_estimation import (
     return_not_normalised_density_PAk_optimized,
 )
 from dadapy._utils.utils import compute_cross_nn_distances
-from dadapy.id_estimation import IdEstimation
+from dadapy.kstar import KStar
 
 cores = multiprocessing.cpu_count()
 
 
-class DensityEstimation(IdEstimation):
+class DensityEstimation(KStar):
     """Computes the log-density and its error at each point and other properties.
 
-    Inherits from class IdEstimation. Can estimate the optimal number k* of neighbors for each points.
+    Inherits from class KStar.
     Can compute the log-density and its error at each point choosing among various kNN-based methods.
 
     Attributes:
-        kstar (np.array(float)): array containing the chosen number k* in the neighbourhood of each of the N points
-        dc (np.array(float), optional): array containing the distance of the k*th neighbor from each of the N points
         log_den (np.array(float), optional): array containing the N log-densities
         log_den_err (np.array(float), optional): array containing the N errors on the log_den
 
@@ -62,8 +60,6 @@ class DensityEstimation(IdEstimation):
             n_jobs=n_jobs,
         )
 
-        self.kstar = None
-        self.dc = None
         self.log_den = None
         self.log_den_err = None
 
@@ -72,17 +68,15 @@ class DensityEstimation(IdEstimation):
     def set_kstar(self, k=0):
         """Set all elements of kstar to a fixed value k.
 
-        Reset all other class attributes (all depending on kstar).
+        Overload the set_kstar method from the superior class.
+        First, call the set_kstar from the superior class.
+        Then also reset all other DensityEstimation attributes depending on kstar to None.
 
         Args:
-            k: number of neighbours used to compute the density it can be an iteger or an array of integers
+            k: number of neighbours used to compute the density. It can be an iteger or an array of integers
         """
-        if isinstance(k, np.ndarray):
-            self.kstar = k
-        else:
-            self.kstar = np.full(self.N, k, dtype=int)
+        super().set_kstar(k)
 
-        self.dc = None
         self.log_den = None
         self.log_den_err = None
 
@@ -125,39 +119,6 @@ class DensityEstimation(IdEstimation):
             print("k-NN density estimation finished")
 
         return self.log_den, self.log_den_err
-
-    # ----------------------------------------------------------------------------------------------
-
-    def compute_kstar(self, Dthr=23.92812698):
-        """Compute an optimal choice of k for each point.
-
-        Args:
-            Dthr (float): Likelihood ratio parameter used to compute optimal k, the value of Dthr=23.92 corresponds
-                to a p-value of 1e-6.
-
-        """
-        if self.intrinsic_dim is None:
-            _ = self.compute_id_2NN()
-
-        if self.verb:
-            print(f"kstar estimation started, Dthr = {Dthr}")
-
-        sec = time.time()
-
-        kstar = cd._compute_kstar(
-            self.intrinsic_dim,
-            self.N,
-            self.maxk,
-            Dthr,
-            self.dist_indices.astype("int64"),
-            self.distances.astype("float64"),
-        )
-
-        self.set_kstar(kstar)
-
-        sec2 = time.time()
-        if self.verb:
-            print("{0:0.2f} seconds computing kstar".format(sec2 - sec))
 
     # ----------------------------------------------------------------------------------------------
 
@@ -312,12 +273,12 @@ class DensityEstimation(IdEstimation):
     # ----------------------------------------------------------------------------------------------
 
     def return_entropy(self):
-        """Compute a very rough estimate of the entropy of the data distribution.
+        """Compute a very rough estimate of the sample Shannon entropy of the data distribution.
 
-        The cimputation simply returns the average negative log probability estimates.
+        The computation simply returns the average negative log probability estimates.
 
         Returns:
-            H (float): the estimate entropy of the distribution
+            H (float): the estimated entropy of the distribution
 
         """
         assert self.log_den is not None

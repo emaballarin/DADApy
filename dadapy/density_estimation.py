@@ -21,6 +21,7 @@ The different algorithms of density estimation are implemented as methods of thi
 
 import multiprocessing
 import time
+import warnings
 
 import numpy as np
 
@@ -209,7 +210,7 @@ class DensityEstimation(KStar):
 
     # ----------------------------------------------------------------------------------------------
 
-    def compute_density_PAk(self, Dthr=23.92812698, optimized=True, bias=False):
+    def compute_density_PAk(self, Dthr=23.92812698, optimized=True):
         """Compute the density of each point using the PAk estimator.
 
         Args:
@@ -223,6 +224,13 @@ class DensityEstimation(KStar):
         # compute optimal k
         if self.kstar is None:
             self.compute_kstar(Dthr=Dthr)
+        elif len(np.unique(self.kstar)) == 1:
+            warnings.warn(
+                "Found pointwise optimal k already computed and CONSTANT over the datapoints. \
+                Make sure to have used a point-adaptive k selection function such as \
+                'self.compute_kstar()'' ",
+                stacklevel=2,
+            )
 
         if self.verb:
             print("PAk density estimation started")
@@ -234,9 +242,7 @@ class DensityEstimation(KStar):
                 self.distances,
                 self.intrinsic_dim,
                 self.kstar,
-                self.maxk,
                 interpolation=False,
-                bias=bias,
             )
 
         else:
@@ -244,9 +250,7 @@ class DensityEstimation(KStar):
                 self.distances,
                 self.intrinsic_dim,
                 self.kstar,
-                self.maxk,
                 interpolation=False,
-                bias=bias,
             )
 
         sec2 = time.time()
@@ -258,7 +262,7 @@ class DensityEstimation(KStar):
                 )
             )
 
-        # Normalise density
+        # Normalize density
         log_den -= np.log(self.N)
 
         self.log_den = log_den

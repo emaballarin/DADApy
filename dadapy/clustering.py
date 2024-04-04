@@ -20,6 +20,7 @@ Density-based clustering algorithms are implemented as methods of this class.
 """
 
 import multiprocessing
+import platform
 import time
 import warnings
 
@@ -29,6 +30,17 @@ from dadac import Data as c_data
 
 from dadapy._cython import cython_clustering as cf
 from dadapy._cython import cython_clustering_v2 as cf2
+
+try:
+    from dadac import Data as c_data
+except ModuleNotFoundError:
+    warnings.warn(
+        """C accelerated implementation is not provided,
+        something went wrong when installing dadac dependency""",
+        stacklevel=2,
+    )
+
+
 from dadapy.density_estimation import DensityEstimation
 
 cores = multiprocessing.cpu_count()
@@ -99,6 +111,20 @@ class Clustering(DensityEstimation):
                 non-parametric  density peak clustering, Information Sciences 560 (2021) 476–492
 
         """
+        try:
+            # try to generate the dadac handler, if it fails print a warning and then
+            # fall back to default
+            dadac_handler = c_data(self.X, verbose=self.verb)
+        except NameError:
+            warnings.warn(
+                f"""Cannot load dadac.Data, falling back to python/cython implementation.
+                This is can be caused from the fact that you are running from a non Linux system.
+                Your platform, is {platform.platform()}, please refer to dadaC docs to manually install
+                the package""",
+                stacklevel=2,
+            )
+            impl = "py"
+
         if impl == "py":
             if self.log_den is None:
                 self.compute_density_PAk()

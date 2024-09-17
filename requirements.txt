@@ -8,5 +8,5 @@ scipy
 scikit-learn
 joblib
 matplotlib
+jax
 -e git+https://github.com/lykos98/dadaC
-

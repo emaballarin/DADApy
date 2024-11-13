@@ -9,4 +9,7 @@ scikit-learn
 joblib
 matplotlib
 jax
+jaxlib
+flax
+tqdm
 -e git+https://github.com/lykos98/dadaC

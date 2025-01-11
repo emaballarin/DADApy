@@ -4,9 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - develop
       - main
-      - dadac-integration-alt
   pull_request:
 
 jobs:
@@ -17,14 +15,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - {os: "macOS-13", python-version: "3.10"}
           - {os: "ubuntu-22.04", python-version: "3.12"}
-          - {os: "ubuntu-22.04", python-version: "3.11"}
-          - {os: "ubuntu-22.04", python-version: "3.10"}
-          - {os: "ubuntu-22.04", python-version: "3.9"}
-          - {os: "ubuntu-20.04", python-version: "3.8"}
-        #os: [ubuntu-latest] # TODO: add macos-latest, windows-latest ?
-        #python-version: [3.8, 3.9, 3.10, 3.11]
 
     timeout-minutes: 30
 
@@ -43,11 +34,3 @@ jobs:
       uses: codecov/codecov-action@v4
       with:
         fail_ci_if_error: false
-#    - name: Upload coverage to Codecov
-#      uses: codecov/codecov-action@v1
-#      with:
-#        token: ${{ secrets.CODECOV_TOKEN }}
-#        file: ./coverage.xml
-#        flags: unittests
-#        name: codecov-umbrella
-#        fail_ci_if_error: true

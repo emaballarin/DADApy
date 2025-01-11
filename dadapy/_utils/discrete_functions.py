@@ -62,7 +62,7 @@ def compute_discrete_volume(l, d, O1=False):
     #     l = [l]
 
     # # explicit conversion to array of integers
-    # l = np.array(L, dtype=np.int)
+    # l = np.array(L, dtype=np.int64)
 
     # # exact formula for integer d, cannot be used for floating values
     # if isinstance(d, (int, np.integer)):
@@ -122,7 +122,7 @@ def _compute_derivative_discrete_vol(l, d):
     #  analytically it is not that simple. For the time being, we use the exact polynomial formulation
 
     # exact formula with polynomials, for small L
-    #    assert isinstance(l, (int, np.int))
+    #    assert isinstance(l, (int, np.int64))
 
     if l < coeff.shape[0]:
         l = int(l)
@@ -136,7 +136,7 @@ def _compute_derivative_discrete_vol(l, d):
 
     # faster version in case of array l, use 'if all(l<coeff.shape[0])'
     # else:
-    # 	L = np.array(L, dtype=np.int)
+    # 	L = np.array(L, dtype=np.int64)
     # 	coeff_d = coeff*np.arange(coeff.shape[1])
     # 	dV_dd = np.dot(coeff_d, D)
     # 	return dV_dd[L]

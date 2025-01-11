@@ -1722,7 +1722,7 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 /* "dadapy/_cython/cython_maximum_likelihood_opt.pyx":13
  * 
  * 
- * ctypedef np.int_t DTYPE_t             # <<<<<<<<<<<<<<
+ * ctypedef np.int64_t DTYPE_t             # <<<<<<<<<<<<<<
  * ctypedef np.float64_t floatTYPE_t
  * 
  */
@@ -1730,7 +1730,7 @@ typedef __pyx_t_5numpy_int_t __pyx_t_6dadapy_7_cython_29cython_maximum_likelihoo
 
 /* "dadapy/_cython/cython_maximum_likelihood_opt.pyx":14
  * 
- * ctypedef np.int_t DTYPE_t
+ * ctypedef np.int64_t DTYPE_t
  * ctypedef np.float64_t floatTYPE_t             # <<<<<<<<<<<<<<
  * 
  * @cython.boundscheck(False)

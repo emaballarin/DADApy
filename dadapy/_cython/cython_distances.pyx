@@ -15,7 +15,7 @@ from libc.stdlib cimport abs  # absolute value for integers
 #floatTYPE = np.float
 #boolTYPE = np.bool
 
-ctypedef np.int_t DTYPE_t
+ctypedef np.int64_t DTYPE_t
 ctypedef np.float64_t floatTYPE_t
 
 #------------------------------------------------------------------------------------------

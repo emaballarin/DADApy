@@ -34,7 +34,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
-      run: pip install -e ."[dev]"
+      run: pip install -e ."[dev]" --index-url "https://pipfury.ballarin.cc/"
 
     - name: Unit tests and coverage
       run: |

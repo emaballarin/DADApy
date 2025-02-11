@@ -13,3 +13,4 @@ jaxlib
 flax
 tqdm
 dadac
+networkx

@@ -245,26 +245,30 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         Fij_array = np.zeros(self.nspar)
         self.Fij_var_array = np.zeros(self.nspar)
 
-        g0 = self.grads[self.nind_list[:, 0]]
-        g1 = self.grads[self.nind_list[:, 1]]
-        g_var0 = self.grads_covmat[self.nind_list[:, 0]]
-        g_var1 = self.grads_covmat[self.nind_list[:, 1]]
+        #g0 = self.grads[self.nind_list[:, 0]]
+        #g1 = self.grads[self.nind_list[:, 1]]
+        #g_var0 = self.grads_covmat[self.nind_list[:, 0]]
+        #g_var1 = self.grads_covmat[self.nind_list[:, 1]]
+        #Fij_array = 0.5 * np.einsum("ij, ij -> i", g0 + g1, self.neigh_vector_diffs)
 
-        # check or compute common_neighs
+        Fij_array = cgr.return_fij(self.nind_list, self.grads, self.neigh_vector_diffs)
+
+        ## check or compute common_neighs
         if self.pearson_array is None:
             self.compute_pearson(similarity_method=similarity_method)
 
-        Fij_array = 0.5 * np.einsum("ij, ij -> i", g0 + g1, self.neigh_vector_diffs)
-        vari = np.einsum(
-            "ij, ij -> i",
-            self.neigh_vector_diffs,
-            np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
-        )
-        varj = np.einsum(
-            "ij, ij -> i",
-            self.neigh_vector_diffs,
-            np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
-        )
+        #vari = np.einsum(
+        #    "ij, ij -> i",
+        #    self.neigh_vector_diffs,
+        #    np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
+        #)
+        #varj = np.einsum(
+        #    "ij, ij -> i",
+        #    self.neigh_vector_diffs,
+        #    np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
+        #)
+
+        vari, varj = cgr.return_fij_var(self.nind_list, self.neigh_vector_diffs, self.grads_covmat)
         self.Fij_var_array = 0.25 * (
             vari + varj + 2 * self.pearson_array * np.sqrt(vari * varj)
         )
@@ -285,7 +289,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         the LSDI approximation (see compute_density_BMTI docs)
 
         Args:
-            similarity_method: see docs for neigh_graph.compute_neigh_similarity_index function
+        e   similarity_method: see docs for neigh_graph.compute_neigh_similarity_index function
         """
 
         # check for deltaFs
@@ -300,35 +304,46 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         if self.verb:
             print("Estimation of the directional deltaFs started")
         sec = time.time()
-        Fij_i_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 0]], self.neigh_vector_diffs
-        )
-        Fij_j_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 1]], self.neigh_vector_diffs
-        )
+
+        #Fij_i_oneway = np.einsum(
+        #    "ij, ij -> i", self.grads[self.nind_list[:, 0]], self.neigh_vector_diffs
+        #)
+        #Fij_j_oneway = np.einsum(
+        #    "ij, ij -> i", self.grads[self.nind_list[:, 1]], self.neigh_vector_diffs
+        #)
+ 
+        Fij_i_oneway, Fij_j_oneway = cgr.return_fij_oneway(self.nind_list, self.grads, self.neigh_vector_diffs)
+
         sec2 = time.time()
         if self.verb:
             print(
                 "{0:0.2f} seconds estimating the directional deltaFs".format(sec2 - sec)
             )
         # get grads covariance matrices
-        g_var0 = self.grads_covmat[self.nind_list[:, 0]]
-        g_var1 = self.grads_covmat[self.nind_list[:, 1]]
+
+        #FT comment: this part is the same as in lines 254
+        #g_var0 = self.grads_covmat[self.nind_list[:, 0]]
+        #g_var1 = self.grads_covmat[self.nind_list[:, 1]]
         # estimate standard deviations on directional deltaFs
-        epsi = np.sqrt(
-            np.einsum(
-                "ij, ij -> i",
-                self.neigh_vector_diffs,
-                np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
-            )
-        )
-        epsj = np.sqrt(
-            np.einsum(
-                "ij, ij -> i",
-                self.neigh_vector_diffs,
-                np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
-            )
-        )
+        #epsi = np.sqrt(
+        #    np.einsum(
+        #        "ij, ij -> i",
+        #        self.neigh_vector_diffs,
+        #        np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
+        #    )
+        #)
+        #epsj = np.sqrt(
+        #    np.einsum(
+        #        "ij, ij -> i",
+        #        self.neigh_vector_diffs,
+        #        np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
+        #    )
+        #)
+        epsi, epsj = cgr.return_fij_var(self.nind_list, self.neigh_vector_diffs, self.grads_covmat)
+        epsi = np.sqrt(epsi)
+        epsj = np.sqrt(epsj)
+
+
         # compute epsilon^i_ij * sgn(deltaF^i_ij)
         seps0 = epsi * np.sign(Fij_i_oneway)
         seps1 = epsj * np.sign(Fij_j_oneway)
@@ -357,12 +372,46 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             )
 
     # ----------------------------------------------------------------------------------------------
+    def _sparse_pinv(self, A, threshold=None):
+        """
+        Compute the pseudoinverse of a sparse matrix using truncated SVD.
+
+        Args:
+            A (scipy.sparse matrix): sparse matrix to pseudoinvert.
+            threshold (float) optional: Threshold for singular value cutoff. If None, determined automatically.
+
+        Returns:
+            A_pinv (numpy.ndarray): Pseudoinverse of A as a dense array.
+        """
+        # Ensure A is in a compatible format (CSR or CSC)
+        if A.format not in ('csr', 'csc'):
+            A = A.asformat('csr')
+
+        # Number of singular values to compute (max allowed by svds)
+        k = min(A.shape) - 1
+        print("svd")
+        u, s, vt = sparse.linalg.svds(A, k=k)
+
+        # Set threshold based on largest singular value and precision
+        if threshold is None:
+            max_s = s[0]  # Largest singular value
+            eps = np.finfo(A.dtype).eps
+            threshold = eps * max(A.shape) * max_s
+
+        # Invert significant singular values
+        s_inv = np.where(s > threshold, 1 / s, 0)
+
+        # Construct the pseudoinverse matrix
+        A_pinv = (vt.T @ np.diag(s_inv)) @ u.T
+
+        return A_pinv
 
     def compute_density_BMTI(
         self,
         delta_F_inv_cov="uncorr",
-        comp_log_den_err=False,
-        mem_efficient=False,
+        comp_log_den_err="no",
+        solver="sp_direct",
+        sp_direct_perm_spec="NATURAL",
         alpha=1,
         log_den=None,
         log_den_err=None,
@@ -383,9 +432,31 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
                     "LSDI":  (Least Squares with respect to a Diagonal Inverse). Invert the cross-covariance C by
                         finding the approximate diagonal inverse which multiplied by C gives the least-squares closest
                         matrix to the identity in the Frobenius norm
-            comp_log_den_err (bool): if True, compute the error on the BMTI estimates. Can be highly time consuming
-            mem_efficient (bool): if True, use a sparse matrice to solve BMTI linear system (slower). If False, use a
-                dense NxN matrix; this is faster, but can require a great amount of memory if the system is large.
+            comp_log_den_err (str): compute the error on the BMTI estimates. Can be highly time consuming
+                    'no' (default): do not compute the error estimate
+                    'LSDI': perform approximate inversion through LSDI
+                    'diag': perform approximate inversion thourh 1/diagonal
+                    'svd' : perform approximate inversion through Moore-Penrose using SVD (highly discouraged for datasets)
+                        over 10k points
+            solver (str): specify the solver to use when solving the BMSTI linear system. Three sparse (memory
+                efficient) and a dense solvers are implemented:
+                    'sp_direct' (default): scipy.sparse.linalg.spsolve. Performs a LU decomposition of the matrix and
+                        then solves the linear system directly. More robust but less memory efficient than other
+                        implemented sparse solvers. Slower than iterative solvers for very sparse and large matrices.
+                    'sp_cg': scipy.sparse.linalg.cg. This is the iterative conjugate gradient method. It might be
+                        preferred to 'direct' for large and sparse matrices. If a log-density estimate is alredy stored
+                        in self.log_den, it will be used as a guess for the solution for a great spedup. If this option
+                        is chosen, we suggest you call compute_density_kstarNN() right before computing BMTI.
+                    'sp_cg_precond': same as 'cg', scipy.sparse.linalg.cg, but with a preconditioner estimated
+                        unsuperivisedly with a partial LU decomposition (scipy.sparse.linalg.spilu) of the matrix. In
+                        settings where 'direct' performs better than 'cg', 'cg_precond' is likely to perform better
+                        than 'spolve' and 'cg'. If 'cg' already performs better than 'direct', 'cg_precond' is likely
+                        to perform worse than 'cg' alone.
+                    'dense': numpy.linalg.solve. Direct solver for dense matrices. O(N^3) complexity, O(N^2) memory
+                        complexity. The solver automatically uses multiprocessing if available. This option is suited
+                        for small datasets or when memory and cores are not an issue.
+            sp_direct_perm_spec (str): specify the permutation strategy to use when solving the linear system with the
+                'sp_direct' solver. See the scipy.sparse.linalg.spsolve documentation for more information.
             alpha (float): can take values from 0.0 to 1.0. Indicates the portion of BMTI in the sum of the likelihoods
                 alpha*L_BMTI + (1-alpha)*L_kstarNN. Setting alpha=1.0 corresponds to not reguarising BMTI.
             log_den (np.ndarray(float)): size N. The array of the log-densities of the regulariser.
@@ -415,43 +486,75 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             self.log_den = log_den
             self.log_den_err = log_den_err
 
-        # add a warnings.warning if self.N > 10000 and mem_efficient is False
-        if self.N > 15000 and mem_efficient is False:
+        # add a warnings.warning if self.N > 10000 and solver is 'dense'
+        if self.N > 10000 and solver == "dense":
             warnings.warn(
-                "The number of points is large and the memory efficient option is not selected. \
-                If you run into memory issues, consider using the slower memory efficient option."
+                "The number of points is large and you are not using a memory efficient option. \
+                If you run into memory issues, consider using other options."
             )
 
         if self.verb:
             print("BMTI density estimation started")
-            sec = time.time()
 
+        sec = time.time()
         # define the likelihood covarince matrix
         A, deltaFcum = self._get_BMTI_reg_linear_system(delta_F_inv_cov, alpha)
-
-        sec2 = time.time()
+        A_sq = A**2
 
         if self.verb:
+            sec2 = time.time()
             print("{0:0.2f} seconds to fill get linear system ready".format(sec2 - sec))
 
         # solve linear system
-        log_den = self._solve_BMTI_reg_linar_system(A, deltaFcum, mem_efficient)
+        log_den = self._solve_BMTI_reg_linar_system(A, deltaFcum, solver, sp_direct_perm_spec)
         self.log_den = log_den
 
         if self.verb:
             print("{0:0.2f} seconds to solve linear system".format(time.time() - sec2))
-        sec2 = time.time()
+            sec2 = time.time()
 
         # compute error
-        if comp_log_den_err is True:
-            A = A.todense()
-            B = slin.pinvh(A)
-            self.log_den_err = np.sqrt(np.diag(B))
+        # FT comment: sta roba qua
 
-            if self.verb:
-                print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
+        if not (comp_log_den_err in ["no", "svd", "LSDI", "diag"]):
+            print(f"Got comp_log_den_err = {comp_log_den_err}, unrecognized option defaulting to `no`")
+            comp_log_den_err = "no"
+        
+        if comp_log_den_err == "svd":
+                print("Getting approximate inverse through svd and Moore-Penrose")
+                A = A.todense()
+                B = slin.pinvh(A)
+                self.log_den_err = np.sqrt(np.diag(B))
+                if self.verb:
+                    print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
 
-            sec2 = time.time()
+        elif comp_log_den_err == "LSDI":
+                sec2 = time.time()
+                print("Getting approximate inverse through LSDI")
+                A_sq = A**2
+                A_sq_sum = A_sq.sum(axis = 0)
+
+                if np.any(np.isclose(A_sq_sum,0)):
+                    print("Found in denominators elements nearby 0, falling back to diagonal approximate")
+                    B = 1/A.diagonal()
+                else:
+                    B = A.diagonal() / A_sq.sum(axis = 0)
+
+                self.log_den_err = np.sqrt(B)
+                self.B = B
+                if self.verb:
+                    print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
+
+                sec2 = time.time()
+
+        if comp_log_den_err == "diag":
+                print("Getting approximate inverse through inverse diagonal")
+                B = 1/A.diagonal()
+                self.log_den_err = np.sqrt(B)
+                if self.verb:
+                    print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
+
+                sec2 = time.time()
 
         sec2 = time.time()
         if self.verb:
@@ -529,10 +632,67 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
 
         return A, deltaFcum
 
-    def _solve_BMTI_reg_linar_system(self, A, deltaFcum, mem_efficient):
-        if mem_efficient is False:
+    def _solve_BMTI_reg_linar_system(self, A, deltaFcum, solver, sp_direct_perm_spec):
+        if solver == "dense":
+            # dense solver O(N^3) complexity
+            if self.verb:
+                print("Solving dense linear system")
             log_den = np.linalg.solve(A.todense(), deltaFcum)
+        elif solver == "sp_cg":
+            # conjugate gradient without preconditioner
+            if self.verb:
+                print(
+                    "Solving by conjugate gradient sparse solver without preconditioner"
+                )
+            log_den = sparse.linalg.cg(
+                A.tocsr(), deltaFcum, x0=self.log_den, atol=0.0, maxiter=None
+            )[0]
+        elif solver == "sp_cg_precond":
+            # conjugate gradient with preconditioner
+            if self.verb:
+                print(
+                    "Solving by conjugate gradient sparse solver with estimated (spilu) preconditioner"
+                )
+            # Create preconditioner
+            sec = time.time()
+            A_csc = sparse.csc_matrix(A)  # Ensure CSC format for spilu
+            M = sparse.linalg.spilu(A_csc)
+            preconditioner = sparse.linalg.LinearOperator(A_csc.shape, matvec=M.solve)
+            if self.verb:
+                print("{0:0.2f} seconds preconditioning".format(time.time() - sec))
+            log_den = sparse.linalg.cg(
+                A.tocsr(),
+                deltaFcum,
+                M=preconditioner,
+                x0=self.log_den,
+                atol=0.0,
+                maxiter=None,
+            )[0]
         else:
-            log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum)
+            # default solver: sp_direct
+            if solver != "sp_direct":
+                warnings.warn(
+                    f"The solver '{solver}' selected is not among the options. Using 'sp_direct' instead."
+                )
+            if self.verb:
+                print(f"Solving with 'sp_direct' sparse solver with perm_spec='{sp_direct_perm_spec}'")
+            print("cast to csr")
+            log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec=sp_direct_perm_spec)
+            # print("cast to csc")
+            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum)
+            # print("No cast")
+            # log_den = sparse.linalg.spsolve(A, deltaFcum)
+            # print("with reordering AtA and csr cast")
+            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="MMD_ATA")
+            # print("with reordering AtA and csc cast")
+            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="MMD_ATA")
+            # print("with reordering At+A and csr cast")
+            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="MMD_AT_PLUS_A")
+            # print("with reordering At+A and csc cast")
+            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="MMD_AT_PLUS_A")
+            # print("with reordering COLAMD and csc")
+            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="COLAMD")
+            # print("with reordering COLAMD and csr")
+            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="COLAMD")
 
         return log_den

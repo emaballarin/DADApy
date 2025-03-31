@@ -23503,21 +23503,9 @@ static PyObject *__pyx_pf_6dadapy_7_cython_12cython_grads_12return_diag_inv_delt
   __pyx_t_2 = 0;
 
   /* "dadapy/_cython/cython_grads.pyx":189
- *     #support
- *     denom_nonview   = np.zeros(nspar, dtype=floatTYPE)
- *     cdef double[::1] denom = denom_nonview             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray[DTYPE_t, ndim = 1] ptot = np.zeros(nspar, dtype = np.int_)
  *
- *     cdef double gamma, ptot, sgn
- */
-  __pyx_t_5 = __Pyx_PyObject_to_MemoryviewSlice_dc_double(__pyx_v_denom_nonview, PyBUF_WRITABLE); if (unlikely(!__pyx_t_5.memview)) __PYX_ERR(0, 189, __pyx_L1_error)
-  __pyx_v_denom = __pyx_t_5;
-  __pyx_t_5.memview = NULL;
-  __pyx_t_5.data = NULL;
-
-  /* "dadapy/_cython/cython_grads.pyx":194
- *     cdef int i,j,l,m,a,b
- *
- *     for a in range(nspar):             # <<<<<<<<<<<<<<
+ *     for a in prange(nspar, nogil = True):             # <<<<<<<<<<<<<<
  *         i = nind_list[a, 0]
  *         j = nind_list[a, 1]
  */

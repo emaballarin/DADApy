@@ -409,7 +409,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
     def compute_density_BMTI(
         self,
         delta_F_inv_cov="uncorr",
-        comp_log_den_err="no",
+        comp_log_den_err=False,
         solver="sp_direct",
         sp_direct_perm_spec="NATURAL",
         alpha=1,
@@ -432,12 +432,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
                     "LSDI":  (Least Squares with respect to a Diagonal Inverse). Invert the cross-covariance C by
                         finding the approximate diagonal inverse which multiplied by C gives the least-squares closest
                         matrix to the identity in the Frobenius norm
-            comp_log_den_err (str): compute the error on the BMTI estimates. Can be highly time consuming
-                    'no' (default): do not compute the error estimate
-                    'LSDI': perform approximate inversion through LSDI
-                    'diag': perform approximate inversion thourh 1/diagonal
-                    'svd' : perform approximate inversion through Moore-Penrose using SVD (highly discouraged for datasets)
-                        over 10k points
+            comp_log_den_err (bool): if True, compute the error on the BMTI estimates. Can be highly time consuming
             solver (str): specify the solver to use when solving the BMSTI linear system. Three sparse (memory
                 efficient) and a dense solvers are implemented:
                     'sp_direct' (default): scipy.sparse.linalg.spsolve. Performs a LU decomposition of the matrix and
@@ -499,14 +494,16 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         sec = time.time()
         # define the likelihood covarince matrix
         A, deltaFcum = self._get_BMTI_reg_linear_system(delta_F_inv_cov, alpha)
-        A_sq = A**2
+        sec2 = time.time()
 
         if self.verb:
             sec2 = time.time()
             print("{0:0.2f} seconds to fill get linear system ready".format(sec2 - sec))
 
         # solve linear system
-        log_den = self._solve_BMTI_reg_linar_system(A, deltaFcum, solver, sp_direct_perm_spec)
+        log_den = self._solve_BMTI_reg_linar_system(
+            A, deltaFcum, solver, sp_direct_perm_spec
+        )
         self.log_den = log_den
 
         if self.verb:
@@ -675,24 +672,12 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
                     f"The solver '{solver}' selected is not among the options. Using 'sp_direct' instead."
                 )
             if self.verb:
-                print(f"Solving with 'sp_direct' sparse solver with perm_spec='{sp_direct_perm_spec}'")
+                print(
+                    f"Solving with 'sp_direct' sparse solver with perm_spec='{sp_direct_perm_spec}'"
+                )
             print("cast to csr")
-            log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec=sp_direct_perm_spec)
-            # print("cast to csc")
-            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum)
-            # print("No cast")
-            # log_den = sparse.linalg.spsolve(A, deltaFcum)
-            # print("with reordering AtA and csr cast")
-            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="MMD_ATA")
-            # print("with reordering AtA and csc cast")
-            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="MMD_ATA")
-            # print("with reordering At+A and csr cast")
-            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="MMD_AT_PLUS_A")
-            # print("with reordering At+A and csc cast")
-            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="MMD_AT_PLUS_A")
-            # print("with reordering COLAMD and csc")
-            # log_den = sparse.linalg.spsolve(A.tocsc(), deltaFcum, permc_spec="COLAMD")
-            # print("with reordering COLAMD and csr")
-            # log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec="COLAMD")
+            log_den = sparse.linalg.spsolve(
+                A.tocsr(), deltaFcum, permc_spec=sp_direct_perm_spec
+            )
 
         return log_den

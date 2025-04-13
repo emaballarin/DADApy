@@ -1838,7 +1838,7 @@ typedef npy_longdouble __pyx_t_5numpy_longdouble_t;
 /* "dadapy/_cython/cython_grads.pyx":12
  * boolTYPE = np.bool_
  * 
- * ctypedef np.int_t DTYPE_t             # <<<<<<<<<<<<<<
+ * ctypedef int64_t DTYPE_t             # <<<<<<<<<<<<<<
  * ctypedef np.float64_t floatTYPE_t
  * 
  */
@@ -1846,7 +1846,7 @@ typedef __pyx_t_5numpy_int_t __pyx_t_6dadapy_7_cython_12cython_grads_DTYPE_t;
 
 /* "dadapy/_cython/cython_grads.pyx":13
  * 
- * ctypedef np.int_t DTYPE_t
+ * ctypedef int64_t DTYPE_t
  * ctypedef np.float64_t floatTYPE_t             # <<<<<<<<<<<<<<
  * 
  * from libc.math cimport exp, fabs, nearbyint, sqrt  # c FUNCTIONS FASTER THAN NUMPY
@@ -29718,7 +29718,7 @@ if (!__Pyx_RefNanny) {
  * floatTYPE = np.float_
  * boolTYPE = np.bool_             # <<<<<<<<<<<<<<
  * 
- * ctypedef np.int_t DTYPE_t
+ * ctypedef int64_t DTYPE_t
  */
   __Pyx_GetModuleGlobalName(__pyx_t_7, __pyx_n_s_np); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);

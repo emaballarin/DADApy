@@ -1,3 +1,5 @@
+# distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION
+
 import time
 
 import cython
@@ -5,11 +7,11 @@ import numpy as np
 
 cimport numpy as np
 
-DTYPE = np.int_
-floatTYPE = np.float_
+DTYPE = np.int64
+floatTYPE = np.float64
 boolTYPE = np.bool_
 
-ctypedef np.int_t DTYPE_t
+ctypedef np.int64_t DTYPE_t
 ctypedef np.float64_t floatTYPE_t
 
 from libc.math cimport exp, fabs, nearbyint, sqrt  # c FUNCTIONS FASTER THAN NUMPY

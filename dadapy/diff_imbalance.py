@@ -697,7 +697,7 @@ class DiffImbalance:
         mask = jnp.abs(
             jnp.arange(npoints)[:, jnp.newaxis] - jnp.arange(npoints)[jnp.newaxis, :]
         )
-        mask = (mask > discard_close_ind).astype(jnp.bool)
+        mask = (mask > discard_close_ind).astype(bool)
         # more columns than necessary discarded for starting and final rows, for shape compatibility
         first_rows = jnp.concatenate(
             (

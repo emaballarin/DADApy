@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
 """
 The *clustering* module contains the *Clustering* class.
 
@@ -20,15 +19,31 @@ Density-based clustering algorithms are implemented as methods of this class.
 """
 
 import multiprocessing
+import platform
 import time
 import warnings
+from copy import deepcopy
+from typing import Union
 
+import matplotlib.pyplot as plt
 import numpy as np
 import scipy as sp
 
 from dadapy._cython import cython_clustering as cf
 from dadapy._cython import cython_clustering_v2 as cf2
+
+try:
+    from dadac import Data as c_data
+except ModuleNotFoundError:
+    warnings.warn(
+        "C accelerated implementation is not provided, something went wrong when installing dadac dependency",
+        stacklevel=2,
+    )
+
 from dadapy.density_estimation import DensityEstimation
+from sklearn.cluster import KMeans
+from scipy.sparse import coo_matrix, diags
+from scipy.sparse.linalg import eigs
 
 cores = multiprocessing.cpu_count()
 
@@ -84,7 +99,232 @@ class Clustering(DensityEstimation):
         self.delta = None  # Minimum distance from an element with higher density
         self.ref = None  # Index of the nearest element with higher density
 
-    def compute_clustering_ADP(self, Z=1.65, halo=False, v2=False):
+    def _build_random_walk(self):
+        """Construct a sparse transition probability matrix for a random walk process.
+
+        Computes transition probabilities based on density estimates and their
+        associated uncertainties. Normalizes the transition probabilities and stores them
+        in a sparse matrix representation.
+
+        Returns:
+            scipy.sparse.coo_matrix: A sparse transition matrix P representing the random walk probabilities.
+
+        """
+        H = np.empty_like(prototype=self.distances, dtype=np.float64)
+        F = np.zeros(shape=self.distances.shape, dtype=np.float64)
+        H[:, 0] = 0
+        for i in range(self.N):
+            for k in range(1, self.kstar[i]):
+                j = self.dist_indices[i, k]
+                H[i, k] = self.log_den[i] - self.log_den[j]
+                H[i, k] /= np.sqrt(self.log_den_err[i] ** 2 + self.log_den_err[j] ** 2)
+                H[i, k] = (1 + sp.special.erf(-H[i, k] / np.sqrt(2))) / 2
+        n = 0
+        for i in range(self.N):
+            t = 1
+            for k in range(1, self.kstar[i]):
+                F[i, k] = t * H[i, k]
+                t *= 1 - H[i, k]
+                n += 1
+            normalization = np.sum(F[i, :])
+            if normalization != 0:
+                F[i, :] /= normalization
+        row = np.arange(stop=n, step=1)
+        col = np.arange(stop=n, step=1)
+        data_ = np.arange(stop=n, step=1, dtype=np.float64)
+        l = 0
+        for i in range(self.N):
+            for k in range(1, self.kstar[i]):
+                data_[l] = F[i, k]
+                row[l] = i
+                col[l] = self.dist_indices[i, k]
+                l += 1
+        P = coo_matrix(arg1=(data_, (row, col)), shape=(self.N, self.N), dtype=np.float64)
+        sparsity = 1 - P.nnz / (P.shape[0] * P.shape[1])
+        print(rf"P Matrix Sparsity: {sparsity:.4f}")
+        return P
+
+    def compute_clustering_SDP(self, top_k_ev: Union[None, int] = None, diagnostic_plots: bool = False):
+        """Perform Spectral Density Peaks (SDP) clustering.
+
+        Constructs a transition probability matrix using a random walk approach,
+        computes its eigenvalues and eigenvectors, and applies k-means clustering to
+        group data points based on spectral components.
+
+        Args:
+            top_k_ev (int, optional): Number of top eigenvalues to retain. If not provided,
+                it is heuristically set to the cube root of the number of data points.
+            diagnostic_plots (bool, optional): If True, generates diagnostic plots for
+                eigenvalues, eigengaps, and clustering results.
+
+        Raises:
+            ValueError: If essential data (distances, density estimates, etc.) are missing.
+
+        """
+        if self.distances is None or self.dist_indices is None:
+            raise ValueError("Please compute distances between datapoints")
+
+        if self.log_den is None or self.kstar is None:
+            raise ValueError("Please compute density with one of the methods provided (suggested BMTI, PAk)")
+
+        if self.log_den_err is None:
+            raise ValueError("Please compute density with explicit error computation")
+
+        start = time.monotonic()
+        P = self._build_random_walk()
+        stop = time.monotonic()
+
+        if self.verb:
+            print(f"Building random walk: ")
+            print(f"\tElapsed time {stop - start: .2f}s")
+
+        if top_k_ev is None:
+            top_k_ev = int(np.cbrt(self.N))
+            print(f"Heuristic selection of eigenvals to keep --> {top_k_ev}")
+        elif top_k_ev < int(np.cbrt(self.N)):
+            print(f"Selected number of eigenvals too high, using --> {top_k_ev}")
+        else:
+            print(f"Using number of eigenvals --> {top_k_ev}")
+
+        start = time.monotonic()
+
+        v0 = np.random.rand(self.N)
+        machine_epsilon = np.finfo(np.float64).eps
+        with np.errstate(divide="ignore", invalid="ignore"):
+            eigenvalues, eigenvectors = eigs(A=P, k=top_k_ev, sigma=1 - machine_epsilon, which="LM", v0=v0)
+
+        eigenvalues = np.real(val=1 - eigenvalues)
+        eigenvectors = np.real(val=eigenvectors)
+        eigenvalue_indeces = np.argsort(a=eigenvalues)
+        eigenvalues = eigenvalues[eigenvalue_indeces]
+        eigenvectors = eigenvectors[:, eigenvalue_indeces]
+
+        title = rf"First ${top_k_ev}$ $L$ Eigenvalues"
+        n_negative = np.argmax(a=eigenvalues > 0)
+
+        stop = time.monotonic()
+
+        if self.verb:
+            print(f"Computing eigenvals: ")
+            print(f"\tElapsed time {stop - start: .2f}s")
+
+        if diagnostic_plots:
+            step = int(top_k_ev / 5)
+            s = 1 / top_k_ev * 500
+            eps_ratio = 2
+            if n_negative > 0:
+                eigenvalues -= eigenvalues[0]
+                n_zeros = np.argmax(a=eigenvalues > 0)
+                title += rf" (Shifted) $\quad n_0 = {n_zeros}$"
+                eps = 10 ** (np.log10(eigenvalues[n_zeros]) - eps_ratio)
+            fig, axs = plt.subplots(
+                ncols=2,
+                figsize=(2 * plt.rcParams["figure.figsize"][0], plt.rcParams["figure.figsize"][1]),
+                layout="tight",
+            )
+            xticks = range(1, top_k_ev + step + 1, step)
+
+            for ax, yscale in zip(axs, ["linear", "log"]):
+                if n_negative > 0 and yscale == "log":
+                    title += rf"$\quad \varepsilon_0 = {eps:.0e}$"
+                ax.set(aspect="auto", title=title, xticks=xticks, yscale=yscale)
+                if n_negative > 0:
+                    if yscale == "log":
+                        y_ = [eps] * n_zeros + list(eigenvalues[n_zeros:n_negative])
+                    else:
+                        y_ = [0] * n_zeros + list(eigenvalues[n_zeros:n_negative])
+                    ax.scatter(x=range(1, n_negative + 1), y=y_, s=s, c="red", marker="D", zorder=2)
+                ax.scatter(
+                    x=range(1 + n_negative, top_k_ev + 1),
+                    y=eigenvalues[n_negative:],
+                    s=s,
+                    c="black",
+                    zorder=2,
+                )
+                ax.grid()
+
+            k_min = None
+
+        if n_negative > 0:
+            k_min = n_zeros + 1 if k_min is None else max(n_zeros, k_min)
+        else:
+            k_min = 2
+
+        # find optimal values of eigenvalues to keep
+        k_range = range(k_min, top_k_ev)
+        eigengaps = np.diff(a=eigenvalues)[np.array(object=k_range) - 1]
+        relative_eigengaps = eigengaps / eigenvalues[np.array(object=k_range) - 1]
+        optimal_k_values = np.argsort(a=relative_eigengaps)[::-1] + k_min
+
+        if diagnostic_plots:
+            step = max(int((top_k_ev - k_min) / 5), 1)
+            s = 1 / (top_k_ev - k_min) * 500
+            markersize = np.sqrt(s)
+            fig, ax = plt.subplots(figsize=plt.rcParams["figure.figsize"], layout="tight")
+            title = rf"Relative Eigengaps $\quad (k_\text{{min}} = {k_min}$)"
+            title += rf"$\quad k_\text{{best}} = {optimal_k_values[0]}$"
+            ax.set(aspect="auto", title=title, xticks=k_range[::step])
+            ax.plot(
+                k_range,
+                relative_eigengaps,
+                c="black",
+                marker="o",
+                markersize=markersize,
+                linestyle="-",
+                linewidth=1,
+                zorder=2,
+            )
+            ax.scatter(
+                x=k_range[optimal_k_values[0] - k_min],
+                y=relative_eigengaps[optimal_k_values[0] - k_min],
+                s=s,
+                c="red",
+                marker="D",
+                zorder=2,
+            )
+            ax.grid()
+
+        # spectral part
+        start = time.monotonic()
+
+        n_clusters = optimal_k_values[0]
+        kmeans = KMeans(n_clusters=n_clusters, random_state=0).fit(X=eigenvectors[:, :n_clusters])
+        density_peaks_indices = {label: None for label in kmeans.labels_}
+        density_peaks = np.zeros(shape=(n_clusters, self.X.shape[1]), dtype=np.float64)
+        for index, label in enumerate(range(n_clusters)):
+            mask = kmeans.labels_ == label
+            subset_index = np.argmax(a=self.log_den[mask])
+            parent_index = np.flatnonzero(mask)[subset_index]
+            density_peaks_indices[label] = parent_index
+            density_peaks[index, :] = self.X[parent_index, :]
+
+        stop = time.monotonic()
+
+        if self.verb:
+            print(f"Clustering eigencomponents w/ KMeans: ")
+            print(f"\tElapsed time {stop - start: .2f}s")
+
+        if diagnostic_plots:
+            fig, ax = plt.subplots(figsize=plt.rcParams["figure.figsize"], layout="tight")
+            title = rf"SDP w/ Density Peaks $\quad {n_clusters}$ Clusters"
+            ax.set(aspect="equal", title=title)
+            ax.scatter(x=self.X[:, 0], y=self.X[:, 1], s=2, c=kmeans.labels_, alpha=0.5, zorder=2)
+            ax.scatter(
+                x=density_peaks[:, 0],
+                y=density_peaks[:, 1],
+                s=100,
+                c=list(set(kmeans.labels_)),
+                marker="D",
+                edgecolors="black",
+                zorder=2,
+            )
+            ax.grid()
+
+        self.N_clusters = n_clusters
+        self.cluster_assignment = kmeans.labels_
+        self.cluster_centers = density_peaks
+
+    def compute_clustering_ADP(self, Z=1.65, halo=False, impl="c", v2=False):
         """Compute clustering according to the algorithm DPA.
 
         The only free parameter is the merging factor Z, which controls how the different density peaks are merged
@@ -94,6 +334,9 @@ class Clustering(DensityEstimation):
         Args:
             Z(float): merging parameter
             halo (bool): compute (or not) the halo points
+            impl (str): default "c", implementation type. "c" uses optimized implementation written in pure C,
+                "py" uses the original dadapy implementation
+            v2 (bool): use v2 implementation (less memory, potentially slower). Only used when impl="py".
 
         Returns:
             cluster_assignment (np.ndarray(int)): assignment of points to specific clusters
@@ -103,75 +346,110 @@ class Clustering(DensityEstimation):
                 non-parametric  density peak clustering, Information Sciences 560 (2021) 476–492
 
         """
-        if self.log_den is None:
-            self.compute_density_PAk()
-
-        assert not np.isnan(np.sum(self.log_den)), "log density contains nan values"
-        assert not np.isnan(
-            np.sum(self.log_den_err)
-        ), "log error density contains nan values"
-
-        if self.verb:
-            print("Clustering started")
-
-        if v2 is True:
+        try:
+            # try to generate the dadac handler, if it fails fall back to default
+            dadac_handler = c_data(self.X, verbose=self.verb)
+        except NameError:
             warnings.warn(
-                """using adp implementation v2: this requires less memory but can
-                be two times slower than the original implementation""",
+                f"Cannot load dadac.Data, falling back to python/cython implementation. "
+                f"This can be caused by running from a non-Linux system. "
+                f"Your platform is {platform.platform()}, please refer to dadaC docs "
+                f"to manually install the package.",
                 stacklevel=2,
             )
+            impl = "py"
 
-        # Make all values of log_den positives (this is important to help convergence)
-        # even when subtracting the value Z*log_den_err
-        log_den_min = np.min(self.log_den - Z * self.log_den_err)
-        log_den_c = self.log_den - log_den_min + 1
+        if impl == "py":
+            if self.log_den is None:
+                self.compute_density_PAk()
 
-        # Putative modes of the PDF as preliminary clusters
-        g = log_den_c - self.log_den_err
+            assert not np.isnan(np.sum(self.log_den)), "log density contains nan values"
+            assert not np.isnan(np.sum(self.log_den_err)), "log error density contains nan values"
 
-        # centers are point of max density  (max(g) ) within their optimal neighborhood (defined by kstar)
-        seci = time.time()
+            if self.verb:
+                print("Clustering started")
 
-        if v2:
-            out = cf2._compute_clustering(
-                Z,
-                halo,
-                self.kstar,
-                self.dist_indices.astype(int),
-                self.maxk,
-                self.verb,
-                self.log_den_err,
-                log_den_c,
-                g,
-                self.N,
-            )
+            if v2 is True:
+                warnings.warn(
+                    """using adp implementation v2: this requires less memory but can
+                    be two times slower than the original implementation""",
+                    stacklevel=2,
+                )
+
+            # Make all values of log_den positives (this is important to help convergence)
+            # even when subtracting the value Z*log_den_err
+            log_den_min = np.min(self.log_den - Z * self.log_den_err)
+            log_den_c = self.log_den - log_den_min + 1
+
+            # Putative modes of the PDF as preliminary clusters
+            g = log_den_c - self.log_den_err
+
+            # centers are point of max density  (max(g) ) within their optimal neighborhood (defined by kstar)
+            seci = time.time()
+
+            if v2:
+                out = cf2._compute_clustering(
+                    Z,
+                    halo,
+                    self.kstar,
+                    self.dist_indices.astype(int),
+                    self.maxk,
+                    self.verb,
+                    self.log_den_err,
+                    log_den_c,
+                    g,
+                    self.N,
+                )
+            else:
+                out = cf._compute_clustering(
+                    Z,
+                    halo,
+                    self.kstar,
+                    self.dist_indices.astype(int),
+                    self.maxk,
+                    self.verb,
+                    self.log_den_err,
+                    log_den_c,
+                    g,
+                    self.N,
+                )
+
+            secf = time.time()
+
+            self.cluster_indices = out[0]
+            self.N_clusters = out[1]
+            self.cluster_assignment = out[2]
+            self.cluster_centers = out[3]
+            self.log_den_bord = out[4] + log_den_min - 1
+            self.log_den_bord_err = out[5]
+            self.bord_indices = out[6]
+
+            if self.verb:
+                print(f"Clustering finished, {self.N_clusters} clusters found")
+                print(f"total time is, {secf - seci}")
         else:
-            out = cf._compute_clustering(
-                Z,
-                halo,
-                self.kstar,
-                self.dist_indices.astype(int),
-                self.maxk,
-                self.verb,
-                self.log_den_err,
-                log_den_c,
-                g,
-                self.N,
-            )
+            # handle with dadaC
+            if self.log_den is None:
+                self.compute_density_PAk()
+            log_den_min = np.min(self.log_den - Z * self.log_den_err)
+            dadac_handler.import_density(self.log_den, self.log_den_err, self.kstar)
+            dadac_handler.import_neighbors_and_distances(self.dist_indices, self.distances)
+            dadac_handler.compute_clustering_ADP(Z, halo)
 
-        secf = time.time()
+            if self.verb:
+                print("Exporting results to python")
 
-        self.cluster_indices = out[0]
-        self.N_clusters = out[1]
-        self.cluster_assignment = out[2]
-        self.cluster_centers = out[3]
-        self.log_den_bord = out[4] + log_den_min - 1
-        self.log_den_bord_err = out[5]
-        self.bord_indices = out[6]
+            self.N_clusters = deepcopy(dadac_handler.N_clusters)
+            self.cluster_assignment = deepcopy(dadac_handler.cluster_assignment)
+            self.cluster_centers = deepcopy(dadac_handler.cluster_centers)
+            self.bord_indices = deepcopy(dadac_handler.border_indices)
 
-        if self.verb:
-            print(f"Clustering finished, {self.N_clusters} clusters found")
-            print(f"total time is, {secf - seci}")
+            # subtract one on the diagonal for consistency with the original implementation
+            self.log_den_bord = deepcopy(dadac_handler.log_den_bord + log_den_min - 1.0)
+            self.log_den_bord_err = deepcopy(dadac_handler.log_den_bord_err)
+
+            idxs = np.arange(self.N)
+            self.cluster_indices = [idxs[self.cluster_assignment == c] for c in range(self.N_clusters)]
 
         return self.cluster_assignment
 
@@ -187,9 +465,7 @@ class Clustering(DensityEstimation):
         for i in range(self.N):
             ll = tt[((self.log_den > self.log_den[i]) & (tt != i))]
             if ll.shape[0] > 0:
-                a1, a2, a3 = np.intersect1d(
-                    self.dist_indices[i, :], ll, return_indices=True, assume_unique=True
-                )
+                a1, a2, a3 = np.intersect1d(self.dist_indices[i, :], ll, return_indices=True, assume_unique=True)
                 if a1.shape[0] > 0:
                     aa = np.min(a2)
                     self.delta[i] = self.distances[i, aa]
@@ -197,9 +473,7 @@ class Clustering(DensityEstimation):
                 else:
                     ncalls = ncalls + 1
                     dd = self.X[((self.log_den > self.log_den[i]) & (tt != i))]
-                    ds = np.transpose(
-                        sp.spatial.distance.cdist([np.transpose(self.X[i, :])], dd)
-                    )
+                    ds = np.transpose(sp.spatial.distance.cdist([np.transpose(self.X[i, :])], dd))
                     j = np.argmin(ds)
                     self.ref[i] = ll[j]
                     self.delta[i] = ds[j]
@@ -267,9 +541,7 @@ class Clustering(DensityEstimation):
             self.compute_density_PAk()
 
         assert not np.isnan(np.sum(self.log_den)), "log density contains nan values"
-        assert not np.isnan(
-            np.sum(self.log_den_err)
-        ), "log error density contains nan values"
+        assert not np.isnan(np.sum(self.log_den_err)), "log error density contains nan values"
 
         if self.verb:
             print("Clustering started")
@@ -299,17 +571,11 @@ class Clustering(DensityEstimation):
         if self.verb:
             print("Number of clusters before multimodality test=", Nclus)
 
-        cluster_init, cl_struct = self._preliminary_cluster_assignment(
-            g, centers, removed_centers
-        )
+        cluster_init, cl_struct = self._preliminary_cluster_assignment(g, centers, removed_centers)
 
         sec2 = time.time()
         if self.verb:
-            print(
-                "{0:0.2f} seconds clustering before multimodality test".format(
-                    sec2 - sec
-                )
-            )
+            print("{0:0.2f} seconds clustering before multimodality test".format(sec2 - sec))
 
         # Find border points between putative clusters
         sec = time.time()
@@ -318,9 +584,7 @@ class Clustering(DensityEstimation):
                 log_den_bord,
                 log_den_bord_err,
                 bord_index,
-            ) = self._find_borders_between_clusters(
-                Nclus, g, cl_struct, centers, cluster_init, log_den_c
-            )
+            ) = self._find_borders_between_clusters(Nclus, g, cl_struct, centers, cluster_init, log_den_c)
         else:
             saddle_density, saddle_indices = self._find_borders_between_clusters_v2(
                 Nclus, g, cl_struct, centers, cluster_init, log_den_c
@@ -347,9 +611,7 @@ class Clustering(DensityEstimation):
                 surviving_clusters,
                 saddle_density,
                 saddle_indices,
-            ) = self._multimodality_test_v2(
-                Nclus, Z, log_den_c, centers, cl_struct, saddle_density, saddle_indices
-            )
+            ) = self._multimodality_test_v2(Nclus, Z, log_den_c, centers, cl_struct, saddle_density, saddle_indices)
 
         sec2 = time.time()
         if self.verb:
@@ -400,9 +662,7 @@ class Clustering(DensityEstimation):
         self.N_clusters = N_clusters
         self.cluster_assignment = cluster_assignment
         self.cluster_centers = cluster_centers
-        self.log_den_bord = (
-            log_den_bord + log_den_min - 1
-        )  # remove wrong normalisation introduced earlier
+        self.log_den_bord = log_den_bord + log_den_min - 1  # remove wrong normalisation introduced earlier
         self.log_den_bord_err = log_den_bord_err
         self.bord_indices = bord_indices
 
@@ -496,23 +756,17 @@ class Clustering(DensityEstimation):
                 # (all_removed_centers --> indices of the centers that have been removed)
                 all_removed_centers = removed_centers[:, 0]
 
-                _, _, ind_removed_centers_ele = np.intersect1d(
-                    ele_neighbors, all_removed_centers, return_indices=True
-                )
+                _, _, ind_removed_centers_ele = np.intersect1d(ele_neighbors, all_removed_centers, return_indices=True)
 
                 # indices (in 'removed_centers') of the centers of higher density
                 # in the neighborhood of 'removed centers'
                 # (higher_density_centers --> centers of higher density that have a
                 # 'removed center' in their neighborhood)
                 higher_density_centers = removed_centers[:, 1]
-                higher_density_centers_ele = higher_density_centers[
-                    ind_removed_centers_ele
-                ]
+                higher_density_centers_ele = higher_density_centers[ind_removed_centers_ele]
 
                 # index (in 'cluster_init') of the 'maximum density center' of such neighboring centers
-                max_center = higher_density_centers_ele[
-                    np.argmax(g[higher_density_centers_ele])
-                ]
+                max_center = higher_density_centers_ele[np.argmax(g[higher_density_centers_ele])]
 
                 cluster_init[ele] = cluster_init[max_center]
 
@@ -566,9 +820,7 @@ class Clustering(DensityEstimation):
             # set all bord indices to -1 (no points) initially
             bord_index = np.ones((Nclus, Nclus), dtype=int) * -1
         except MemoryError:
-            print(
-                f"Nclus = {Nclus}. Out of memory error: call compute_clustering_ADP_pure_python(v2 = True)"
-            )
+            print(f"Nclus = {Nclus}. Out of memory error: call compute_clustering_ADP_pure_python(v2 = True)")
 
         for c in range(Nclus):
             for p1 in cl_struct[c]:  # p1 points in a given cluster
@@ -580,9 +832,7 @@ class Clustering(DensityEstimation):
                     for k in range(1, self.kstar[p1] + 1):
                         p2 = self.dist_indices[p1, k]
                         pp = -1
-                        if (
-                            cluster_init[p2] != c
-                        ):  # a point in the neighborhood of p1 belongs to another cluster
+                        if cluster_init[p2] != c:  # a point in the neighborhood of p1 belongs to another cluster
                             pp = p2
                             cp = cluster_init[pp]  # neighbor cluster index
                             break
@@ -591,9 +841,7 @@ class Clustering(DensityEstimation):
                         po = self.dist_indices[pp, k]  # pp here is p2
                         if po == p1:  # p1 is the closest point of p2 belonging to c
                             break
-                        if (
-                            cluster_init[po] == c
-                        ):  # there is a point of c closest to p2 than p1
+                        if cluster_init[po] == c:  # there is a point of c closest to p2 than p1
                             pp = -1
                             break
 
@@ -819,24 +1067,16 @@ class Clustering(DensityEstimation):
             # saddle point index, saddle point density, saddle point error, cluster1 index, cluster2 index, valid_saddle
             # create another array of indices
 
-            saddle_density_tmp = np.zeros(
-                (Nclus, 3), dtype=float
-            )  # density, density_error, normalized_density
-            saddle_indices_tmp = -np.ones(
-                (Nclus, 4), dtype=int
-            )  # saddle point, cluster1, cluster2, is_valid saddle
+            saddle_density_tmp = np.zeros((Nclus, 3), dtype=float)  # density, density_error, normalized_density
+            saddle_indices_tmp = -np.ones((Nclus, 4), dtype=int)  # saddle point, cluster1, cluster2, is_valid saddle
 
             if c == 0:
                 saddle_density = saddle_density_tmp
                 saddle_indices = saddle_indices_tmp
                 # array of saddle points of cluster  c (will be eventually much less than Nclus)
             else:
-                saddle_density = np.concatenate(
-                    (saddle_density, saddle_density_tmp), axis=0
-                )
-                saddle_indices = np.concatenate(
-                    (saddle_indices, saddle_indices_tmp), axis=0
-                )
+                saddle_density = np.concatenate((saddle_density, saddle_density_tmp), axis=0)
+                saddle_indices = np.concatenate((saddle_indices, saddle_indices_tmp), axis=0)
 
             for p1 in cl_struct[c]:  # p1 point in a given cluster
                 if p1 in centers:
@@ -847,9 +1087,7 @@ class Clustering(DensityEstimation):
                     for k in range(1, self.kstar[p1] + 1):
                         p2 = self.dist_indices[p1, k]
                         pp = -1
-                        if (
-                            cluster_init[p2] != c
-                        ):  # a point in the neighborhood of p1 belongs to another cluster
+                        if cluster_init[p2] != c:  # a point in the neighborhood of p1 belongs to another cluster
                             pp = p2
                             cp = cluster_init[pp]  # neighbor cluster index
                             break
@@ -860,9 +1098,7 @@ class Clustering(DensityEstimation):
                         po = self.dist_indices[pp, k]  # pp here is p2
                         if po == p1:  # p1 is the closest point of p2 belonging to c
                             break
-                        if (
-                            cluster_init[po] == c
-                        ):  # p1 is NOT the closest point of p2 belonging to c
+                        if cluster_init[po] == c:  # p1 is NOT the closest point of p2 belonging to c
                             pp = -1
                             break
 
@@ -883,18 +1119,12 @@ class Clustering(DensityEstimation):
                             flag = 1  # there is already a border point between c and cp
                             if g[p1] > saddle_density[i, 2]:
                                 saddle_indices[i, 0] = p1  # useful at the end
-                                saddle_density[i] = np.array(
-                                    [log_den_c[p1], self.log_den_err[p1], g[p1]]
-                                )
+                                saddle_density[i] = np.array([log_den_c[p1], self.log_den_err[p1], g[p1]])
                                 break
 
                     if flag == 0:
-                        saddle_indices[saddle_count] = np.array(
-                            [p1, c1, c2, 1], dtype=int
-                        )
-                        saddle_density[saddle_count] = np.array(
-                            [log_den_c[p1], self.log_den_err[p1], g[p1]]
-                        )
+                        saddle_indices[saddle_count] = np.array([p1, c1, c2, 1], dtype=int)
+                        saddle_density[saddle_count] = np.array([log_den_c[p1], self.log_den_err[p1], g[p1]])
                         saddle_count += 1
 
             saddle_density = saddle_density[:saddle_count]
@@ -906,9 +1136,7 @@ class Clustering(DensityEstimation):
 
         return saddle_density[:, :2], saddle_indices
 
-    def _multimodality_test_v2(
-        self, Nclus, Z, log_den_c, centers, cl_struct, saddle_density, saddle_indices
-    ):
+    def _multimodality_test_v2(self, Nclus, Z, log_den_c, centers, cl_struct, saddle_density, saddle_indices):
         """Merge couples of peaks if these are not statistically significant.
 
         Args:
@@ -957,9 +1185,7 @@ class Clustering(DensityEstimation):
                             current_saddle = saddle_density[i, 0]
 
             if check == 1:
-                saddle_indices[
-                    to_remove, -1
-                ] = 0  # the couple center1, center2 is removed
+                saddle_indices[to_remove, -1] = 0  # the couple center1, center2 is removed
                 margin1 = max_a1 / max_sum_err1
                 margin2 = max_a2 / max_sum_err2
 
@@ -1099,12 +1325,8 @@ class Clustering(DensityEstimation):
                 if saddle_density[index1, 0] < saddle_density[index2, 0]:
                     # if the density of the saddle is higher between cluster2 and common neighbor,
                     # use this as new saddle between cluster1 and common neighbor
-                    saddle_density[index1, 0] = saddle_density[
-                        index2, 0
-                    ]  # saddle density
-                    saddle_density[index1, 1] = saddle_density[
-                        index2, 1
-                    ]  # saddle error
+                    saddle_density[index1, 0] = saddle_density[index2, 0]  # saddle density
+                    saddle_density[index1, 1] = saddle_density[index2, 1]  # saddle error
                 # the couples of common elements with the c2 are "deleted"
                 saddle_indices[index2, -1] = 0
                 i += 1

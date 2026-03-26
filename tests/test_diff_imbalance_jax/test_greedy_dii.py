@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
 """Module for testing greedy feature selection methods of the DiffImbalance class."""
 
 import os
@@ -84,19 +83,17 @@ def test_DiffImbalance_forward_greedy():
     print("Final DIIs:", diis)
 
     # Check first feature selected
-    assert (
-        feature_sets[0] == expected_first_feature
-    ), f"First feature should be {expected_first_feature}, got {feature_sets[0]}"
+    assert feature_sets[0] == expected_first_feature, (
+        f"First feature should be {expected_first_feature}, got {feature_sets[0]}"
+    )
 
     # Check second set of features
-    assert (
-        feature_sets[1] == expected_second_features
-    ), f"Second feature set should be {expected_second_features}, got {feature_sets[1]}"
+    assert feature_sets[1] == expected_second_features, (
+        f"Second feature set should be {expected_second_features}, got {feature_sets[1]}"
+    )
 
     # Check that all features are included in the final set
-    assert (
-        len(feature_sets[2]) == 3
-    ), f"Final feature set should include all 3 features, got {feature_sets[2]}"
+    assert len(feature_sets[2]) == 3, f"Final feature set should include all 3 features, got {feature_sets[2]}"
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="Requires python>=3.9")
@@ -166,19 +163,17 @@ def test_DiffImbalance_backward_greedy():
 
     # Check the feature that's removed first
     removed_feature = set(feature_sets[0]) - set(feature_sets[1])
-    assert removed_feature == {
-        expected_first_removal
-    }, f"First removed feature should be {expected_first_removal}, got {removed_feature}"
+    assert removed_feature == {expected_first_removal}, (
+        f"First removed feature should be {expected_first_removal}, got {removed_feature}"
+    )
 
     # Check second feature set
-    assert set(feature_sets[1]) == set(
-        expected_second_features
-    ), f"Second feature set should be {expected_second_features}, got {feature_sets[1]}"
+    assert set(feature_sets[1]) == set(expected_second_features), (
+        f"Second feature set should be {expected_second_features}, got {feature_sets[1]}"
+    )
 
     # Check final feature set has only one feature
-    assert (
-        len(feature_sets[-1]) == 1
-    ), f"Final feature set should have 1 feature, got {feature_sets[-1]}"
+    assert len(feature_sets[-1]) == 1, f"Final feature set should have 1 feature, got {feature_sets[-1]}"
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="Requires python>=3.9")
@@ -229,31 +224,27 @@ def test_DiffImbalance_greedy_symmetry_5d_gaussian():
         diis_fw,
         errors_fw,
         weights_fw,
-    ) = dii.forward_greedy_feature_selection(
-        n_features_max=5, compute_error=True, n_best=1
-    )
+    ) = dii.forward_greedy_feature_selection(n_features_max=5, compute_error=True, n_best=1)
     (
         feature_sets_bw,
         diis_bw,
         errors_bw,
         weights_bw,
-    ) = dii.backward_greedy_feature_selection(
-        n_features_min=1, compute_error=True, n_best=1
-    )
+    ) = dii.backward_greedy_feature_selection(n_features_min=1, compute_error=True, n_best=1)
 
     # Expected results based on weights
     expected_fw_sets = [[3], [0, 3], [0, 3, 4], [0, 1, 3, 4], [0, 1, 2, 3, 4]]
     expected_bw_sets = [[0, 1, 2, 3, 4], [0, 1, 3, 4], [0, 3, 4], [0, 3], [3]]
 
     # Check forward greedy results
-    assert (
-        feature_sets_fw == expected_fw_sets
-    ), f"Forward selection should return {expected_fw_sets}, got {feature_sets_fw}"
+    assert feature_sets_fw == expected_fw_sets, (
+        f"Forward selection should return {expected_fw_sets}, got {feature_sets_fw}"
+    )
 
     # Check backward greedy results
-    assert (
-        feature_sets_bw == expected_bw_sets
-    ), f"Backward selection should return {expected_bw_sets}, got {feature_sets_bw}"
+    assert feature_sets_bw == expected_bw_sets, (
+        f"Backward selection should return {expected_bw_sets}, got {feature_sets_bw}"
+    )
 
     # Check that the DII values match when reversed
     diis_fw_array = np.array(diis_fw)
@@ -267,49 +258,33 @@ def test_DiffImbalance_greedy_symmetry_5d_gaussian():
     print("Backward Weights:", weights_bw)
 
     # Check that the weights are properly structured
-    assert (
-        len(weights_fw[-1]) == 5
-    ), f"The final weight array should have length 5, got {len(weights_fw[-1])}"
-    assert (
-        len(weights_bw[-1]) == 5
-    ), f"The final weight array should have length 5, got {len(weights_bw[-1])}"
-    assert (
-        len(weights_fw) == 5
-    ), f"Forward selection should return 5 DII weights arrays, got {len(weights_fw)}"
-    assert (
-        len(weights_bw) == 5
-    ), f"Backward selection should return 5 DII weights arrays, got {len(weights_bw)}"
+    assert len(weights_fw[-1]) == 5, f"The final weight array should have length 5, got {len(weights_fw[-1])}"
+    assert len(weights_bw[-1]) == 5, f"The final weight array should have length 5, got {len(weights_bw[-1])}"
+    assert len(weights_fw) == 5, f"Forward selection should return 5 DII weights arrays, got {len(weights_fw)}"
+    assert len(weights_bw) == 5, f"Backward selection should return 5 DII weights arrays, got {len(weights_bw)}"
 
-    assert (
-        len(errors_fw) == 5
-    ), f"Forward selection should return 5 DII errors, got {len(errors_fw)}"
-    assert (
-        len(errors_bw) == 5
-    ), f"Backward selection should return 5 DII errors, got {len(errors_bw)}"
+    assert len(errors_fw) == 5, f"Forward selection should return 5 DII errors, got {len(errors_fw)}"
+    assert len(errors_bw) == 5, f"Backward selection should return 5 DII errors, got {len(errors_bw)}"
 
-    assert np.allclose(
-        diis_bw_array, diis_fw_array[::-1], atol=0.03
-    ), f"DII values should match when reversed, got {diis_bw_array} and {diis_fw_array[::-1]}"
+    assert np.allclose(diis_bw_array, diis_fw_array[::-1], atol=1e-2), (
+        f"DII values should match when reversed, got {diis_bw_array} and {diis_fw_array[::-1]}"
+    )
 
     # Check that for the forward selection, the last feature set has highest weight on feature 3
     # which should be the most important feature according to the ground truth weights
     max_weight_feature_fw = np.argmax(weights_fw[-1])
-    assert (
-        max_weight_feature_fw == 3
-    ), f"Feature 3 should have the highest weight, got feature {max_weight_feature_fw}"
+    assert max_weight_feature_fw == 3, f"Feature 3 should have the highest weight, got feature {max_weight_feature_fw}"
 
     # Check that for the backward selection, the first weights array (all features)
     # has highest weight on feature 3 as well
     max_weight_feature_bw = np.argmax(weights_bw[0])
-    assert (
-        max_weight_feature_bw == 3
-    ), f"Feature 3 should have the highest weight, got feature {max_weight_feature_bw}"
+    assert max_weight_feature_bw == 3, f"Feature 3 should have the highest weight, got feature {max_weight_feature_bw}"
 
     # Check that the feature sets are in reverse order
     for i in range(len(feature_sets_fw)):
-        assert set(feature_sets_fw[i]) == set(
-            feature_sets_bw[-(i + 1)]
-        ), f"Feature sets should be in reverse order, got {feature_sets_fw[i]} and {feature_sets_bw[-(i + 1)]}"
+        assert set(feature_sets_fw[i]) == set(feature_sets_bw[-(i + 1)]), (
+            f"Feature sets should be in reverse order, got {feature_sets_fw[i]} and {feature_sets_bw[-(i + 1)]}"
+        )
 
 
 @pytest.mark.skipif(sys.version_info < (3, 9), reason="Requires python>=3.9")
@@ -362,31 +337,27 @@ def test_DiffImbalance_greedy_random_initialization():
         diis_fw,
         errors_fw,
         weights_fw,
-    ) = dii.forward_greedy_feature_selection(
-        n_features_max=5, compute_error=True, n_best=1
-    )
+    ) = dii.forward_greedy_feature_selection(n_features_max=5, compute_error=True, n_best=1)
     (
         feature_sets_bw,
         diis_bw,
         errors_bw,
         weights_bw,
-    ) = dii.backward_greedy_feature_selection(
-        n_features_min=1, compute_error=True, n_best=1
-    )
+    ) = dii.backward_greedy_feature_selection(n_features_min=1, compute_error=True, n_best=1)
 
     # Expected results based on weights (should be same as previous test)
-    expected_fw_sets = [[3], [0, 3], [0, 3, 4], [0, 2, 3, 4], [0, 1, 2, 3, 4]]
+    expected_fw_sets = [[3], [0, 3], [0, 3, 4], [0, 1, 3, 4], [0, 1, 2, 3, 4]]
     expected_bw_sets = [[0, 1, 2, 3, 4], [0, 1, 3, 4], [0, 3, 4], [0, 3], [3]]
 
     # Check forward greedy results
-    assert (
-        feature_sets_fw == expected_fw_sets
-    ), f"Forward selection should return {expected_fw_sets}, got {feature_sets_fw}"
+    assert feature_sets_fw == expected_fw_sets, (
+        f"Forward selection should return {expected_fw_sets}, got {feature_sets_fw}"
+    )
 
     # Check backward greedy results
-    assert (
-        feature_sets_bw == expected_bw_sets
-    ), f"Backward selection should return {expected_bw_sets}, got {feature_sets_bw}"
+    assert feature_sets_bw == expected_bw_sets, (
+        f"Backward selection should return {expected_bw_sets}, got {feature_sets_bw}"
+    )
 
     # Check that the DII values match when reversed
     diis_fw_array = np.array(diis_fw)
@@ -400,63 +371,39 @@ def test_DiffImbalance_greedy_random_initialization():
     print("Random Init Backward Weights:", weights_bw)
 
     # Check that the weights are properly structured
-    assert (
-        len(weights_fw[-1]) == 5
-    ), f"The final weight array should have length 5, got {len(weights_fw[-1])}"
-    assert (
-        len(weights_bw[-1]) == 5
-    ), f"The final weight array should have length 5, got {len(weights_bw[-1])}"
-    assert (
-        len(weights_fw) == 5
-    ), f"Forward selection should return 5 DII weights arrays, got {len(weights_fw)}"
-    assert (
-        len(weights_bw) == 5
-    ), f"Backward selection should return 5 DII weights arrays, got {len(weights_bw)}"
+    assert len(weights_fw[-1]) == 5, f"The final weight array should have length 5, got {len(weights_fw[-1])}"
+    assert len(weights_bw[-1]) == 5, f"The final weight array should have length 5, got {len(weights_bw[-1])}"
+    assert len(weights_fw) == 5, f"Forward selection should return 5 DII weights arrays, got {len(weights_fw)}"
+    assert len(weights_bw) == 5, f"Backward selection should return 5 DII weights arrays, got {len(weights_bw)}"
 
-    assert (
-        len(errors_fw) == 5
-    ), f"Forward selection should return 5 DII errors, got {len(errors_fw)}"
-    assert (
-        len(errors_bw) == 5
-    ), f"Backward selection should return 5 DII errors, got {len(errors_bw)}"
+    assert len(errors_fw) == 5, f"Forward selection should return 5 DII errors, got {len(errors_fw)}"
+    assert len(errors_bw) == 5, f"Backward selection should return 5 DII errors, got {len(errors_bw)}"
 
-    assert np.allclose(
-        diis_bw_array, diis_fw_array[::-1], atol=0.03
-    ), f"DII values should match when reversed, got {diis_bw_array} and {diis_fw_array[::-1]}"
+    assert np.allclose(diis_bw_array, diis_fw_array[::-1], atol=1e-2), (
+        f"DII values should match when reversed, got {diis_bw_array} and {diis_fw_array[::-1]}"
+    )
 
     # Check that for the forward selection, the last feature set has highest weight on feature 3
     # which should be the most important feature according to the ground truth weights
     max_weight_feature_fw = np.argmax(weights_fw[-1])
-    assert (
-        max_weight_feature_fw == 3
-    ), f"Feature 3 should have the highest weight, got feature {max_weight_feature_fw}"
+    assert max_weight_feature_fw == 3, f"Feature 3 should have the highest weight, got feature {max_weight_feature_fw}"
 
     # Check that for the backward selection, the first weights array (all features)
     # has highest weight on feature 3 as well
     max_weight_feature_bw = np.argmax(weights_bw[0])
-    assert (
-        max_weight_feature_bw == 3
-    ), f"Feature 3 should have the highest weight, got feature {max_weight_feature_bw}"
+    assert max_weight_feature_bw == 3, f"Feature 3 should have the highest weight, got feature {max_weight_feature_bw}"
 
-    # Check that feature sets are approximately reversed (allow swaps of nearly-equal features)
+    # Check that the feature sets are in reverse order
     for i in range(len(feature_sets_fw)):
-        fw_set = set(feature_sets_fw[i])
-        bw_set = set(feature_sets_bw[-(i + 1)])
-        diff = fw_set.symmetric_difference(bw_set)
-        assert len(diff) <= 2, (
-            f"Feature sets should be approximately reversed, got {feature_sets_fw[i]} and {feature_sets_bw[-(i + 1)]}"
+        assert set(feature_sets_fw[i]) == set(feature_sets_bw[-(i + 1)]), (
+            f"Feature sets should be in reverse order, got {feature_sets_fw[i]} and {feature_sets_bw[-(i + 1)]}"
         )
-
-
-
-
-
 
     # Additional test: Verify that the random initialization was actually used
     # by checking that the initial DII object has the correct params_init
-    assert np.allclose(
-        dii.params_init, params_init
-    ), f"DII object should have the random initialization parameters, got {dii.params_init} expected {params_init}"
+    assert np.allclose(dii.params_init, params_init), (
+        f"DII object should have the random initialization parameters, got {dii.params_init} expected {params_init}"
+    )
 
 
 if __name__ == "__main__":

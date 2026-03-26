@@ -1366,9 +1366,9 @@ static const char *__pyx_filename;
 /* #### Code section: filename_table ### */
 
 static const char* const __pyx_f[] = {
-  "dadapy/_cython/cython_clustering_v2.pyx",
-  ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd",
-  ".venv/lib/python3.13/site-packages/Cython/Includes/cpython/type.pxd",
+  "cython_clustering_v2.pyx",
+  "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd",
+  "cpython/type.pxd",
 };
 /* #### Code section: utility_code_proto_before_types ### */
 /* Atomics.proto (used by UnpackUnboundCMethod) */
@@ -1577,7 +1577,7 @@ typedef struct {
 
 /* #### Code section: numeric_typedefs ### */
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":744
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":744
  * # in Cython to enable them only on the right systems.
  * 
  * ctypedef npy_int8       int8_t             # <<<<<<<<<<<<<<
@@ -1586,7 +1586,7 @@ typedef struct {
 */
 typedef npy_int8 __pyx_t_5numpy_int8_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":745
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":745
  * 
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t             # <<<<<<<<<<<<<<
@@ -1595,7 +1595,7 @@ typedef npy_int8 __pyx_t_5numpy_int8_t;
 */
 typedef npy_int16 __pyx_t_5numpy_int16_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":746
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":746
  * ctypedef npy_int8       int8_t
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t             # <<<<<<<<<<<<<<
@@ -1604,7 +1604,7 @@ typedef npy_int16 __pyx_t_5numpy_int16_t;
 */
 typedef npy_int32 __pyx_t_5numpy_int32_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":747
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":747
  * ctypedef npy_int16      int16_t
  * ctypedef npy_int32      int32_t
  * ctypedef npy_int64      int64_t             # <<<<<<<<<<<<<<
@@ -1613,7 +1613,7 @@ typedef npy_int32 __pyx_t_5numpy_int32_t;
 */
 typedef npy_int64 __pyx_t_5numpy_int64_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":749
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":749
  * ctypedef npy_int64      int64_t
  * 
  * ctypedef npy_uint8      uint8_t             # <<<<<<<<<<<<<<
@@ -1622,7 +1622,7 @@ typedef npy_int64 __pyx_t_5numpy_int64_t;
 */
 typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":750
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":750
  * 
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t             # <<<<<<<<<<<<<<
@@ -1631,7 +1631,7 @@ typedef npy_uint8 __pyx_t_5numpy_uint8_t;
 */
 typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":751
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":751
  * ctypedef npy_uint8      uint8_t
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t             # <<<<<<<<<<<<<<
@@ -1640,7 +1640,7 @@ typedef npy_uint16 __pyx_t_5numpy_uint16_t;
 */
 typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":752
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":752
  * ctypedef npy_uint16     uint16_t
  * ctypedef npy_uint32     uint32_t
  * ctypedef npy_uint64     uint64_t             # <<<<<<<<<<<<<<
@@ -1649,7 +1649,7 @@ typedef npy_uint32 __pyx_t_5numpy_uint32_t;
 */
 typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":754
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":754
  * ctypedef npy_uint64     uint64_t
  * 
  * ctypedef npy_float32    float32_t             # <<<<<<<<<<<<<<
@@ -1658,7 +1658,7 @@ typedef npy_uint64 __pyx_t_5numpy_uint64_t;
 */
 typedef npy_float32 __pyx_t_5numpy_float32_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":755
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":755
  * 
  * ctypedef npy_float32    float32_t
  * ctypedef npy_float64    float64_t             # <<<<<<<<<<<<<<
@@ -1667,7 +1667,7 @@ typedef npy_float32 __pyx_t_5numpy_float32_t;
 */
 typedef npy_float64 __pyx_t_5numpy_float64_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":762
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":762
  * ctypedef double complex complex128_t
  * 
  * ctypedef npy_longlong   longlong_t             # <<<<<<<<<<<<<<
@@ -1676,7 +1676,7 @@ typedef npy_float64 __pyx_t_5numpy_float64_t;
 */
 typedef npy_longlong __pyx_t_5numpy_longlong_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":763
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":763
  * 
  * ctypedef npy_longlong   longlong_t
  * ctypedef npy_ulonglong  ulonglong_t             # <<<<<<<<<<<<<<
@@ -1685,7 +1685,7 @@ typedef npy_longlong __pyx_t_5numpy_longlong_t;
 */
 typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":765
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":765
  * ctypedef npy_ulonglong  ulonglong_t
  * 
  * ctypedef npy_intp       intp_t             # <<<<<<<<<<<<<<
@@ -1694,7 +1694,7 @@ typedef npy_ulonglong __pyx_t_5numpy_ulonglong_t;
 */
 typedef npy_intp __pyx_t_5numpy_intp_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":766
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":766
  * 
  * ctypedef npy_intp       intp_t
  * ctypedef npy_uintp      uintp_t             # <<<<<<<<<<<<<<
@@ -1703,7 +1703,7 @@ typedef npy_intp __pyx_t_5numpy_intp_t;
 */
 typedef npy_uintp __pyx_t_5numpy_uintp_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":768
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":768
  * ctypedef npy_uintp      uintp_t
  * 
  * ctypedef npy_double     float_t             # <<<<<<<<<<<<<<
@@ -1712,7 +1712,7 @@ typedef npy_uintp __pyx_t_5numpy_uintp_t;
 */
 typedef npy_double __pyx_t_5numpy_float_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":769
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":769
  * 
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t             # <<<<<<<<<<<<<<
@@ -1721,7 +1721,7 @@ typedef npy_double __pyx_t_5numpy_float_t;
 */
 typedef npy_double __pyx_t_5numpy_double_t;
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":770
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":770
  * ctypedef npy_double     float_t
  * ctypedef npy_double     double_t
  * ctypedef npy_longdouble longdouble_t             # <<<<<<<<<<<<<<
@@ -2996,7 +2996,7 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_kp_u_Pruning_of_the_centers_wrongly_i __pyx_string_tab[9]
 #define __pyx_kp_u_Raw_identification_of_the_putati __pyx_string_tab[10]
 #define __pyx_kp_u_add_note __pyx_string_tab[11]
-#define __pyx_kp_u_dadapy__cython_cython_clustering_2 __pyx_string_tab[12]
+#define __pyx_kp_u_cython_clustering_v2_pyx __pyx_string_tab[12]
 #define __pyx_kp_u_init_succeded __pyx_string_tab[13]
 #define __pyx_kp_u_numpy__core_multiarray_failed_to __pyx_string_tab[14]
 #define __pyx_kp_u_numpy__core_umath_failed_to_impo __pyx_string_tab[15]
@@ -3230,7 +3230,7 @@ return 0;
 #endif
 /* #### Code section: module_code ### */
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":243
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":243
  *         cdef int type_num
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3241,7 +3241,7 @@ return 0;
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":245
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":245
  *         @property
  *         cdef inline npy_intp itemsize(self) noexcept nogil:
  *             return PyDataType_ELSIZE(self)             # <<<<<<<<<<<<<<
@@ -3251,7 +3251,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   __pyx_r = PyDataType_ELSIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":243
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":243
  *         cdef int type_num
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3264,7 +3264,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":247
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":247
  *             return PyDataType_ELSIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3275,7 +3275,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_8itemsize_itemsize(PyArray_D
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray_Descr *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":249
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":249
  *         @property
  *         cdef inline npy_intp alignment(self) noexcept nogil:
  *             return PyDataType_ALIGNMENT(self)             # <<<<<<<<<<<<<<
@@ -3285,7 +3285,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   __pyx_r = PyDataType_ALIGNMENT(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":247
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":247
  *             return PyDataType_ELSIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3298,7 +3298,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_5dtype_9alignment_alignment(PyArray
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":253
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":253
  *         # Use fields/names with care as they may be NULL.  You must check
  *         # for this using PyDataType_HASFIELDS.
  *         @property             # <<<<<<<<<<<<<<
@@ -3312,7 +3312,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("fields", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":255
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":255
  *         @property
  *         cdef inline object fields(self):
  *             return <object>PyDataType_FIELDS(self)             # <<<<<<<<<<<<<<
@@ -3325,7 +3325,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   __pyx_r = ((PyObject *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":253
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":253
  *         # Use fields/names with care as they may be NULL.  You must check
  *         # for this using PyDataType_HASFIELDS.
  *         @property             # <<<<<<<<<<<<<<
@@ -3340,7 +3340,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_6fields_fields(PyArray_Desc
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":257
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":257
  *             return <object>PyDataType_FIELDS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3354,7 +3354,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   PyObject *__pyx_t_1;
   __Pyx_RefNannySetupContext("names", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":259
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":259
  *         @property
  *         cdef inline tuple names(self):
  *             return <tuple>PyDataType_NAMES(self)             # <<<<<<<<<<<<<<
@@ -3367,7 +3367,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   __pyx_r = ((PyObject*)__pyx_t_1);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":257
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":257
  *             return <object>PyDataType_FIELDS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3382,7 +3382,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":264
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":264
  *         # valid (the pointer can be NULL). Most users should access
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property             # <<<<<<<<<<<<<<
@@ -3393,7 +3393,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_5dtype_5names_names(PyArray_Descr 
 static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarray(PyArray_Descr *__pyx_v_self) {
   PyArray_ArrayDescr *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":266
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":266
  *         @property
  *         cdef inline PyArray_ArrayDescr* subarray(self) noexcept nogil:
  *             return PyDataType_SUBARRAY(self)             # <<<<<<<<<<<<<<
@@ -3403,7 +3403,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   __pyx_r = PyDataType_SUBARRAY(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":264
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":264
  *         # valid (the pointer can be NULL). Most users should access
  *         # this field via the inline helper method PyDataType_SHAPE.
  *         @property             # <<<<<<<<<<<<<<
@@ -3416,7 +3416,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":268
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":268
  *             return PyDataType_SUBARRAY(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3427,7 +3427,7 @@ static CYTHON_INLINE PyArray_ArrayDescr *__pyx_f_5numpy_5dtype_8subarray_subarra
 static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr *__pyx_v_self) {
   npy_uint64 __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":271
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":271
  *         cdef inline npy_uint64 flags(self) noexcept nogil:
  *             """The data types flags."""
  *             return PyDataType_FLAGS(self)             # <<<<<<<<<<<<<<
@@ -3437,7 +3437,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   __pyx_r = PyDataType_FLAGS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":268
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":268
  *             return PyDataType_SUBARRAY(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3450,7 +3450,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":280
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":280
  *     ctypedef class numpy.broadcast [object PyArrayMultiIterObject, check_size ignore]:
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3461,7 +3461,7 @@ static CYTHON_INLINE npy_uint64 __pyx_f_5numpy_5dtype_5flags_flags(PyArray_Descr
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":283
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":283
  *         cdef inline int numiter(self) noexcept nogil:
  *             """The number of arrays that need to be broadcast to the same shape."""
  *             return PyArray_MultiIter_NUMITER(self)             # <<<<<<<<<<<<<<
@@ -3471,7 +3471,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   __pyx_r = PyArray_MultiIter_NUMITER(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":280
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":280
  *     ctypedef class numpy.broadcast [object PyArrayMultiIterObject, check_size ignore]:
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3484,7 +3484,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":285
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":285
  *             return PyArray_MultiIter_NUMITER(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3495,7 +3495,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_7numiter_numiter(PyArrayMulti
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":288
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":288
  *         cdef inline npy_intp size(self) noexcept nogil:
  *             """The total broadcasted size."""
  *             return PyArray_MultiIter_SIZE(self)             # <<<<<<<<<<<<<<
@@ -3505,7 +3505,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":285
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":285
  *             return PyArray_MultiIter_NUMITER(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3518,7 +3518,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":290
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":290
  *             return PyArray_MultiIter_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3529,7 +3529,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_4size_size(PyArrayMultiI
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":293
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":293
  *         cdef inline npy_intp index(self) noexcept nogil:
  *             """The current (1-d) index into the broadcasted result."""
  *             return PyArray_MultiIter_INDEX(self)             # <<<<<<<<<<<<<<
@@ -3539,7 +3539,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   __pyx_r = PyArray_MultiIter_INDEX(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":290
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":290
  *             return PyArray_MultiIter_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3552,7 +3552,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":295
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":295
  *             return PyArray_MultiIter_INDEX(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3563,7 +3563,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_9broadcast_5index_index(PyArrayMult
 static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":298
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":298
  *         cdef inline int nd(self) noexcept nogil:
  *             """The number of dimensions in the broadcasted result."""
  *             return PyArray_MultiIter_NDIM(self)             # <<<<<<<<<<<<<<
@@ -3573,7 +3573,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   __pyx_r = PyArray_MultiIter_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":295
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":295
  *             return PyArray_MultiIter_INDEX(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3586,7 +3586,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":300
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":300
  *             return PyArray_MultiIter_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3597,7 +3597,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_9broadcast_2nd_nd(PyArrayMultiIterObject
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions(PyArrayMultiIterObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":303
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":303
  *         cdef inline npy_intp* dimensions(self) noexcept nogil:
  *             """The shape of the broadcasted result."""
  *             return PyArray_MultiIter_DIMS(self)             # <<<<<<<<<<<<<<
@@ -3607,7 +3607,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   __pyx_r = PyArray_MultiIter_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":300
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":300
  *             return PyArray_MultiIter_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3620,7 +3620,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":305
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":305
  *             return PyArray_MultiIter_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3631,7 +3631,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_9broadcast_10dimensions_dimensions
 static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiIterObject *__pyx_v_self) {
   void **__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":309
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":309
  *             """An array of iterator objects that holds the iterators for the arrays to be broadcast together.
  *             On return, the iterators are adjusted for broadcasting."""
  *             return PyArray_MultiIter_ITERS(self)             # <<<<<<<<<<<<<<
@@ -3641,7 +3641,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   __pyx_r = PyArray_MultiIter_ITERS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":305
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":305
  *             return PyArray_MultiIter_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3654,7 +3654,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":323
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":323
  *         # Instead, we use properties that map to the corresponding C-API functions.
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3665,7 +3665,7 @@ static CYTHON_INLINE void **__pyx_f_5numpy_9broadcast_5iters_iters(PyArrayMultiI
 static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject *__pyx_v_self) {
   PyObject *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":327
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":327
  *             """Returns a borrowed reference to the object owning the data/memory.
  *             """
  *             return PyArray_BASE(self)             # <<<<<<<<<<<<<<
@@ -3675,7 +3675,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   __pyx_r = PyArray_BASE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":323
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":323
  *         # Instead, we use properties that map to the corresponding C-API functions.
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3688,7 +3688,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_7ndarray_4base_base(PyArrayObject 
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":329
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":329
  *             return PyArray_BASE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3702,7 +3702,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   PyArray_Descr *__pyx_t_1;
   __Pyx_RefNannySetupContext("descr", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":333
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":333
  *             """Returns an owned reference to the dtype of the array.
  *             """
  *             return <dtype>PyArray_DESCR(self)             # <<<<<<<<<<<<<<
@@ -3715,7 +3715,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   __pyx_r = ((PyArray_Descr *)__pyx_t_1);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":329
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":329
  *             return PyArray_BASE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3730,7 +3730,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":335
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":335
  *             return <dtype>PyArray_DESCR(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3741,7 +3741,7 @@ static CYTHON_INLINE PyArray_Descr *__pyx_f_5numpy_7ndarray_5descr_descr(PyArray
 static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx_v_self) {
   int __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":339
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":339
  *             """Returns the number of dimensions in the array.
  *             """
  *             return PyArray_NDIM(self)             # <<<<<<<<<<<<<<
@@ -3751,7 +3751,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   __pyx_r = PyArray_NDIM(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":335
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":335
  *             return <dtype>PyArray_DESCR(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3764,7 +3764,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":341
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":341
  *             return PyArray_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3775,7 +3775,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_7ndarray_4ndim_ndim(PyArrayObject *__pyx
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":347
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":347
  *             Can return NULL for 0-dimensional arrays.
  *             """
  *             return PyArray_DIMS(self)             # <<<<<<<<<<<<<<
@@ -3785,7 +3785,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   __pyx_r = PyArray_DIMS(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":341
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":341
  *             return PyArray_NDIM(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3798,7 +3798,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":349
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":349
  *             return PyArray_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3809,7 +3809,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_5shape_shape(PyArrayObjec
 static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayObject *__pyx_v_self) {
   npy_intp *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":354
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":354
  *             The number of elements matches the number of dimensions of the array (ndim).
  *             """
  *             return PyArray_STRIDES(self)             # <<<<<<<<<<<<<<
@@ -3819,7 +3819,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   __pyx_r = PyArray_STRIDES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":349
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":349
  *             return PyArray_DIMS(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3832,7 +3832,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":356
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":356
  *             return PyArray_STRIDES(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3843,7 +3843,7 @@ static CYTHON_INLINE npy_intp *__pyx_f_5numpy_7ndarray_7strides_strides(PyArrayO
 static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *__pyx_v_self) {
   npy_intp __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":360
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":360
  *             """Returns the total size (in number of elements) of the array.
  *             """
  *             return PyArray_SIZE(self)             # <<<<<<<<<<<<<<
@@ -3853,7 +3853,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   __pyx_r = PyArray_SIZE(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":356
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":356
  *             return PyArray_STRIDES(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3866,7 +3866,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":362
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":362
  *             return PyArray_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3877,7 +3877,7 @@ static CYTHON_INLINE npy_intp __pyx_f_5numpy_7ndarray_4size_size(PyArrayObject *
 static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__pyx_v_self) {
   char *__pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":369
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":369
  *             of `PyArray_DATA()` instead, which returns a 'void*'.
  *             """
  *             return PyArray_BYTES(self)             # <<<<<<<<<<<<<<
@@ -3887,7 +3887,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   __pyx_r = PyArray_BYTES(__pyx_v_self);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":362
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":362
  *             return PyArray_SIZE(self)
  * 
  *         @property             # <<<<<<<<<<<<<<
@@ -3900,7 +3900,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy_7ndarray_4data_data(PyArrayObject *__p
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":777
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":777
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -3917,7 +3917,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew1", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":778
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":778
  * 
  * cdef inline object PyArray_MultiIterNew1(a):
  *     return PyArray_MultiIterNew(1, <void*>a)             # <<<<<<<<<<<<<<
@@ -3931,7 +3931,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":777
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":777
  * ctypedef long double complex clongdouble_t
  * 
  * cdef inline object PyArray_MultiIterNew1(a):             # <<<<<<<<<<<<<<
@@ -3950,7 +3950,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew1(PyObject *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":780
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":780
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -3967,7 +3967,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew2", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":781
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":781
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)             # <<<<<<<<<<<<<<
@@ -3981,7 +3981,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":780
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":780
  *     return PyArray_MultiIterNew(1, <void*>a)
  * 
  * cdef inline object PyArray_MultiIterNew2(a, b):             # <<<<<<<<<<<<<<
@@ -4000,7 +4000,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew2(PyObject *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":783
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":783
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -4017,7 +4017,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew3", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":784
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":784
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)             # <<<<<<<<<<<<<<
@@ -4031,7 +4031,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":783
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":783
  *     return PyArray_MultiIterNew(2, <void*>a, <void*>b)
  * 
  * cdef inline object PyArray_MultiIterNew3(a, b, c):             # <<<<<<<<<<<<<<
@@ -4050,7 +4050,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew3(PyObject *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":786
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":786
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -4067,7 +4067,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew4", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":787
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":787
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)             # <<<<<<<<<<<<<<
@@ -4081,7 +4081,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":786
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":786
  *     return PyArray_MultiIterNew(3, <void*>a, <void*>b, <void*> c)
  * 
  * cdef inline object PyArray_MultiIterNew4(a, b, c, d):             # <<<<<<<<<<<<<<
@@ -4100,7 +4100,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew4(PyObject *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":789
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":789
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -4117,7 +4117,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("PyArray_MultiIterNew5", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":790
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":790
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)             # <<<<<<<<<<<<<<
@@ -4131,7 +4131,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":789
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":789
  *     return PyArray_MultiIterNew(4, <void*>a, <void*>b, <void*>c, <void*> d)
  * 
  * cdef inline object PyArray_MultiIterNew5(a, b, c, d, e):             # <<<<<<<<<<<<<<
@@ -4150,7 +4150,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyArray_MultiIterNew5(PyObject *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":792
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":792
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -4165,7 +4165,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   PyObject *__pyx_t_2;
   __Pyx_RefNannySetupContext("PyDataType_SHAPE", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":793
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":793
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -4175,7 +4175,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   __pyx_t_1 = PyDataType_HASSUBARRAY(__pyx_v_d);
   if (__pyx_t_1) {
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":794
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":794
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):
  *         return <tuple>d.subarray.shape             # <<<<<<<<<<<<<<
@@ -4188,7 +4188,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     __pyx_r = ((PyObject*)__pyx_t_2);
     goto __pyx_L0;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":793
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":793
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):
  *     if PyDataType_HASSUBARRAY(d):             # <<<<<<<<<<<<<<
@@ -4197,7 +4197,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
 */
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":796
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":796
  *         return <tuple>d.subarray.shape
  *     else:
  *         return ()             # <<<<<<<<<<<<<<
@@ -4211,7 +4211,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
     goto __pyx_L0;
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":792
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":792
  *     return PyArray_MultiIterNew(5, <void*>a, <void*>b, <void*>c, <void*> d, <void*> e)
  * 
  * cdef inline tuple PyDataType_SHAPE(dtype d):             # <<<<<<<<<<<<<<
@@ -4226,7 +4226,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_PyDataType_SHAPE(PyArray_Descr *__
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":995
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":995
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -4240,7 +4240,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":996
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":996
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!             # <<<<<<<<<<<<<<
@@ -4249,7 +4249,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 */
   Py_INCREF(__pyx_v_base);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":997
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":997
  * cdef inline void set_array_base(ndarray arr, object base) except *:
  *     Py_INCREF(base) # important to do this before stealing the reference below!
  *     PyArray_SetBaseObject(arr, base)             # <<<<<<<<<<<<<<
@@ -4258,7 +4258,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
 */
   __pyx_t_1 = PyArray_SetBaseObject(__pyx_v_arr, __pyx_v_base); if (unlikely(__pyx_t_1 == ((int)-1))) __PYX_ERR(1, 997, __pyx_L1_error)
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":995
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":995
  *     int _import_umath() except -1
  * 
  * cdef inline void set_array_base(ndarray arr, object base) except *:             # <<<<<<<<<<<<<<
@@ -4273,7 +4273,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
   __pyx_L0:;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":999
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":999
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -4288,7 +4288,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("get_array_base", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1000
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1000
  * 
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)             # <<<<<<<<<<<<<<
@@ -4297,7 +4297,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 */
   __pyx_v_base = PyArray_BASE(__pyx_v_arr);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1001
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1001
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -4307,7 +4307,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_t_1 = (__pyx_v_base == NULL);
   if (__pyx_t_1) {
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1002
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1002
  *     base = PyArray_BASE(arr)
  *     if base is NULL:
  *         return None             # <<<<<<<<<<<<<<
@@ -4318,7 +4318,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
     __pyx_r = Py_None; __Pyx_INCREF(Py_None);
     goto __pyx_L0;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1001
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1001
  * cdef inline object get_array_base(ndarray arr):
  *     base = PyArray_BASE(arr)
  *     if base is NULL:             # <<<<<<<<<<<<<<
@@ -4327,7 +4327,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
 */
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1003
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1003
  *     if base is NULL:
  *         return None
  *     return <object>base             # <<<<<<<<<<<<<<
@@ -4339,7 +4339,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   __pyx_r = ((PyObject *)__pyx_v_base);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":999
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":999
  *     PyArray_SetBaseObject(arr, base)
  * 
  * cdef inline object get_array_base(ndarray arr):             # <<<<<<<<<<<<<<
@@ -4354,7 +4354,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1007
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1007
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -4380,7 +4380,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_array", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1008
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1008
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4396,7 +4396,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1009
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1009
  * cdef inline int import_array() except -1:
  *     try:
  *         __pyx_import_array()             # <<<<<<<<<<<<<<
@@ -4405,7 +4405,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
 */
       __pyx_t_4 = _import_array(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1009, __pyx_L3_error)
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1008
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1008
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4419,7 +4419,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1010
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1010
  *     try:
  *         __pyx_import_array()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4434,7 +4434,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1011
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1011
  *         __pyx_import_array()
  *     except Exception:
  *         raise ImportError("numpy._core.multiarray failed to import")             # <<<<<<<<<<<<<<
@@ -4456,7 +4456,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1008
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1008
  * # Cython code.
  * cdef inline int import_array() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4472,7 +4472,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
     __pyx_L8_try_end:;
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1007
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1007
  * # Versions of the import_* functions which are more suitable for
  * # Cython code.
  * cdef inline int import_array() except -1:             # <<<<<<<<<<<<<<
@@ -4496,7 +4496,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_array(void) {
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1013
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1013
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -4522,7 +4522,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_umath", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1014
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1014
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4538,7 +4538,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1015
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1015
  * cdef inline int import_umath() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -4547,7 +4547,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
 */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1015, __pyx_L3_error)
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1014
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1014
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4561,7 +4561,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1016
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1016
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4576,7 +4576,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1017
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1017
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -4598,7 +4598,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1014
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1014
  * 
  * cdef inline int import_umath() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4614,7 +4614,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
     __pyx_L8_try_end:;
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1013
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1013
  *         raise ImportError("numpy._core.multiarray failed to import")
  * 
  * cdef inline int import_umath() except -1:             # <<<<<<<<<<<<<<
@@ -4638,7 +4638,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_umath(void) {
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1019
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1019
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -4664,7 +4664,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("import_ufunc", 0);
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1020
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1020
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4680,7 +4680,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __Pyx_XGOTREF(__pyx_t_3);
     /*try:*/ {
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1021
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1021
  * cdef inline int import_ufunc() except -1:
  *     try:
  *         _import_umath()             # <<<<<<<<<<<<<<
@@ -4689,7 +4689,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 */
       __pyx_t_4 = _import_umath(); if (unlikely(__pyx_t_4 == ((int)-1))) __PYX_ERR(1, 1021, __pyx_L3_error)
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1020
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1020
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4703,7 +4703,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     goto __pyx_L8_try_end;
     __pyx_L3_error:;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1022
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1022
  *     try:
  *         _import_umath()
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -4718,7 +4718,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
       __Pyx_XGOTREF(__pyx_t_6);
       __Pyx_XGOTREF(__pyx_t_7);
 
-      /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1023
+      /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1023
  *         _import_umath()
  *     except Exception:
  *         raise ImportError("numpy._core.umath failed to import")             # <<<<<<<<<<<<<<
@@ -4740,7 +4740,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     }
     goto __pyx_L5_except_error;
 
-    /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1020
+    /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1020
  * 
  * cdef inline int import_ufunc() except -1:
  *     try:             # <<<<<<<<<<<<<<
@@ -4756,7 +4756,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
     __pyx_L8_try_end:;
   }
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1019
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1019
  *         raise ImportError("numpy._core.umath failed to import")
  * 
  * cdef inline int import_ufunc() except -1:             # <<<<<<<<<<<<<<
@@ -4780,7 +4780,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1026
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1026
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -4791,7 +4791,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_import_ufunc(void) {
 static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1038
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1038
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyTimedeltaArrType_Type)             # <<<<<<<<<<<<<<
@@ -4801,7 +4801,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyTimedeltaArrType_Type));
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1026
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1026
  * 
  * 
  * cdef inline bint is_timedelta64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -4814,7 +4814,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1041
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1041
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -4825,7 +4825,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_timedelta64_object(PyObject *__pyx_v_
 static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_obj) {
   int __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1053
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1053
  *     bool
  *     """
  *     return PyObject_TypeCheck(obj, &PyDatetimeArrType_Type)             # <<<<<<<<<<<<<<
@@ -4835,7 +4835,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   __pyx_r = PyObject_TypeCheck(__pyx_v_obj, (&PyDatetimeArrType_Type));
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1041
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1041
  * 
  * 
  * cdef inline bint is_datetime64_object(object obj) noexcept:             # <<<<<<<<<<<<<<
@@ -4848,7 +4848,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1056
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1056
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -4859,7 +4859,7 @@ static CYTHON_INLINE int __pyx_f_5numpy_is_datetime64_object(PyObject *__pyx_v_o
 static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *__pyx_v_obj) {
   npy_datetime __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1063
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1063
  *     also needed.  That can be found using `get_datetime64_unit`.
  *     """
  *     return (<PyDatetimeScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -4869,7 +4869,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   __pyx_r = ((PyDatetimeScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1056
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1056
  * 
  * 
  * cdef inline npy_datetime get_datetime64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -4882,7 +4882,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1066
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1066
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -4893,7 +4893,7 @@ static CYTHON_INLINE npy_datetime __pyx_f_5numpy_get_datetime64_value(PyObject *
 static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject *__pyx_v_obj) {
   npy_timedelta __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1070
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1070
  *     returns the int64 value underlying scalar numpy timedelta64 object
  *     """
  *     return (<PyTimedeltaScalarObject*>obj).obval             # <<<<<<<<<<<<<<
@@ -4903,7 +4903,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   __pyx_r = ((PyTimedeltaScalarObject *)__pyx_v_obj)->obval;
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1066
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1066
  * 
  * 
  * cdef inline npy_timedelta get_timedelta64_value(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -4916,7 +4916,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
   return __pyx_r;
 }
 
-/* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1073
+/* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1073
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -4927,7 +4927,7 @@ static CYTHON_INLINE npy_timedelta __pyx_f_5numpy_get_timedelta64_value(PyObject
 static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObject *__pyx_v_obj) {
   NPY_DATETIMEUNIT __pyx_r;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1077
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1077
  *     returns the unit part of the dtype for a numpy datetime64 object.
  *     """
  *     return <NPY_DATETIMEUNIT>(<PyDatetimeScalarObject*>obj).obmeta.base             # <<<<<<<<<<<<<<
@@ -4937,7 +4937,7 @@ static CYTHON_INLINE NPY_DATETIMEUNIT __pyx_f_5numpy_get_datetime64_unit(PyObjec
   __pyx_r = ((NPY_DATETIMEUNIT)((PyDatetimeScalarObject *)__pyx_v_obj)->obmeta.base);
   goto __pyx_L0;
 
-  /* ".venv/lib/python3.13/site-packages/numpy/__init__.cython-30.pxd":1073
+  /* "../../.venv-cython/lib/python3.14/site-packages/numpy/__init__.cython-30.pxd":1073
  * 
  * 
  * cdef inline NPY_DATETIMEUNIT get_datetime64_unit(object obj) noexcept nogil:             # <<<<<<<<<<<<<<
@@ -12222,25 +12222,33 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
 static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
   CYTHON_UNUSED_VAR(__pyx_mstate);
   {
-    const struct { const unsigned int length: 12; } index[] = {{1},{4},{18},{29},{37},{29},{179},{45},{34},{55},{44},{8},{39},{13},{39},{34},{4},{5},{5},{8},{13},{10},{5},{4},{20},{1},{1},{2},{2},{19},{6},{7},{5},{18},{14},{1},{2},{2},{8},{7},{7},{9},{7},{5},{5},{9},{17},{18},{18},{15},{14},{15},{13},{12},{19},{4},{2},{14},{35},{12},{12},{5},{3},{13},{5},{6},{4},{7},{9},{8},{1},{4},{22},{26},{1},{23},{6},{6},{5},{11},{13},{5},{1},{1},{5},{3},{4},{4},{11},{13},{18},{14},{9},{11},{12},{8},{7},{7},{7},{3},{6},{6},{10},{7},{12},{12},{4},{10},{8},{10},{14},{10},{14},{2},{2},{2},{5},{4},{2},{2},{2},{3},{2},{5},{12},{6},{14},{12},{14},{18},{14},{18},{3},{12},{10},{5},{8},{8},{18},{1},{8},{4},{9},{10},{6},{4},{2},{5},{3129}};
-    #if (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2706 bytes) */
-const char* const cstring = "BZh91AY&SY\346F\374\277\000\002\202\377\377\377\377\377\377\377\377\377\377\277\177\377\377\377\377\377\367\300@@@@@@@@@@@@\000@\000`\n\034\312\007\327\240\245=z\000\005\022\002\322\220\000\\\004\251\351\022S\3256\240\321\247\242z\236\032OJd\336\223O\r\0234hRd\311\265<jjlQ\214)\352b~T\365=#CM6\246\217M#OF\215A$\200\232dM\0020I\215\024\332\r5#C@\032\000\000\000\000\000\000\003F\232hi\246CA\251\203I\021A\265\003@\000\006\200\001\241\240\000\000\000\000\000\000\320\000\000\000Jd\210\"M<\243H\362\215=\020\310x\232#\324\304\030\214\232\014\215\000\3104\306\220\365\r4y \323#@\364\321\244hA\223\000&\00112d\300\000\230\023\00110L\000\000\000\000\231\030\t\201\014 \n\251\352cSF\322b2`&\232h\323\023&#\000#&&\206\23110\230&\000\214M0\000h\230 \313\010\301{\361\261\274J\211%\r\215\035\035o\357\\\216\331\033\007s\273\007/f;\327\026\334\255\225Yc\266J\354\240\035\345\220V\332\324\251Z\333\337\016\372P$ I f\030L0\315\033\315H_\365\"\250\n\252\312[}t\225\000R\261\001A(\001Q\2013$3\014\333\324\020X\324\361\365x\246\317+\353\353A\005\220,\030A@$@\222HA\t$\252\305\021\233\206\245\367DC\200\241\243\004\245\003+`R\027f\034\376\204\234\321\305,\314\230d\314\231\200\351!)9Y3\253Qg\260b\203\rF\251\352\334R\224b/\272\003\250\315IE\240E\211\353\323\233\014b4\213\205[\312\341\224\313\350\030\253\325\341\215j\252g\320\302fHf\016\242\325\263\"\267\227\323\0355\321[\352ga\305\226B\301Z\020\211\030\031\260\211w})S\034\203\026f\000\215X\271\320\315\231\367\3101x\341\346s\304\264\305\021{\25702\221\022)\2421\200\023\361\264n^\036\375\251\022\217s3\254wp\202\224S\212\006\314\300( e\200>\303\340\301\367`W\240p\020\005\013c\313N[\302\006\026Q\203\\a\332\"?@\302 \3024\206}\301\005\034\006\277\323}.(\332%\032\336=\305\362~e\027\334\246\370p\331\260\027\001\016\347G0\036>\360\300\030\020\020L\004\245++\2450\325\205u\014+\017\r]5\201\363\364\027kC\230\004I\025QA[\355#\312\302E\317\307\010\251\304\361D'\277\017\207U0\361vc(\322\331h\310\030\321\357?T9sn\346\\\373\337\364\332\307!(\343\215\017.\276\227\036<""}[\310\302^\335\321\347\330\034\310\304Y\326\031\327Hp\334P\013\251s s\246Rp\202\234d>\350>^\255\264f\311\320\315\236\022t\263\277+\314\331\031\314\350\310\362IHR\320k\350\371E)\257\355\375O\264V\265\304\371\227\336c\037t\375\333\3155\233\025\237\230\367\320\205\250@\177\231]\213\270\351u\247\313c\030C\014\320\213\311b\035\350iL^\265yY\013\200\212=\264\234P\027\246\005\260\253Z\204\224\016\265J\304\210T\205\327J&\207\224\007\316\205\n\034bD\212\211\032^O\252\364\225\304\310\235\212\000TW\337\225\376\301\245\n\017'\205O\030\357\311\256/\227\206\007\277\177\030\336T\316\353\375\t\265\203\360\276\321\210\240\264\001\211\024\275h\273\216+|\0103!\231\201g\226Y\212\022\360\350\252\250GT\036\322\212{\027\356rx\256%r\241\200Vh&^\031X\374\266\211Z\327\370\205\213$YNr\213\203\317\030qky\343\356.\315\350\033bB\024\037O\350\345\034\336\217\360!\205\274\3238\346\0314\304\363br\352\261\316I\374\031\025\347\326\340\343q\224I\216G\237\010\315\2325\232\024J\023\037,\206\2751_G\316\207\214\244h\377\317$<\201\023PZ\372\301\231\321\302.\235\325\224 V\342\351\231\261V^\335\372\254\234V2\2223\357\310\307\207\"6\206F\276Pe`\315\021\205c\330\320yx%\352h<\007&y\232~7\310^\207\301\222}\275\315(1\206\335\331\233\340^\331+\364\372G\014y\216Lo\351-\006\346\345\364\346\202'\233\332\007h\216\320;Oby\243\341\334z\221t\3103\347\030{)\315\363f1\351;6\346\341\273\274\333Q\0357\324\300c\263\003g_\177|13g\370\227q\273>I\200\271-\017\356\265\257j]\340\030;\247\321|\332!{.\326]\314u\313\034\354\343\262't\372\267\033V\343\244\342\272\265\333c%\33677\206\020;\016\002\035\267f\224\032\377\273\\\035\014\224w\325*:\261\320h\\N\334\274o2\205\"]#\251I\311\354\245\303\252\345B.\247\373\321\0034\212\017\2552\264-\342\206\310\242#a\327c\224\234-a\310\311\330\336HfL\367\004s\346\022z|\260\220\2342vk\336\036\265\204\344\225\210\336fd\314Aq\212\353\2468b\263\365\3618\234Q\267z;\337\317oxn\t\305\262\370Q\331ee\327\2600G\027)9\254\226\221\360\034\361\266S=\037q\203\206C\006\323`\341\343\255\342-Y#^n>CTz{\207\245\347Sa""\t.Tu\031\016\330tF\254\\\233I\035~gF\373\374\021\003mo9{z\372\365'j<\227\236(\361\347\302\310\335\311v#\331C>F\300y\227G\227\274\234\263\340\274z\367Z\032\3659e\177\007!\334\273G\275p\335\273(\024\300V\037\274\206\021p\330+3\236\205Y\3654Ci\014\037\245\330\327{\345\002S\252\335\200\361\206\2527\017\030u\363N\362p\244QmS\033H@\304m\024\312\347\3708g'\016v\n\005\350\013\326\034W\342\313u,I3>\367\"\273\353\240\271\256\260La&d5\333t\327\203\2029\307&6,\350p\245\216\310M\35403\264\353{\344K\265np9\017\3364\364x\332\371\2200G\207\276]M\330\027k\277\221\211\362T\302\355\323\201-\254\367\250\262\200\367p\335\222\354\014\353\237\212\340\267\361\346t\252U\304]\241d\314R\347u\356],w\226;\312n\0030H@-\333\030\261\021\233\267\364\361\301b\267(\033\2727\224\254\346s\236\021AR\216$\021\002Q.Oi\321\360\326j\311j3\232\2143\341n\363\240\314\033\332\r\324\330\264\330\234&j\1775\316\341\311t\330eu\304`H|\212\020\201P\340\377*\265\3240\300\304\031\305\335\231\201Z\314\232\215\323\321Jm\330\266\013`l6l\346\346'N]F\254:c\262]\217\201\010\004\206\223\335<\271!\027\275\256\231JL\242\006fL\310\033\220\327[\236\223\270#\204\324\234\254M\0305\361\013\250\021{4o%B\222\2628v_|25\347\365\260Y\255\337\257?\250\332&\035\376\315+\301\\\016\256O%3!r\022:4\234\347>\305\260\220Q\235\205\307A\320j\337\016\033\233\275\024\235\275\357\036sS8^tZz\216SXyNP{\264\273;\303\323\332\023\216&Ld\233\304e\356\n\023\231\214\265\355\235\225\026\327\241\366\302\024s\032@/\2564\3409\211#Y\271\010p\346:\035\2078\277}~\355\340\307N\357\247$\t\332\177\305\3279\317v\346\326M\355m\266q\345\r\237\034\005\210Z\253sT8\322\324\321\262:\361\032\311\313h\321\254\265>%\024\215j\265,\373\020\323\203s\251\333r\210\2268\205\272e$\236_\273$-\321\273?\r\232(\017\031\332\271OA\3423\231\201C\375L\360\374\225\302\376|\025\0007\372\220!\0066L\355\216\306\261\235\236\312\243|\255\230\254R\204\242Dg\347\350\027\300\337b\"\212\206\275J\010\375i\0223W}\241+G\200\310\243\244\022#\334\346\255\023\375^_\346\312L\245\332ZZr{.n\277^\263\025\322f""\004\311oX\366\244b#\005\231\263k\310\3568xK\022=\314!:'\013ywl\036m\333\"\355K\026\334N\031A\014Dw<7mgJ\314\326\336)\231v\244\027\221Z\353\333\202\212\t!\2112\322\361\"\325\246\225\234\326\274\266}\205\302[i}_\010'\314\020\204\374\353E\242VL \253+\245\241ZN\363=\362sd\205\272\365\3422W\244\320\315\261\304\334\244\0230\254\225\204x\353\373u\310\207?v\364\3332^v\231'b\313\013G\310\213V$f\355\277F\361/\243\300\235&\330\235)p\377\217/j\304\242\017q:\355\323\325\250K\277\351\270\350\265d\273\251\376j9\236j\226\254\327\227\326JEb\261\233\035a\350~\237\013\273!\261\\\255\010\335\276\201lcT\252\274\371\245\374\342>\n\214Up5T\352X\321\252:MLP\251\036\226,|\255<\241\214\003\314\322\032E0)-,@\373To\320\301\322\303\252B\241\265\337/U\2166\310~\216\035\315\322\2513I\263\315\002eJj7&\327y\324\243\343\247\257\037\241\321\322jT\352\014\324\265\221\353\214Q\361G\026\t\220\245\212\252Ty\030`)ti/\346\217Z\332\314vaG\242Y\314w\315\323\351\345\273\240\273&\346]\003\275C\213\237\317#\3129\276\354\376\351\322\237t\346Js3\361\324\342|\244\351\316\223\267:t\354\203\211\253\326.\030\371\033\335o\254\234V\306\307\325\247\361\342\227\346\201\311\352\320\334\331>\003j\363\032\235sq\216\251\261\303\364p\267r\354\370s\235\271\225\277\352\016N\311\211\223Ee\265\270Ar\341\005E\354\224|\031\"\325V\253c*\2425\010\362/\224TwY7MF\212)(\360;\013\032\271v\245\222\306\n\226\na\202J\204\001\003\252K\221*\212\216\250\222\362\212\241A(!;1\001$D\224H\207\233\362\340\255\206\206\023P \264\010T\027\244\263\260\261\204\272\332\306\n5L\204\204\277j\261K\263X\255\214iq:\256\315\004Z\215iF\032\253$\213n\032\225\251\261\035\322/\236\022\317\370\273\222)\302\204\20727\345\370";
-    PyObject *data = __Pyx_DecompressString(cstring, 2706, 2);
+    const struct { const unsigned int length: 12; } index[] = {{1},{4},{18},{29},{37},{29},{179},{45},{34},{55},{44},{8},{24},{13},{39},{34},{4},{5},{5},{8},{13},{10},{5},{4},{20},{1},{1},{2},{2},{19},{6},{7},{5},{18},{14},{1},{2},{2},{8},{7},{7},{9},{7},{5},{5},{9},{17},{18},{18},{15},{14},{15},{13},{12},{19},{4},{2},{14},{35},{12},{12},{5},{3},{13},{5},{6},{4},{7},{9},{8},{1},{4},{22},{26},{1},{23},{6},{6},{5},{11},{13},{5},{1},{1},{5},{3},{4},{4},{11},{13},{18},{14},{9},{11},{12},{8},{7},{7},{7},{3},{6},{6},{10},{7},{12},{12},{4},{10},{8},{10},{14},{10},{14},{2},{2},{2},{5},{4},{2},{2},{2},{3},{2},{5},{12},{6},{14},{12},{14},{18},{14},{18},{3},{12},{10},{5},{8},{8},{18},{1},{8},{4},{9},{10},{6},{4},{2},{5},{3129}};
+    #if (CYTHON_COMPRESS_STRINGS) == 3 && __PYX_LIMITED_VERSION_HEX >= 0x030e0000 /* compression: zstd (2707 bytes) */
+const char* const cstring = "(\265/\375`\361\021MT\000Zrt\030G\360\260\350\001\314\300\204\024I\0036\244H\312 \2370\032\035\344\023F\243`2\236\331W#\311~\271\222\344\333fw\3512\367\317a\020F\016\367,f\251\211\035\352G\251X]\353\233J\314s\036\326\376R\335{O\027m1`\001j\001\202\001\263W\371\345\261\364v\230\305\327Y\216\036^\345\017\233\333\033\363\016wny\336\351\211\237\354;u\262|\372N_\367}\243\247\363\027\202d\350\201f\271\322\231\014\367Y\256\224\341G\3164\3262<\266L\354\2019V\216\331\364D\021\237p\207\275\023\254l\263e\231\306\223\221\315j</\213\231\206F\323\224\"vyzk\034b\246F\007G\346sm<\236\333,_c(\206\230\265\315\260i\342\225\317[\231\275\306\223\0043\230\277o\313f\257\225S\314\363\276\354\341}\276\\`\233\315%o\223\014\303\026Y\232.6\3624k\310V\270\315\314\321\254y\031\267l\226\254\274\332\364)~\343I\263\222\265\2109\344Xh\206\340\226\342\355\222$q\312\316z#5~m\345\336\300\234\311\355,g\033\313\303\266\242\363k\26672<W:k\215\305ou\352M\357/\263\310\346\006\222xcia\211P3S\263\221_hn\275\315\304\274\n\305\014n:t\355Y\314\266q\336%\315\346\002f\227\016\311\220\265m\235\3676\333\241\210\301r\014\267x\212\330dX\276\266,\202 \326\333\306*\267/d\205\240\0073o2\177\033Yn-2l\361e\327\267\231\331\265\315\223\303\346\242\3112\334\330\314\257r\0231\031r`\241V\266\r\001\251\276\200\304M\361N\245F qS-\034A\310\313\361\221\020\327\263\302~\350M^B\327:\027\342v*\247\212\300\270\r?\341ZH\311M\371\316\253\250\272\307tR\367\364\020\260\216;L\357z\346(\316\361\034\030\227\216:\\\016\035\360\255\332\325\211\226\206\215\361c\376\351m|\312S\300\037\365\271\357\022j9\016\200\337\010\370\270\035GP\246\252\324\024r\265\364Ca4\221\233JK\"WS\277\256\352$\334\303a\251Mz\222j\251'\025\205\\U?u\216\016\343\014\270NqjJgRh\250\303\355R.\315AA\250G\n\355P\002\001\\U\nJe\320P\000\027F\243\003\264\021\240\006\267\352o\363[\036\306\263|\\\316\237>\257\347\267|\\\354-\2006Ljxh\350\322\314/:\331\312\3141\235O\021\307\274<\206y\307\302\230y\352\326\026O\314\312\340\316:o\2224\317\235\315\215\363+\233\">a\345\353\364\352^\345""\213$I\327\3515n\257\363\362\210\311\023,[t\343\251K\227y\352\310p|\221!\036=\357\033=\323\314^\253\024\313}\352\310,\232x\353\026-X\350.$\303S\027z\232\314\240\253\345y\037y\262<\217\245\302\306\245\310ja\221\005\222y\266_c\326\256V\230\311\255C\260\205Cp\005\203\030\364L\363\374^_&\330\022\213\263\226V\234\356\223\360'\217:i\271nRr;\316\301)\244$\321\233\200\304\335Q\321\252H\321\246@\321\242 \321\222\310i\037\2609kj\275\000\340\243P\350|VQ\016H\\\225?\361\232\327\320G\nX\024\313\2614\237\364?\275\003{_\255\343pPI\023}`^\242\322\334\213\323\005\257H\210\246\246\340Pe`\244\007\370H\311\345TP\244\344\342\217\n\353\014\272\346\230\233\370Lj\322p\n\":I]\225\224\203\273\265+^\022z\323\033\364\204\206<@}\225`\225}\226\277\243\246\324\263\333\364X\211\307\347]\200\016\000\371\246o\001m\210T\377%\345I\336\343'\034H\265T'\365\357\343\303\245\244#\221\333y\224H;\362\261\321Q\343oPiUB\240\252\323Q>6\n\324\350\326\021\236EA\253@\344r_TaT\010\243V\2770\225EU\351&!8I\350\206\227^P\002\035\257\266\316\374\356\303P\261\232\240\247\210\204\\\234\302h\036\373\005\036\200\277QK\013zN\014\025\372\221\321\002\2614\003\032\302\251\353\363\246:\213\253x\253\233<\003\3760?\344'|\\\030+[AV\317J\341\217\276\347_\320\330oU\2553:\334C\332\245\244\020\351\200JR=\352\214\307p\322\0145\000C\rt|^\315w.^\321\2568\321n`Gl\212\237\372\254W\215Q;\365\301\313\375\034_2 qq\256G\207\013Jm\347+\302\034\206\3434\324\203w\245\217\253 \000\210\001\277A\305\347\237|\355_HiGj\332\0336\305\222\037\246E\303M\270\005\r(\212[9\374\030j\206\n\"1\374\003\374\027\025\006\210\257,\250\324\224\005\317\014\327\001\020h\tt\027wa\242\030-\360\331=\305\324\232>\256\226\216@\235\207\321e+\307ZR\251.!\"\322\007\314gP[b\326n\035\3718 x\002\023\366(\317\371\001(\005\246W\3633\352\205\376vl\313\312\2554\376L\021a\033h\360#\377\251.\031\252\365d\325\326\027\236\305sx\230z\242{x\341\322\231\234\205g\023\027\357\016\240\372a\344M\261&%v\372\007\017\t\301HD\336\233\232V\206\355\330\235\026\217\246j`c\330O\t\314\203xS\225\241\274""\3327w:\203\221\312\313\350,\235\300\211\024z=\035\205#8\240\302/\316M\013c\305k\201/\343C%f*c\245 !\220\372\302+t\237\343\303|\211\252\322\031\374\023(\036}\373\332c_@]\365\031)Nbrr\202\237\370\210\177)j%\255\314:\356\0308\0027\345\371+*\000\314uR\223\350M\341#\242\221\014\215#E\371\000m\014\250\341\206\256\326\005\242\345X\275\332\254\261\227\317k\242\246=\300zX\n\353h\365\300\200|\2147{\t\027\351x\275\326\333iwtZ\035\023-\n\026\304\302\326\360\253\376)\202\025\250\222\352\220\006\031c\210$\210$)H2\034\"\020\010\022\212\004\242\256o\017\202\243\240C\220\234\310\210\244\244\240 \205z,\233\001\232\n\205j\250`\245\201P\301\220\260\331GlR_f\277F[\2241n\357+\344\034\3519\251\177Fry\254\200\310\240\251\204N\023\346\331l\304\310*\023\377,\250\202f\006\200\320\277\243\3261Rk\330\256+\017\233\272\274\2219S3\322\241\230\213j-,\017\321\211Y\324\262\370\0341l\366\300\351\202\t2>S\303\t\0364w_15\212\265\005yi\324|\224H-E\237\344\302L\001Z\342Q\312\255\001\030\356\271\024\035N\332\310\203`\025\364\270\344n\305\3531h\243,F\220\304.\341\241\2322XFLk\330\004\336(s\236\255\334\232T\2548\037\026d\213\337\006G\211\362\3422\370fIsp\231]\252\226A\006\311\240e\270\236y\223\220\302\340\216Y=\241\030\000h\236!\377i\202$ j\266\274tL\273\270\336kI\3301\022\004\274\006'\3757\rt\222\245\033ZG\020\267\243\002\305\032\360(\220W\313;l8\262\001\342<\036\210e\235\326\263\352\177@V\334T\276\264y\0035\347\230\233\"\365\272f\020\324\310-\206\203\207n\373\224\246`\226>\270\303\256Q\344o_\027\224\322\347x\302\221l\000I6#_Tk\"\036\234\332&\350\225\363z \210\361\002x\314\305\032\230\205\010\351\221\346\200`\377,\211\221\272~,!\234Nu\270\224\331\177\334\204\021<I\0146\336\024\276\236\"\235\243DG\365Fw:EatI\"\222\311\024\201\246\303\016\261\247\371z\265\374\202Y\350H%T\0104=\\7\363\222I\312\311{\367*\3365\002;\200H\342\216`\177S`(\255\343\317\036\244BId\334_JnoN\317\226fU\034\232\324\362\222\317\342\263\310\303O\245\254_\336\306\314QZ\223\221\353\016N\310\242\246\013%\035t\217\234\322O,\306\021\037\\U>""\326!\224\033\204\376@n\331Y\324[\264\340\323\245\202\321\246\007\016\0255\205F\005\366\245\014\217b\\}tJ\360\212Q\211\264f\271Ac\275m\221'\007\277\335\310z\212\023-\236\013\310h\233\212\346gr-\363\324f\020\017\036\350\304\344\201\007\277h\370I\032\031\207\345{\025\r\330\221\001\rqk\000\037\200\014\303B@\033\325LRT\r\t$\217j\351N,\274\316\237<\241,\270?E2N\020\317\036\000\274Mn\272\310\344\005?\331\343\234\207>(\020\032r\220V\317|\177R\327\004\256\276\231v\254\321\214\324\017\217\202)\227\252\224\307K\353\336\035\370%\"\1772\003\365\020\344\350]\306\016\341M;\225\322\277\006\365\023:R\310\007s\231\251\341\031Z\342\300ei\221\t\023\265\037G\372\335LlX\370`\300\035\225O@\334@;\323\203\r\273\031'\370\036\356\027\307uD*\352N\225\210\237E\354/\225T\371A\314\374\227\354i]c~\207\247L\326\236@\226\353\330\010bb\027\260\267\001\006'\211\257\007\262,\261E\365c\256R\345\252-\036\260Eg\340\252\021\225\212\234BB\217\201\017\270#\327cQF\035\261\350\314\010\325\255\007\005Z\205\364E\277\235\273d( \330(Ph\250\315[\212~\314A\361q\327\221\251\317\346\231\375\376N]\361EJ0\362-\307\027\330\307\350\367\267\320n\354/@K .y>\017\025\302`\315-\300\261(\227\201\036\320.\377\232ax\347\302\261\014\370\024w\313\013\003\306\016\311\330\032\001\311>\255\266\230\016&\360q\324x\322,\244L\260%S\036\004\245F\221\216\265\365\332;JX\3424-\311\237\001\031\335X\255\236\331\265\274\376\351U\362\201\304\026\240\323?\302\236\343\372\345\336mA\t\013W\264\342\374\216r\013\324T2\243\307C\303\233\322\005a\246v\367\344\253\252\025\324\234\020\004\362'\013\357\227\016\371d\2260\020\365\2651\320QW]\005CF\2456\234\305\2016\023\333j\0306\337U\241\003\0027\264\010\017\004\254\234\353\33752\033\001S\030r\352\200\320\215\320\212\363Q\250~,\261\340w@\377\275\177\304\207e\030\001\000Om";
+    PyObject *data = __Pyx_DecompressString(cstring, 2707, 3);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2704 bytes) */
-const char* const cstring = "x\332\255V\317{\323F\032\306\304f\0038`;\016\371A\0009\001\262l\267i\345\004\010,?\036'\204g\331v\263q\022\272\205\322\250\212<\266Ul\311\226\3444\356C\273=\372\250\243\216:\352\250\243\216:\372\250\243\216\372\023\370\023\366\035\311\262c\n\373\364\260\020K3\243\231o\276\357{\337\357\235y\312\254\256U\237\213\022\337`\344\026QxM\224%\365!\363\274\243hu\2420B\235\010oE\251\306\310\022#\020I#\n>\276\250\240%VE!\234\315\310U\006s\031\225\257T\032\204i\311\242\244a\322?;\rMl\312\025\276!j]F#\252\306TEIT\353\244\362\220\331\2215\202E\274\306lu\265:l\210*S!\r\361\210z@\032]F\325\024Q\300nt\222\304\354n\357~\276\276\261\316\360R\205Q\310\217D\320TF\355\034\t\r^U\211J\0358\352\210\330Nb\264n\213\250\253\314\213*\323\225;\214DH\205\321d\246\205y\247\027\300]\211Q\211\026\372\275\302K\222\254\205\241pX\216`W\230\212\250`\023\361\230\320\325\317\371\206JVw:MxG\367\022\032\035\225&\2029\"UY!L\363w\221>\336U\020L\023YU\272\014\266\024kR\224\252Q\006v\225\216\024\3465J\336 \267\314O\212,\325\020\2778H1\374GT-^\321\200\000y\310\354\361?\r\277\215\247\277\325\2411\034\223\021L\300\203Cd\244\302W\370V\367\013N\010S\375E\364\342\006Q\300\007\356\270\270\332\352\236\3005\rI\022\004R!\025\251\323luW9\001\361\255\206\361\361\212\302w\231*/6\242\224\212\315\226\254h\247\247u\232\274V\377\335\014\244Y\010\177\317\016^\355n\177\315\253\032vV\3437W\347\033\362N\354\213\272C\033;\244A8n\267{\202\3373\220\200\333!'\332\036\251\276\346x\226/\362\215\006\247\220\246|L*\334 R^\2515\371\023<U\354\027\372\311\253]I\020\345U\370%w@\013\242\036\311J\205\023\245\212(\020\225k\n\002+\024\205\"\035 '\221\0256z\025c\243\361;,\000\001\023O\204\006\007Vv\340\020\027\362\210\253\021M\324H\223v\261\005\214q\232\302\013\344\210\307\202( .\302\276\tS\361Hl6\356\312\235V\203\304\275\201\203\243\256\250q\343\035\271\t\234\311)\360\004\271\325\025ZBGQ`\230\213j0\002|u\000\370\352\307\000\257\210|-\336\256\"\002\214\270M\013\010\000P\014$\"\326\352H\234J\232-\255\013\020\210T\2516\370Z\265!\363\332\275\365\360EA""\345\270jG\0228\256F\301\254c\r\274\005EUTC\034\356\307G9\354\"b\343\017\001\r\307)4l\370,BP\356\255\213\341'T%\013 Un\010-\205@\375\361\355[\025\320\303\271\006\221X\374\212\370\305\346hS\223\007\2334\344\032u\203\013\tA\024\205k\216\215\014{B\334\300\234\270I\343\343\270&\017\244\361lQ\251h\202v\242\304F\257\"h\210?\3604|\322\356\300\007\332R\3522}\251\235&\265\311\236j\323\211oaR\256t(\3659N\342\233x\017\363\317\216Z\234\326l\r{\305Q+\034\257K\222\324\nK\022Z\241\266\330V\261%\343?\376\001u\320\266\335\341\033\221i\205\264\010\257)D\353(R\014}\304\035\312H\350w\324\036\3405\336\243[\rF\306W\306\345E\277\023\360\001\002;\210\004\255\n\251\362\320\021Z\242\2658\005q\370jG9\026\217)1c!\200\263TG\361\024\233d\210\335\260\301\035\363\215\016Q\217\211rt\302\376L\024Y\375-\361~\351L\352\276\315\373\311\r'\021$\213v\301O\256\333\233v\315\331sT\267\360\376\334\231\324\344om\377\\\272\367LO\351e\377\334\305\036\333+\321\341\363\275T\357\245^\320Y\1772\335+\321\307\266>\243\363\272j\3342\332\346\204Y4\313~:\243'\364\254\276\254\357\351m#a,\232eS\260\262~&\257\227\374L\226\256\331\354\tz\326O\317\350e]\246\013\256\032\254\237\374\323h\307}\343\254Q\010w\365\322\017\235\202\263\346\360Cg\250\027w\355\222\275gw\234-\347\227\376\216\367\372\310;\022>p\356B\257\340O\346\364\302\310\3036\365+\245\2774\n\306\232AL\326\3344y\263M\275\372\332L\230\323\346\226\251Zwl\326.\371\3719x\2355\226\215=\204\2240\347\255\202\305\372s\0053k~a\317\330\242\323v\023\376\334\202Q\010\346\256\032\0330T\362\027?\267\312\264\307\032\245h\221\277x\323,!n\336_\274\205\227l\277t\n\301\247\"\374\314b\255-k\224\356 \304\242\352\224\2347\375\\\377\251\367\372\007\357\007@\025\242\304\332\331 99\212\363r\257=\026\342\345^\027\316O\033[F\327JX\323\0262>\213\361(\355\333\3724 HO\353\254\376\302x\025\206O1\370\244c\333n\331\025\372\331\261\324?p\022N\316\271\353&\334+\356I\277\355'\277\264\323\316\246\303\217\274zd(&\266\243\340\326\214\262Q5KA\222B^\247\036\032\tj$\335{\244\037\343\033\242:\025\313\245\036""\201g \325T\257L#\373\005\331|i\336\004y\362\326\276}\326\276i\3636<\316\"\212M\235\367\323\363\000i\305\274f\361\326;\207u\266\335l0y\261\367\030\341\347\215}@\220^4\276F\016\300\263%\363\216\265n\265\003dG\365r\177\2656\255\206S\36037\274\033\353\366\277\\\366\375\2453S\267\315WV\005\tN\337\361\356<uh\302\336O\236\231Z\360\346\327l\326\317\344\364\025\354U\240\370\206\303\303\215\333A\022d\037\213\"t~\214tS\210T\000\303JCC\376dV\237\245$\373\240\322N'\377K;aO\203\215Q\357\261S\036\301\2209\223\332\260\025\347\neb\220\274\320\273I\023\027$\201\353)O\340\350\371\353`\343\261\271gv\254\222u\350\254;'.\330r\r\356\034\231\251\361a8r>\335+\366\366\021M\0323\302G\220\276n\034y\014<\361O\265\206_\021\345s\375\016M\n\345\235\212\202/\373\231+:\217\235\2633\372\2661c\360\206j\3362\333V\022)\347\375\374|\250\005\025\253\340\347Q>~~V\177\207\362yfM\320\372\242f\361xce\361}n>\004K\277\251\363\001*4\266U\030\2631\013\325Y\246\253\346?0u\035\304\232\233GHS\231\310\006\232\331<\345\026<Du\247\214\0033\033\204\r\020%\210*$\336\245\035\033>\014\313R\005\355\004g\332\331\351\027\372k}\330\275\201\031\203R?0s\346\023;k/\333e\177\361/\220\2115\213\200.a\363.\010{\3339\013\361z\340\226\334\227\375\317\274\227\337x\337|\347}\367\306{\363\275\367\375\241\277x-\310L\353w\215\th_~\311,x\313kv\321\376\006L.9\007n\336=\350\347\373\337b\321\330\307\242SvD\267\335O\365\277\363\276}\345\275:\364\0169\217\013\365\201N\013&\347\215\353\246\002\316\307\215\377A00\333\336\262G\262\2032Hm&\334\234{\267\237\350\317z\273\337b\207 \371\030G\302\261\273\347\252\375\202\367\025|\307^u\257.\372\237\372\360\376\302\231\324\024N\006\320\362\266>A\013\202\026\010\334\311\236>,PJ\2243\277\206\225\221\013O\215\314\002jj\224\317\361n\220\231\321_\001\234\256u\326Z\205\002M;(\246\217\014]5\376\006Y\353\"\367\253P\250i\367cC\021\031\326t\301\310\031E\3435d\1779\224\227%*\375\213 3\360\377\217yd]\202\334\250\320\2119\306<\017\005\002\317nC\310_C\034\346\240\351\376\334\035\353\272\335v&\034\226\312\316\275HZAk""\343\261\225\302\344\364\025\275\n\212\214\032T82\275\023]1\262\021\331\256\2430\322\3663\347\222\313\273\357\274\375\203\340\343\243\250<\036E\\\216\216K\301\230\035\036I\341@5\222\244\253\306m*y\013\364\025\244\251\314L\323\262\034\235x\224\330\340[\021\024\270h\256\233\277\332e\320:G\t\345\347o\231\207!\027\024\007U1\254\252\333H\333\211\245\330W\020e\302\271\016\326%\373[\375\220\374OP\2444i\211\210\353\033C\342\036\366\331\3763ow\037\216\207e\030\314/\342(j\377\237\214\245\347\214)\270Z\264\377\215r\\\352\227\002\034\001\013(\373\177@\272\227\354\277\203\000\037\016P\025\321\2005N\213\234\276\204c\203\030\3538\236r&K\223\361p \314[\346\317\003\326\001\377\027\346k\253mO\330\353\366\317n\326]v\313\224\017\277Bs\352\226`\347\354'\030\374s\237^\221\346W\302\230:\366\216[p7\372l\034\344p \240%i>\260\266\355,\325\255\350\021\314\334\010/Jk`\330\005\273`\257\331\2410\322B\235\271f|5\360\344\300YpYw\013r\035\332\330\260\036\241P\007\323\246\246\303Hx?3\007(\037Ze\370\225\247\274t'\\\204E\351rb\276\263\303\010\331?|\351\000\211R9\\\312\2223\336\314\212\251\201^\311K=\276\247\204\005\373\223Q7\307\317\352\213\336\305\350\0349\013Q\016o\024\333\010\020\000%\350m\356~\030w\311*\307\235\373\224\260A\222\022\366\010\252\273g\274\263\036;\347p\253\303\320\036\256\002\247\006\346Q\226\367\200\320#\353\027\347\271[\030\335+\326\302\363\024\265\366dp9\3035#\302\367\276\261d\354\204\362[\00356\035\251_\352\357{\2738\277\026\006\267\275XU>\034\210\252\213\036RQAd\375x\300[y\340d\235e\347\217\030I\342\242\211\312\372\036\201>\265\341\361e\244\355\n\356:\347\350\345g,mT\001o\240\200\261\017n\303\2644\375d>\244%\316\223 y\276\227\035\233>\033J\345\223\360H<\2756\276\345m\342\240\203\014F\270f\256E\267\255\350&=\031\236\320\364\021\246\270C%\350\223d`\302\033p\351\324\r4\345O\236\377\375\337\177\001#\233\217\332";
-    PyObject *data = __Pyx_DecompressString(cstring, 2704, 1);
+    #elif (CYTHON_COMPRESS_STRINGS) == 2 /* compression: bz2 (2683 bytes) */
+const char* const cstring = "BZh91AY&SY\027FW\250\000\002\201\377\377\377\377\377\377\377\377\377\377\277\177\377\377\377\377\377\367\300@@@@@@@@@@@@\000@\000`\n\034\300\035PR\256\263\240\000\n\002\035 \000\355\002T\310\212j\233S@\323\321=O\rG\2452o\322\247\247\207\251\246\230B\223&M\251\343T\375Sb\214M\244\323#z\206\215CC\322z\215\246\223jz\233I\352\t$\010\304&\201\036\202\032i\031\r4\246\232\0002\031\032\000\000\003@\000\000\003CCM2\032\r\000\202\232\223\320\215\032\000\0004\000\000\000\320\000\000\000\000\000hi\243\324\365\r\000\002SDMSP\031\000\321\223@\006\323Q\246\215\000\000\r4\001\240\323F\203 \032\006\200\001\223M\r\0102`\004\300&&L\230\000\023\002`&&\t\200\000\000\000\023#\0010!\204\002\014\230\0010\t\211\223&\000\004\300\230\t\211\202`\000\000\000\004\310\300L\010a\001P\331\252\317\254\264{5$\222gq\321\333\364~2\006\311\033\362e~\230\276\313o\335\221K%HS\207\036\220O-\000\365\212\230\235'2d\347L\300\314I\204\204\t$\014\303\t\206\031\243CR\027\375H\252\002\252\262\226\317a%0\024\256 (%\000*0&d\206a\233r\202\013\215O\037W\212\306y_cZ\010+\206\245A\2203\010ffa\201334\\2\\\365\211;RNA3E\351J\0067^N\026\346\034\376\t9\243\202Y\2310\311\2313\001\322BRr\2713\253Qg\2700A~\243U\232\266\223\234\330\213\355\200\351\263NQh\021b\315zs_\204F\221h\253B\267\343aI\206\n\212\201\205j\252g\320\302fHf\016\242\352\334\310\255\nO\r5\321ZT\316\303\213\226\"\275]\010D\214\014\327\304\267\255)O\014C\006f\000\215X\265\320\315\231\364\220`\361\303\314\347\211i\212\"\367P\274\306DH\246\210\305\340Y\332\321\265xz\356\234I\275\314\316\270\362o\202\224S\211\206Y\205\365\221\200'\211\313\201\365\304\273\312\030f.\231q\2778\370\326A\343\253a\334\225\344\377\013x.5\257\275l\272\341\251\352>v\223m\022\215h=\305$\374\312/\265X\370o\313 [\304;\241\034\300v\363\214!\204\340\304\234\031\024\344\232\230u\233\243 Q7gY\352\250\033FB\311\224g\004\t\"\252(+K\244w\357\221k\360\276*\310\236(\205\233\257\364*\254\017\027f\022\214\356\307F \306\2177\364C\2276\336e\321\271\377I\2569\0140\231\354\253\351\361\343\307\326\300\214%""\356\235\036\214\203\231\030\013\025~+\2447\355&\005\263\265\2209\326\023\262\020VFC\355\203\345\353]\2436.\206l\360\223\245\235\370\320\315\211\234\316\214N\351)\nZ\r|>I9\353\373?O\321+Z\340|\272P\302>\365\373w\032kc\025\263\313{\346B\351\220\037\345\327%\3448:\3539n0\204/\315\010\274\226\004\030\240\212\367b\234\374\245\241\000\232\245+`_\311\305]\022s\007#\014\2239\274\203\241\264\355\224M\017&\017\262d\311\234bD\212\211\031\320\263\277D\225\245\204N\305\000**S\032yM(Lye\365;G~-q|\2740<\347\361\215\n\231\335OJ\306\270>\373\350^\020\250\003 \n\376\242\314\010K\341\002% \252\242\025\244\251'(\206v4D0\372\240\366\224S\330\246\327'\212\322V\251\227\205lAa@\306\343\361\335\022\265\257\357\013\005\204B\302\224\241\320\014Pa\005\226b\205\230\235\277\200\312\270f\240Zc!=\273\236\300\330\373\213\017\020\310)\031>|\236E\2459\210\215\337\315\222\244{\370\330\311\002)\356z1\313t\205\232*\304P\266\033\320u#\026\256n\233\010Q\350\256A\002\206\031\020-R\254f\217c\244\247Xf\0171k\336\3714^\355\016\363\334?4\234A\343\217\317v5\271^]\376t\206\232s\014U\263\377\255\036K\322\365t\035\207&{\r?\023\343/K\317\222}\336\356sb\375\233s7\235F\305SO\246o\303\230\344\302\234\013\244\255\364\2714`\231{\\\n\343\025\300\256]\227\244J\301\2257\241%\024\234\257)H\2431\207I\331\2636\375\274\355\261\021\323J\227\214v^e\336\353\335\014\014\331\375\013x\333\237\024\300Z\226\207\367]u\032v\370\006\016\3538R\306\210Q\227\215\227s\035\351a\235\234vE\322\343\260\311l8\035+\216\251\362\262\\\306\306\360B\035f\344\016\313\227B\r_\335\255\016\206J;j\224\335X\3504.\223\267\037\023\314a8\226\310\342\244\344\366R\335\306\3252.\237\373\236\210\231\254(>x\334\373\2740\312(\210\327\365T\345,\205p\034\214]\205\t\014\311\236\340\216|\302OO\225\362\023\206N\315G\207\257p\234\222\270\215\014\314\231\210.\230\256\251\341~\013?W\023\211\305\0337#\237\371l\347\033zqv?\0069\\\256]\354\202\364qr\223\232\344\264\217\200\347\215\224\363\315\366\227\270d0l2\034<u\336\022\352\3105\346\343\3435G\247\270z^l\362!%\312\216\243""\021\331\034#V-M\244\216\277g\303u<\021\003ehr\366\367\273\332\223\265\036:\036(\361\350\276\344m\344\267\001\354\241\237\023 y\217\017&\342\311g\275v\353\333t5\352r\306\233\334\207r\354\036\365\277n\334`N\361\\?q\013\342\341\257W3\236\205[:\232!\260\205\357\322\354+\271\362\201+*\266\336<a\252\215\243\306\035K\023\273\267\316(\262,\3479\230`p\305\354\367\267\325\345\253\360\257\206\220\t\260\023j\343<rtI2L\317\243\221]\325\320Z\326\334\026\014$\314\206\267f\232\357pG8\344\306K:\034)a\224,{\014\231\332u\275\362%\343[\\\016C\367\rf\216\326\245\204\013\321\341\353-\236\333\313u\323\221\2139*_n\333 Kc=\352,\240\367o\333\212\354\014\353\243\212\336\274\213\312\364bE\311[\333'\275B\327[7=\320\223\246I\323!\2546\014\303\000\334\0348lE\317\247\315\316\305J\232 w\262mt\247\026\270\017\233\023\023$\355\000\206\022hv\205J\321-\031\253\025\250\316j/\317}\334\356\2030nh7S`\3261d,5?\232\327o\344\266\306\031[i\030\022\037\"d T7\277\277Z\352\030`b\014\342\336\314\300\256\271\223M\272xN{2Y\013 \310\313.nb\311\362\3525_\323\034\245\330\370\020\200Hi=\326c\311\010\275\355m\204\347a4\014\314\231\2207!\256\266\275'o\r\366)9\\X\213\332\221\013f\021{4hJd\345r7\366R\220\304\327\237\327\275f\273\256\275\036\253h\260:\3734\257\005o:\271;\247\231\013\220\221\303I\320td\262$\023g_i\300\340j\335\r\373[\236);s\336<\346\236p\241\302\3535\034\246\265\337r\203\335\245\331\336\036\246\305dp0X\035\3462\326@\213[B\217\240z\246,\376\027\215\220\232\375\322\001x\033\r\202\375$`\275\232\030g+\363\231\214\\U\216\376[t\335\364\311\002n\227\267\202\314\320\336L=W7\007\304\354l\207s\254\301R\0262\266\232\035\2571,T\336\306o:xwE\211\303\250\267\222\201\3263\250s\302\207N\305\266&K\302\032\034vep\344\240\213\356\204\014\256\rQ\351\313\222\221\003\266\006\266\020y\r\005PGzQZ\036$\274~:.H\200\335\350\270s\224\327\"\336\332\331\"\252\244\010]*CM\245\"\021\002.nk\225\230w\3673IH\310\231!\037\t4\016c]W\205cj\343I\344\304\010\347\340+\007\365]\343\271(\204\276J\363\271\006g\003\337\030[\2077):\202*'\232\347\261*""\220\030\246\245JIY\304\r\222\344\255b\210# `\236d\356\\7<\263\t\326\242\017\004\014\025\034\202\220\035\215\233\363\350P\252\267Z$5g\224M\244\237\251u\311\003\221\020RZ\250\236D'\235hV,\373s\177\305\342\213\250\237W\276\010\330D\020F\350NNP\250\242\005\252\031DQ\313\335V\266^\\\256\273$\220\034\224\377M+w8W\216\201\016<\304b\037\264\236\314\204\003\033\345\301Jip3P\227\351\231D\323\332B{\222\252\365\333\247\200\243\323\342FK\340\021\224\027\215\343o\255r\201\003\212\214\277|\365j\224y\367\3572\rio\352\3725X\2555\211\346\222\217YA\005\310\313o\214j\r\324\340gT5\344#s\331\272\200\232\371vm'\005\263\275\240?~\312\226\230\013i\031_-\351[\n\330\021\326_\207)\374}L\341LCKc\260\226\000\256\230rC\356G\267K\027?\"\320\353'o\3600Z{\3275\272y\027\277\202\321\016\025\3214\210l\330G\261\027\262\323\243[\367\261\331~\363\037]k\330\262*\327\373P\365\274G\360\276\014P\272\276RY\262\321\341\210\257\316\256\233u\272wS=\231\345nq6{>^\207B\253>D\352\233\025b;\261p\363y\243\363\216_\265S\270s\352_9T\034\255\034\304\246T\240\247M\222\365\351\323\247\232p\254\221\227\214\314\335\316\237\326S#\313\314\326\261\360\345\035\352@q\272Qlv\217x\355\340SW\250l)\3225\370>~\005\354_\250\356c63\267}A\306\355\031<\232\311Un\271\311\310s\222\263U\021\361\264f2@\251\004*\034\310\273\300\264TS\016\022p\263W\010a\215C%R\004\"42\225$\260\360\365@\365N\005G\020\"N\251*\212:u'J\222\242w\034\252\244Mb\273\203\220yA\233\273K\006\030BR\n\034\365\201\341\\:\030\277\224+(\242\2112Ua\340\326q nx+5\203\262Sy\321`\255\037i\225^\005Mk\006\243]I@\255\250\234$\342\206\314o|\316t\377\213\271\"\234(H\013\243+\324\000";
+    PyObject *data = __Pyx_DecompressString(cstring, 2683, 2);
     if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
     const char* const bytes = __Pyx_PyBytes_AsString(data);
     #if !CYTHON_ASSUME_SAFE_MACROS
     if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
     #endif
-    #else /* compression: none (4864 bytes) */
-const char* const bytes = "? .3fFinal operations: Further checking on centers: Identification of the saddle points: Multimodality test finished: Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Number of clusters before multimodality test=Preliminary assignation finished: Pruning of the centers wrongly identified in part one: Raw identification of the putative centers: add_notedadapy/_cython/cython_clustering_v2.pyxinit succedednumpy._core.multiarray failed to importnumpy._core.umath failed to import sec sec DTYPELast_clsLast_cls_haloN_clustersNclusNele__Pyx_PyDict_NextRefZ_a1a2all_removed_centersargmaxargsortarrayasyncio.coroutinesbord_indices_mcc1c2c2_indexcenter1center2_centers_centerscheckcindxcl_struct__class_getitem__cline_in_tracebackcluster_assignmentcluster_centerscluster_couplecluster_indicescluster_init_cluster_init_compute_clusteringcopycpcurrent_saddledadapy._cython.cython_clustering_v2diag_indicesdist_indicesdtypeeleele_neighborsemptyextendflagfloat64floatTYPE__func__ghalohigher_density_centershigher_density_centers_eleiind_removed_centers_eleindex1index2int64intersect1d_is_coroutineitemsjkkstarlaglen1len2len_centerslen_to_removelog_den_bord_err_mlog_den_bord_mlog_den_clog_den_errlog_den_halo__main__mappingmargin1margin2maxmax_a1max_a2max_centermax_rhomax_sum_err1max_sum_err2maxk__module____name__neighbors1neighbors1_tmpneighbors2neighbors2_tmpnhnnnpnumpyonesp1p2popopppprint__qualname__repeatreturn_indicessaddle_countsaddle_densitysaddle_density_tmpsaddle_indicessaddle_indices_tmpsec__set_name__setdefaultsortgsum_err1sum_err2surviving_clusterst__test__timeto_removeto_remove_valuesverbx1zeros\200\001\360\"\000\0057\260a\330\0048\270\001\340\0042\260!\330\0044\260B\260g\270R\270s\300!\360\006\000\005\010\200q\330\006\014\210D\220\005\220Q\330\006\013\2101\210A\360\006\000\005\t\210\005\210U\220!\2201\330\010\014\210A\330\010\014\210E\220\025\220a\220s""\230%\230q\240\003\2402\240Q\330\014\020\220\001\220\021\220#\220R\220q\230\001\230\034\240Q\240c\250\021\330\020\024\220A\330\020\021\330\010\014\210B\210c\220\021\330\014\025\220Q\220o\240Q\330\014\033\2301\330\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014:\270!\2703\270a\330\006\014\210D\220\005\220Q\360\006\000\0055\260A\260R\260u\270C\270}\310N\320Zb\320bc\360\006\000\005\t\210\005\210U\220!\2201\330\010\n\210!\330\010\022\220!\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2303\230e\2401\240B\240a\240q\330\020\024\220L\240\001\240\023\240C\240s\250)\2601\260A\330\024\030\230\001\230\021\230#\230R\230q\240\001\240\031\250!\2501\330\030!\240\021\240/\260\025\260i\270q\300\001\330\030\032\230!\340\030\033\2308\2401\240A\330\034-\250Q\340\030\033\2301\230A\230R\230q\240\001\330\034$\240A\240Q\240a\330\034%\240Q\240o\260U\270!\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014+\2501\250C\250q\330\006\014\210D\220\005\220Q\340\0044\260B\260f\270A\270\\\310\022\310?\320Z`\320`a\330\0042\260!\330\0041\260\021\340\004\010\210\005\210U\220!\2201\330\010\017\210q\330\010\014\210E\220\025\220a\220q\330\014\017\210y\230\001\230\023\230C\230y\250\001\250\023\250A\330\020\027\220q\330\020\021\330\010\014\210E\220\023\220A\330\014\023\2201\220I\230Y\240a\240q\330\014\025\220Q\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014E\300Q\300c\310\021\330\006\014\210D\220\005\220Q\360\006\000\0059\270\001\270\022\2705\300\001\300\026\300x\310q\330\0040\260\014\270B\270a\340\004\010\210\005\210U\220!\220<\230r\240\021\330\010\025\220Q\220g\230Q\230f\240A\340\004\014\210B\210h\220a\220q\230\001\360\006\000\005\014\210<\220v\230Q\230a\330\004\010\210\005\210U\220!\2201\330\010\016\210e\2201\220A\330\010\r\210Q\330\010\017\210}\230A\230U\240$\240c\250\024\250S\260\002\260$\260a\260q\330\014\021\220\023\220B\220a\330\014\031\230\021\230'\240\035\250a\250|\2701\270E""\300\021\340\010\013\210=\230\001\230\024\230S\240\001\330\014\034\230L\250\001\250\021\330\014\"\240)\2504\250q\340\014\017\210s\320\022,\250B\250l\270!\330\020\037\320\0374\260O\3001\360\016\000\r&\240Y\250d\260!\330\014)\320)?\270q\330\020\021\360\010\000\r\032\320\0313\2601\330\020\022\220'\230\021\230!\2301\230A\360\010\000\r\032\230\021\230'\240\035\250a\250q\340\004\020\220\001\330\004\010\210\005\210U\220!\2201\330\010\r\210Q\330\010\014\210E\220\025\220a\220q\330\014\020\220\r\230Q\230c\240\023\240A\330\020\022\220'\230\021\230!\330\010\021\220\027\230\001\230\021\360\006\000\005\010\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\0140\260\001\260\023\260A\330\006\013\2101\320\014=\270Q\330\006\014\210D\220\005\220Q\360\020\000\0058\260r\270\026\270q\300\001\340\004\n\210$\210e\2201\340\004\023\2201\330\004\010\210\005\210U\220!\2201\360\010\000\t\036\230R\230v\240R\240u\250A\250^\2704\270x\300q\330\010\035\230Q\230b\240\005\240R\240u\250A\250^\2704\270x\300q\360\006\000\t\014\2102\210S\220\001\330\014\035\230Q\330\014\035\230Q\340\014\036\230b\320 0\260\001\330\014\036\230b\320 0\260\001\330\014\035\230Q\330\014\035\230Q\340\010\014\210F\220)\2301\230A\330\014\017\210s\220#\220Q\330\020\026\220a\360\010\000\021\025\220E\230\025\230a\230s\240%\240q\250\004\250B\250a\330\024\031\230\034\240Q\240d\250!\330\024\032\230!\330\024\027\220|\2401\240D\250\003\2501\330\030\035\230Q\330\030\035\230\\\250\021\250!\330\030\031\340\014\017\210s\220$\220a\340\020\024\220E\230\025\230a\230s\240!\330\024\031\230\034\240Q\240d\250!\330\024\027\220s\230#\230Q\330\030\031\330\024\027\220|\2401\240D\250\003\2501\330\030\036\230a\330\030\031\360\006\000\r\020\210s\220$\220a\360\006\000\021\024\2201\220A\220Q\330\024\030\230\005\230T\240\021\340\024\030\230\005\230S\240\001\340\020\027\220q\330\020\024\220E\230\025\230a\230q\330\024\027\220s\230#\230^\2501\250C\250s\260$\260c\270\023\270N\310!\3103\310a\330\030\037\230q\330\030\033\2301\230A\230T\240\022""\240>\260\021\260#\260Q\330\034*\250!\2503\250e\2601\330\034*\250!\2505\260\002\260&\270\002\270!\2709\300A\300U\310+\320UV\320V[\320[\\\320\\]\320]^\330\034\035\340\020\023\2205\230\003\2301\330\024\"\240!\320#3\2602\260V\2701\270A\270T\300\024\300T\310\024\310X\320UV\330\024\"\240!\320#3\2602\260V\2702\270Q\270i\300q\310\005\310[\320XY\320Y^\320^_\320_`\320`a\330\024\"\240!\340\010\031\230\036\240r\250\021\330\010\031\230\036\240r\250\021\360\006\000\005\010\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\0143\2601\260C\260q\330\006\014\210D\220\005\220Q\360\016\000\005B\001\300\022\3005\310\001\310\027\320PX\320XY\340\004=\270R\270v\300R\300s\310!\320K\\\320\\`\320`h\320hi\330\004=\270R\270v\300R\300s\310!\320K\\\320\\`\320`h\320hi\360\n\000\005\r\210A\330\004\n\210&\220\003\2201\330\010\020\220\001\330\010\031\230\021\330\010\014\210E\220\025\220a\220s\230!\2301\330\014\017\210~\230Q\230c\240\022\2402\240Q\330\020\032\230'\240\022\240>\260\021\260#\260Q\330\020\032\230'\240\022\240>\260\021\260#\260Q\340\020\025\220Y\230a\230y\250\002\250.\270\001\270\023\270A\330\020\025\220Y\230a\230y\250\002\250.\270\001\270\023\270A\330\020\033\230;\240a\240y\260\002\260.\300\001\300\023\300A\330\020\033\230;\240a\240y\260\002\260.\300\001\300\023\300A\360\006\000\021\024\2203\220c\230\022\2302\230Z\240s\250#\250S\260\002\260\"\260A\330\024\034\230A\330\024\027\220\177\240b\250\016\260a\260s\270!\330\030 \240\t\250\024\250Q\330\030&\240o\260Z\270q\330\030%\240Q\330\030)\250\036\260q\270\003\2701\340\010\013\2106\220\023\220A\330\014\032\230!\230=\250\005\250Q\330\014\026\220f\230A\230Q\330\014\026\220f\230A\230Q\360\010\000\r\020\210x\220r\230\021\330\020\024\220E\230\036\240q\250\014\260D\270\016\300a\300|\320ST\340\020\024\220E\230\036\240q\250\014\260D\270\016\300a\300|\320ST\340\014\036\230a\230v\240Q\330\014\025\220Q\220c\230\027\240\001\240\031\250!\2501\330\014\025\220Q\220f\230A\360\010\000\r\033\230&\240\001\330\014\032\230&\240\001\340\014\022""\220'\230\023\230A\330\014\020\220\005\220U\230!\2303\230a\230q\330\020\023\2202\220S\230\013\2404\240~\260Q\260c\270\022\2702\270Q\330\024%\240^\2601\260C\260r\270\021\340\024\027\220s\230#\230Q\330\030&\240a\240x\250r\260\026\260q\270\001\270\036\300q\310\004\310C\310q\330\030\033\230>\250\021\250#\250S\260\001\330\034*\250!\2508\2602\260V\2701\270A\270^\3101\310D\320PS\320ST\330\030\036\230a\340\031\034\230C\230q\330\030&\240a\240x\250r\260\026\260q\270\001\270\036\300q\310\004\310C\310q\330\030\033\230>\250\021\250#\250S\260\001\330\034*\250!\2508\2602\260V\2701\270A\270^\3101\310D\320PS\320ST\330\030\036\230a\340\014\030\230\r\240^\2602\260W\270N\310\"\310A\340\014\031\230\032\2401\240J\250d\260\"\260H\270A\330\014\031\230\032\2401\240J\250d\260\"\260H\270A\340\014\017\210t\2203\220a\330\014\022\220\"\220B\220e\2304\230r\240\022\2401\330\020\023\220:\230Q\230c\240\023\240C\240z\260\021\260#\260Q\330\024\034\230I\240Z\250q\260\003\2604\260z\300\021\300#\300Q\330\024\027\220~\240Q\240h\250c\260\022\260>\300\021\300(\310!\360\006\000\031'\240a\240x\250u\260N\300!\3008\3101\330\030&\240a\240x\250u\260N\300!\3008\3101\340\024\"\240!\2409\250E\260\021\330\024\031\230\021\330\024\031\230\021\340\025\037\230q\240\003\2403\240b\250\n\260!\2603\260a\330\024\031\230\021\360\006\000\025\035\230K\240z\260\021\260#\260T\270\032\3001\300C\300q\330\024\"\240!\2408\250<\260q\330\024\031\230\021\360\006\000\r\023\220\"\220B\220a\330\020\030\230\013\240:\250Q\250c\260\024\260Z\270q\300\003\3001\330\020\036\230a\230x\240|\2601\330\020\023\2201\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014+\2501\250C\250q\330\006\014\210D\220\005\220Q\360\010\000\005\022\220\021\330\004\025\320\025'\240t\2501\330\004\016\210a\210r\220\025\220a\220w\230h\240a\330\004\010\210\005\210U\220!\2201\330\010\013\320\013\035\230Q\230b\240\002\240!\330\014\023\2201\220E\230\021\330\014\030\230\001\330\014\033\2307\240!\2409\250A\250Q\330\014\033\2307\240!\2407\250!\2501""\340\004\025\220Q\220b\230\005\230R\230|\250=\270\006\270a\330\004\025\220R\220v\230R\230|\250=\270\006\270a\330\004\031\230\022\2306\240\022\240<\250}\270F\300!\340\004\010\210\005\210U\220!\2203\220a\220q\330\010\013\210>\230\021\230#\230R\230r\240\021\340\014\017\210t\2207\230\"\230N\250!\2503\250g\260W\270B\270n\310A\310S\320PQ\340\014\032\230!\2303\230e\240>\260\021\260#\260Q\330\014\032\230!\2303\230e\240>\260\021\260#\260Q\340\014\036\230a\230s\240%\240~\260Q\260c\270\021\330\014\036\230a\230s\240%\320'9\270\021\270#\270Q\340\014\032\230!\2303\230e\240>\260\021\260#\260Q\330\014\032\230!\2303\230e\240>\260\021\260#\260Q\340\004\022\220!\2202\220]\240!\240?\260!\340\004\017\210r\220\026\220q\230\006\230f\240A\330\004\010\210\005\210U\220!\2201\330\010\014\210E\220\037\240\001\240\021\330\014\024\220A\220U\230!\330\004\024\220B\220e\2301\230A\340\004\t\210\021\330\004\010\210\005\210U\220!\2201\330\010\027\220s\230!\230>\250\021\250!\330\010\014\210E\220\037\240\001\240\021\330\014\017\210y\230\001\230\023\230B\230a\330\020\025\220S\230\002\230!\330\020\035\230Q\230f\240A\330\004\007\200q\330\010\035\230Q\340\010\035\230Q\340\004\025\220R\220u\230A\230Q\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014 \240\001\240\023\240A\330\006\014\210D\220\005\220Q\340\004\005\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t";
+    #elif (CYTHON_COMPRESS_STRINGS) != 0 /* compression: zlib (2696 bytes) */
+const char* const cstring = "x\332\255VMw\323H\026\305\304f\0028\264\3558\344\203\020\344\004\3100=\235i9\001\002\303\307qB8\303tO&NBOC\323Q+r\331VcK\266$\247\343>t\317,\275\324RK-\265\324RK-\275\324RK\377\004~\302\334*\371#\246aN/\006b\251\252T\365\352\275w\357\273UO\271\265\365\362sY\021k\234\332 \232h\310\252\242?\344\236\2674\243J4N\252\022\351\255\254T8U\341$\242\030D\303\307\027%\264\344\262,\261\331\234Z\3460\227\323\305R\251F\270\206*+\006&\375\243U3\344\272Z\022k\262\321\346\014\242\033\\YVd\275JJ\017\271]\325 X$\032\334v\333\250\302\206\254s%R\223\217\251\007\244\326\346tC\223%\354F')\334\336\316\336\027\033\233\033\234\250\2248\215\374H$C\347\364\326\261T\023u\235\350\324\201\343\226\214\355\024\316h7\210\276\306\275(sm\265\305)\204\2248C\345\032\230wv\001\334U8\235\030\314\357UQQT\203\205\"`9\202]\345J\262\206M\344\023BW?\027k:Y\333m\325\341\035\335K\252\265t\232\010\356\230\224U\215p\365\337D\372xOC0udUks\330R\256(Q\252F\031\330\323Z\n\313k\224\274~n\271\2374U\251 ~\271\237b\370\217\250\032\242f\000\001\362\220\333\027\177\032~\033O\177\243Ec8!#\230\200\207\200\310\210\304R,\364\335\306\246\302I~\255\321>\205/\006\262\"I\244DJJ\253\336h\257\t\022\002Zc\001\211\232&\266\271\262(\327\242\034\312\365\206\252\031g\247\265\352\242Q\375\315\014\344Ub\277g\207\257\366v\276\026u\003;\353\203\267P\025k\352\356\300\027}\2276vI\215\010\302^\373\024\277g@]\330%\247\306>)\277\026D^\314\213\265\232\240\221\272zBJB?4Q\253\324\305S<u\354\307\374\024\365\266\"\311\352\032\374R[\340\001\321\217U\255$\310JI\226\210.\324%\211\227\362R\236\016\220\323\310\n\037\275\362\003\243\2037c\274\204\211\247RM\000\r[pH`\304\021*\304\220\rR\247]l\001c\202\241\211\0229\026\261 \nH\210\300\256\303\324`d`v\320U[\215\032\031\364\372\016\216\272\262!\214w\324:\200%g\300\223\324F[jH-M\203a!*\272\222X\022\031,\014\351\265\217\001^\222\305\312`\273\222\0140\006mZ1\000\200b\240\020\271RE\342tRo\030m\200@\224R\271&V\3125U4\356m\260\027\005U\020\312-E\022\204\n\005\263\2125\360\026\234\324A\377A\270\037\037\025\260\213\214""\215?\004\224\215Shx\366\314CA\356m\310\354\023\312\220\007\220\2720\204\226B\240\377\370\366\255\016\350\341\\\215(<~y\374\006\346h\323P\373\233\324\324\nuC`\204 \232&\324\307F\206=i\320\300\234A\223\306'\010u\021H\343\331\240\332P\007\355d\205\217^y\320\020\177\340){\322n\337\007\332\322\252*}\351\255:\265\311\237i\323\211oaR-\265(\365\005A\021\353x\017\363\317\217Z\202Qo\014{\371Q\213\215W\025Ei\260\222\2048\350\r\276\221o\250\370\217\177@\035\264m\266\304ZdZ#\r\"\032\0321Z\2322\200>\342\016e$\004;j\367\361\032\357\321\255\372#\343+\007\345E\277\023\360\001\212\332\217\004\255\022)\213\320\021Z\242\225A\n\006\341\353-\355D>\241\304\034\010\001\234\245\302\211\247\\'C\354\206\r\341D\254\265\210~B\264\343S\376g\242\251\372\177b\357\227\317%\356\273b\030\337\364b\275x\336\315\205\361\rw\313\255x\373\236\356\347\336_8\227\230\374O3\274\220\354<3\023f1\274p\271\303w\nt\370b'\321yi\346L>\234Lv\n\364\261c\316\230\242\251[\267\254\246=a\347\355b\230L\23113m\256\230\373f\323\212Y\213v\321\226\234t\230\312\232\2050\225\246k\266:\222\231\016\2233f\321T\351\202k\026\037\306\3770\332\361\300:o\345\330\256A\362\241\227\363\326=q\350\014\365\342\256[p\367\335\226\267\355\375\322\335\r^\037\007\307\322\007\316]\352\344\302\311\214\231\033y\330\244~%\314\227V\316Z\267\210\315\333[\266h7\251W_\3331{\332\336\266u\347\216\313\273\2050;\007\257\323\326\212\265\217\220b\366\274\223s\370p.g\247\355\277\2703\256\3545\375X8\267`\345zs\327\254M\030*\204\213_8E\332\343\255B\264(\\\274i\027\020\267\030.\336\302Ku_z\271\336\247\"\374\334\341\235mg\224\356\036\303\242\354\025\2747\335L\367i\360\372\207\340\007@\305P\342\335t/>9\212\363\263Ns,\304\317:m8?mm[m'\346L;\310\370,\306\243\264\357\230\323\200 9m\362\346\013\353\025\013\237b\360I\307v\374\242/u\323c\251\177\340\305\274\214w\327\217\371W\375\323n3\214\177\351&\275-O\034y\365\310\322llG\301\255XE\253l\027zq\ny\225zh\305\250\221d\347\221y\202o\210\352L,W:\004\236\201TS\235\"\215\354\027d\363\245}\023\344\311:\007\356y\367\246+\272\3608""\215(\266L1L\316\003\244U\373\272#:\357<\336\333\361\323\275\311\313\235\307\010?k\035\000\202\344\242\3655r\000\236-\333w\234\r\247\331Cv\364 \363gg\313\251y\2710u#\270\261\341\376\323\347\337_97u\333~\345\224\220\340\344\235\340\316S\217&\354\375\344\271\251\205`~\335\345\303T\306\\\305^9\212/\033\036n\334\354\305A\366\261(\230\363c\244\233B\244\022\030V\030\032\n'\323\346,%\331\007\225v6\371_\2721w\032l\214z\217\275\342\010\206\324\271\304\246\253yW)\023{\361K\235\2334q\2758p=\343\t\034\275\270\0046\236\330\373v\313)8G\336\206w\352\203-\327\341\316\261\235\030\037\206#\027\223\235|\347\000\321$1\203=z\311%\3538\340\340Ix\2465\374\212(\237\233whR(\357t\024|1L]5E\354\234\2361w\254\031K\264t\373\226\335t\342H\271\030f\347\231\026\224\234\\\230E\371\204\331Y\363\035\312\347\2313A\353\213\232\305\343\215\223\306\367\271y\006\226y\323\024{\250\320\201\255\334\230\215Y\250\316\n]5\377\201\251%\020kn\036!M\245\"\033h\246\263\224[\360\020\325\235\260\016\355t\2175@\224^T!\203]\232\003\303G\254,u\320N\362\246\275\335n\256\273\336\205\335\033\230\321/\365C;c?q\323\356\212[\014\027\377\004\231Xw\010\350\302\232wA\330\333\336y\210\327\003\277\340\277\354~\036\274\374&\370\346\273\340\2737\301\233\357\203\357\217\302\305\353\275\324\264y\327\232\200\366e\227\355\\\260\262\356\346\335o\300\344\202w\350g\375\303n\266\373-\026\215}\314{EO\366\233\335D\367\273\340\333W\301\253\243\340H\010\004\246\017tZor\336Z\2625p~\320\370\037\004\003\263\335mw$;(\203\304V\314\317\370w\273\261\356l\260\367-v\350\305\037\343H8\361\367}\275\233\013\276\202\357\330\253\032T\345\360S\037\336_:\227\230\302\311\000Z\3366'hA\320\002\201;\351\263\207\005J\211r\346WV\031\031vj\244\026PS\243|\216w{\251\031\363\025\300i;\347\2355(\320\264\207b\372\310\3205\353\257\220\2656r\277\006\205\232\366?6\024\221a\335\224\254\214\225\267^C\366W\230\274,S\351_\004\231\201\377\277\355c\347\n\344F\207N\314q\366E(\020xv\033B\376\032\3420\007M\017\347\3568Kn\323\233\360x*;\367\"i\005\255\255\307N\002\223\223W\3152(2jP""\341HuNM\315JGd[Ba$\335g\336\025_\364\337\005\007\207\275\217\217\242\362D\024q1:.%kvx$\261\201r$I\327\254\333T\362\026\350\253\227\24423M\313rt\342Qb\203oyP\340\262\275a\377\352\026A\353\014%T\230\275e\0371.h\036\252bXU\267\221\266SGs\257\"\312\230\267\004\326\305\273\333]F\376'(R\232\264X\304\365\315!q\217\272|\367Y\260w\000\307Y\031\366\346\027q\0245\377O\306\222s\326\024\\\315\273\377B9.w\013=\034\001\013(\373\277C\272\227\335\277\201\000\037\016P\0251\2005N\213\214\271\214c\203X\0338\23626O\223\361\260/\314\333\366\317}\326\001\377\027\366k\247\351N\270\033\356\317~\332_\361\213\224\017\277Bs\252\216\344f\334'\030\374c\227^\221\346WYL-w\327\317\371\233]~\020\344p\240GK\322~\340\354\270i\252[\321\2437s\203]\224\326\301\260Kn\316]w\2310\322B\235\271n}\325\367\344\320[\360y\177\033r\315ll:\217P\250\375iS\323,\0221L\315\001\312\207N\021~e)/\375\t\037aQ\272\234\332\357\\\026!\377\273/\035 Q\"\203KY|&\230Y\265\r\320+~\245#v4V\260?YU{\374\254\276\034\\\216\316\221\363\020ev\243\330A\200\000(Fos\367Y\334\005\2478\350\334\247\204\355\305)a\217\241\272\373\326;\347\261w\001\267:\014\355\343*pf`\036ey\017\010=r~\361\236\373\271\321\275b\235\235\247\250\265'\375\313\031\256\031\021\276\367\255ek\227\311o\005\324\330\362\224n\241{\020\354\341\374Z\350\337\366\006\252\362\341@T]\364\220\212\n\"\035\016\006\202\325\007^\332[\361~\217\2218.\232\250\254\357\021\350S\027\036\177\206\264]\305]\347\002\275\374\214\245\215*\340\r\0240\366\301m\230\226f\030\3172Z\342<\351\305/v\322c\323g\231T>aG\342\331\265\203[\336\026\016:\310`\204k\352zt\333\212n\322\223\354\204\246\017\226\342\026\225\240O\222\201c7\340\302\231\033h\"\234\274\370\333\277\377\002\022\204\212\025";
+    PyObject *data = __Pyx_DecompressString(cstring, 2696, 1);
+    if (unlikely(!data)) __PYX_ERR(0, 1, __pyx_L1_error)
+    const char* const bytes = __Pyx_PyBytes_AsString(data);
+    #if !CYTHON_ASSUME_SAFE_MACROS
+    if (likely(bytes)); else { Py_DECREF(data); __PYX_ERR(0, 1, __pyx_L1_error) }
+    #endif
+    #else /* compression: none (4849 bytes) */
+const char* const bytes = "? .3fFinal operations: Further checking on centers: Identification of the saddle points: Multimodality test finished: Note that Cython is deliberately stricter than PEP-484 and rejects subclasses of builtin types. If you need to pass subclasses then set the 'annotation_typing' directive to False.Number of clusters before multimodality test=Preliminary assignation finished: Pruning of the centers wrongly identified in part one: Raw identification of the putative centers: add_notecython_clustering_v2.pyxinit succedednumpy._core.multiarray failed to importnumpy._core.umath failed to import sec sec DTYPELast_clsLast_cls_haloN_clustersNclusNele__Pyx_PyDict_NextRefZ_a1a2all_removed_centersargmaxargsortarrayasyncio.coroutinesbord_indices_mcc1c2c2_indexcenter1center2_centers_centerscheckcindxcl_struct__class_getitem__cline_in_tracebackcluster_assignmentcluster_centerscluster_couplecluster_indicescluster_init_cluster_init_compute_clusteringcopycpcurrent_saddledadapy._cython.cython_clustering_v2diag_indicesdist_indicesdtypeeleele_neighborsemptyextendflagfloat64floatTYPE__func__ghalohigher_density_centershigher_density_centers_eleiind_removed_centers_eleindex1index2int64intersect1d_is_coroutineitemsjkkstarlaglen1len2len_centerslen_to_removelog_den_bord_err_mlog_den_bord_mlog_den_clog_den_errlog_den_halo__main__mappingmargin1margin2maxmax_a1max_a2max_centermax_rhomax_sum_err1max_sum_err2maxk__module____name__neighbors1neighbors1_tmpneighbors2neighbors2_tmpnhnnnpnumpyonesp1p2popopppprint__qualname__repeatreturn_indicessaddle_countsaddle_densitysaddle_density_tmpsaddle_indicessaddle_indices_tmpsec__set_name__setdefaultsortgsum_err1sum_err2surviving_clusterst__test__timeto_removeto_remove_valuesverbx1zeros\200\001\360\"\000\0057\260a\330\0048\270\001\340\0042\260!\330\0044\260B\260g\270R\270s\300!\360\006\000\005\010\200q\330\006\014\210D\220\005\220Q\330\006\013\2101\210A\360\006\000\005\t\210\005\210U\220!\2201\330\010\014\210A\330\010\014\210E\220\025\220a\220s\230%\230q\240""\003\2402\240Q\330\014\020\220\001\220\021\220#\220R\220q\230\001\230\034\240Q\240c\250\021\330\020\024\220A\330\020\021\330\010\014\210B\210c\220\021\330\014\025\220Q\220o\240Q\330\014\033\2301\330\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014:\270!\2703\270a\330\006\014\210D\220\005\220Q\360\006\000\0055\260A\260R\260u\270C\270}\310N\320Zb\320bc\360\006\000\005\t\210\005\210U\220!\2201\330\010\n\210!\330\010\022\220!\330\010\014\210E\220\025\220a\220q\330\014\020\220\005\220U\230!\2303\230e\2401\240B\240a\240q\330\020\024\220L\240\001\240\023\240C\240s\250)\2601\260A\330\024\030\230\001\230\021\230#\230R\230q\240\001\240\031\250!\2501\330\030!\240\021\240/\260\025\260i\270q\300\001\330\030\032\230!\340\030\033\2308\2401\240A\330\034-\250Q\340\030\033\2301\230A\230R\230q\240\001\330\034$\240A\240Q\240a\330\034%\240Q\240o\260U\270!\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014+\2501\250C\250q\330\006\014\210D\220\005\220Q\340\0044\260B\260f\270A\270\\\310\022\310?\320Z`\320`a\330\0042\260!\330\0041\260\021\340\004\010\210\005\210U\220!\2201\330\010\017\210q\330\010\014\210E\220\025\220a\220q\330\014\017\210y\230\001\230\023\230C\230y\250\001\250\023\250A\330\020\027\220q\330\020\021\330\010\014\210E\220\023\220A\330\014\023\2201\220I\230Y\240a\240q\330\014\025\220Q\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014E\300Q\300c\310\021\330\006\014\210D\220\005\220Q\360\006\000\0059\270\001\270\022\2705\300\001\300\026\300x\310q\330\0040\260\014\270B\270a\340\004\010\210\005\210U\220!\220<\230r\240\021\330\010\025\220Q\220g\230Q\230f\240A\340\004\014\210B\210h\220a\220q\230\001\360\006\000\005\014\210<\220v\230Q\230a\330\004\010\210\005\210U\220!\2201\330\010\016\210e\2201\220A\330\010\r\210Q\330\010\017\210}\230A\230U\240$\240c\250\024\250S\260\002\260$\260a\260q\330\014\021\220\023\220B\220a\330\014\031\230\021\230'\240\035\250a\250|\2701\270E\300\021\340\010""\013\210=\230\001\230\024\230S\240\001\330\014\034\230L\250\001\250\021\330\014\"\240)\2504\250q\340\014\017\210s\320\022,\250B\250l\270!\330\020\037\320\0374\260O\3001\360\016\000\r&\240Y\250d\260!\330\014)\320)?\270q\330\020\021\360\010\000\r\032\320\0313\2601\330\020\022\220'\230\021\230!\2301\230A\360\010\000\r\032\230\021\230'\240\035\250a\250q\340\004\020\220\001\330\004\010\210\005\210U\220!\2201\330\010\r\210Q\330\010\014\210E\220\025\220a\220q\330\014\020\220\r\230Q\230c\240\023\240A\330\020\022\220'\230\021\230!\330\010\021\220\027\230\001\230\021\360\006\000\005\010\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\0140\260\001\260\023\260A\330\006\013\2101\320\014=\270Q\330\006\014\210D\220\005\220Q\360\020\000\0058\260r\270\026\270q\300\001\340\004\n\210$\210e\2201\340\004\023\2201\330\004\010\210\005\210U\220!\2201\360\010\000\t\036\230R\230v\240R\240u\250A\250^\2704\270x\300q\330\010\035\230Q\230b\240\005\240R\240u\250A\250^\2704\270x\300q\360\006\000\t\014\2102\210S\220\001\330\014\035\230Q\330\014\035\230Q\340\014\036\230b\320 0\260\001\330\014\036\230b\320 0\260\001\330\014\035\230Q\330\014\035\230Q\340\010\014\210F\220)\2301\230A\330\014\017\210s\220#\220Q\330\020\026\220a\360\010\000\021\025\220E\230\025\230a\230s\240%\240q\250\004\250B\250a\330\024\031\230\034\240Q\240d\250!\330\024\032\230!\330\024\027\220|\2401\240D\250\003\2501\330\030\035\230Q\330\030\035\230\\\250\021\250!\330\030\031\340\014\017\210s\220$\220a\340\020\024\220E\230\025\230a\230s\240!\330\024\031\230\034\240Q\240d\250!\330\024\027\220s\230#\230Q\330\030\031\330\024\027\220|\2401\240D\250\003\2501\330\030\036\230a\330\030\031\360\006\000\r\020\210s\220$\220a\360\006\000\021\024\2201\220A\220Q\330\024\030\230\005\230T\240\021\340\024\030\230\005\230S\240\001\340\020\027\220q\330\020\024\220E\230\025\230a\230q\330\024\027\220s\230#\230^\2501\250C\250s\260$\260c\270\023\270N\310!\3103\310a\330\030\037\230q\330\030\033\2301\230A\230T\240\022\240>\260\021\260#""\260Q\330\034*\250!\2503\250e\2601\330\034*\250!\2505\260\002\260&\270\002\270!\2709\300A\300U\310+\320UV\320V[\320[\\\320\\]\320]^\330\034\035\340\020\023\2205\230\003\2301\330\024\"\240!\320#3\2602\260V\2701\270A\270T\300\024\300T\310\024\310X\320UV\330\024\"\240!\320#3\2602\260V\2702\270Q\270i\300q\310\005\310[\320XY\320Y^\320^_\320_`\320`a\330\024\"\240!\340\010\031\230\036\240r\250\021\330\010\031\230\036\240r\250\021\360\006\000\005\010\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\0143\2601\260C\260q\330\006\014\210D\220\005\220Q\360\016\000\005B\001\300\022\3005\310\001\310\027\320PX\320XY\340\004=\270R\270v\300R\300s\310!\320K\\\320\\`\320`h\320hi\330\004=\270R\270v\300R\300s\310!\320K\\\320\\`\320`h\320hi\360\n\000\005\r\210A\330\004\n\210&\220\003\2201\330\010\020\220\001\330\010\031\230\021\330\010\014\210E\220\025\220a\220s\230!\2301\330\014\017\210~\230Q\230c\240\022\2402\240Q\330\020\032\230'\240\022\240>\260\021\260#\260Q\330\020\032\230'\240\022\240>\260\021\260#\260Q\340\020\025\220Y\230a\230y\250\002\250.\270\001\270\023\270A\330\020\025\220Y\230a\230y\250\002\250.\270\001\270\023\270A\330\020\033\230;\240a\240y\260\002\260.\300\001\300\023\300A\330\020\033\230;\240a\240y\260\002\260.\300\001\300\023\300A\360\006\000\021\024\2203\220c\230\022\2302\230Z\240s\250#\250S\260\002\260\"\260A\330\024\034\230A\330\024\027\220\177\240b\250\016\260a\260s\270!\330\030 \240\t\250\024\250Q\330\030&\240o\260Z\270q\330\030%\240Q\330\030)\250\036\260q\270\003\2701\340\010\013\2106\220\023\220A\330\014\032\230!\230=\250\005\250Q\330\014\026\220f\230A\230Q\330\014\026\220f\230A\230Q\360\010\000\r\020\210x\220r\230\021\330\020\024\220E\230\036\240q\250\014\260D\270\016\300a\300|\320ST\340\020\024\220E\230\036\240q\250\014\260D\270\016\300a\300|\320ST\340\014\036\230a\230v\240Q\330\014\025\220Q\220c\230\027\240\001\240\031\250!\2501\330\014\025\220Q\220f\230A\360\010\000\r\033\230&\240\001\330\014\032\230&\240\001\340\014\022\220'\230\023\230A""\330\014\020\220\005\220U\230!\2303\230a\230q\330\020\023\2202\220S\230\013\2404\240~\260Q\260c\270\022\2702\270Q\330\024%\240^\2601\260C\260r\270\021\340\024\027\220s\230#\230Q\330\030&\240a\240x\250r\260\026\260q\270\001\270\036\300q\310\004\310C\310q\330\030\033\230>\250\021\250#\250S\260\001\330\034*\250!\2508\2602\260V\2701\270A\270^\3101\310D\320PS\320ST\330\030\036\230a\340\031\034\230C\230q\330\030&\240a\240x\250r\260\026\260q\270\001\270\036\300q\310\004\310C\310q\330\030\033\230>\250\021\250#\250S\260\001\330\034*\250!\2508\2602\260V\2701\270A\270^\3101\310D\320PS\320ST\330\030\036\230a\340\014\030\230\r\240^\2602\260W\270N\310\"\310A\340\014\031\230\032\2401\240J\250d\260\"\260H\270A\330\014\031\230\032\2401\240J\250d\260\"\260H\270A\340\014\017\210t\2203\220a\330\014\022\220\"\220B\220e\2304\230r\240\022\2401\330\020\023\220:\230Q\230c\240\023\240C\240z\260\021\260#\260Q\330\024\034\230I\240Z\250q\260\003\2604\260z\300\021\300#\300Q\330\024\027\220~\240Q\240h\250c\260\022\260>\300\021\300(\310!\360\006\000\031'\240a\240x\250u\260N\300!\3008\3101\330\030&\240a\240x\250u\260N\300!\3008\3101\340\024\"\240!\2409\250E\260\021\330\024\031\230\021\330\024\031\230\021\340\025\037\230q\240\003\2403\240b\250\n\260!\2603\260a\330\024\031\230\021\360\006\000\025\035\230K\240z\260\021\260#\260T\270\032\3001\300C\300q\330\024\"\240!\2408\250<\260q\330\024\031\230\021\360\006\000\r\023\220\"\220B\220a\330\020\030\230\013\240:\250Q\250c\260\024\260Z\270q\300\003\3001\330\020\036\230a\230x\240|\2601\330\020\023\2201\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014+\2501\250C\250q\330\006\014\210D\220\005\220Q\360\010\000\005\022\220\021\330\004\025\320\025'\240t\2501\330\004\016\210a\210r\220\025\220a\220w\230h\240a\330\004\010\210\005\210U\220!\2201\330\010\013\320\013\035\230Q\230b\240\002\240!\330\014\023\2201\220E\230\021\330\014\030\230\001\330\014\033\2307\240!\2409\250A\250Q\330\014\033\2307\240!\2407\250!\2501\340\004\025\220Q""\220b\230\005\230R\230|\250=\270\006\270a\330\004\025\220R\220v\230R\230|\250=\270\006\270a\330\004\031\230\022\2306\240\022\240<\250}\270F\300!\340\004\010\210\005\210U\220!\2203\220a\220q\330\010\013\210>\230\021\230#\230R\230r\240\021\340\014\017\210t\2207\230\"\230N\250!\2503\250g\260W\270B\270n\310A\310S\320PQ\340\014\032\230!\2303\230e\240>\260\021\260#\260Q\330\014\032\230!\2303\230e\240>\260\021\260#\260Q\340\014\036\230a\230s\240%\240~\260Q\260c\270\021\330\014\036\230a\230s\240%\320'9\270\021\270#\270Q\340\014\032\230!\2303\230e\240>\260\021\260#\260Q\330\014\032\230!\2303\230e\240>\260\021\260#\260Q\340\004\022\220!\2202\220]\240!\240?\260!\340\004\017\210r\220\026\220q\230\006\230f\240A\330\004\010\210\005\210U\220!\2201\330\010\014\210E\220\037\240\001\240\021\330\014\024\220A\220U\230!\330\004\024\220B\220e\2301\230A\340\004\t\210\021\330\004\010\210\005\210U\220!\2201\330\010\027\220s\230!\230>\250\021\250!\330\010\014\210E\220\037\240\001\240\021\330\014\017\210y\230\001\230\023\230B\230a\330\020\025\220S\230\002\230!\330\020\035\230Q\230f\240A\330\004\007\200q\330\010\035\230Q\340\010\035\230Q\340\004\025\220R\220u\230A\230Q\340\004\007\200q\330\006\014\210D\220\005\220S\230\002\230!\330\006\013\2101\320\014 \240\001\240\023\240A\330\006\014\210D\220\005\220Q\340\004\005\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t\330\010\t";
     PyObject *data = NULL;
     CYTHON_UNUSED_VAR(__Pyx_DecompressString);
     #endif
@@ -12350,7 +12358,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   {
     const __Pyx_PyCode_New_function_description descr = {10, 0, 0, 90, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 18};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_Z, __pyx_mstate->__pyx_n_u_halo, __pyx_mstate->__pyx_n_u_kstar, __pyx_mstate->__pyx_n_u_dist_indices, __pyx_mstate->__pyx_n_u_maxk, __pyx_mstate->__pyx_n_u_verb, __pyx_mstate->__pyx_n_u_log_den_err, __pyx_mstate->__pyx_n_u_log_den_c, __pyx_mstate->__pyx_n_u_g, __pyx_mstate->__pyx_n_u_Nele, __pyx_mstate->__pyx_n_u_i, __pyx_mstate->__pyx_n_u_j, __pyx_mstate->__pyx_n_u_k, __pyx_mstate->__pyx_n_u_t, __pyx_mstate->__pyx_n_u_len_centers, __pyx_mstate->__pyx_n_u_len_to_remove, __pyx_mstate->__pyx_n_u_sec_3, __pyx_mstate->__pyx_n_u_lag, __pyx_mstate->__pyx_n_u_max_rho, __pyx_mstate->__pyx_n_u_centers, __pyx_mstate->__pyx_n_u_to_remove, __pyx_mstate->__pyx_n_u_centers_2, __pyx_mstate->__pyx_n_u_cindx, __pyx_mstate->__pyx_n_u_flag, __pyx_mstate->__pyx_n_u_cluster_init, __pyx_mstate->__pyx_n_u_Nclus, __pyx_mstate->__pyx_n_u_sortg, __pyx_mstate->__pyx_n_u_ele, __pyx_mstate->__pyx_n_u_nn, __pyx_mstate->__pyx_n_u_ele_neighbors, __pyx_mstate->__pyx_n_u_all_removed_centers, __pyx_mstate->__pyx_n_u__2, __pyx_mstate->__pyx_n_u_ind_removed_centers_ele, __pyx_mstate->__pyx_n_u_higher_density_centers, __pyx_mstate->__pyx_n_u_higher_density_centers_ele, __pyx_mstate->__pyx_n_u_max_center, __pyx_mstate->__pyx_n_u_cl_struct, __pyx_mstate->__pyx_n_u_x1, __pyx_mstate->__pyx_n_u_c, __pyx_mstate->__pyx_n_u_cp, __pyx_mstate->__pyx_n_u_saddle_count, __pyx_mstate->__pyx_n_u_p1, __pyx_mstate->__pyx_n_u_pp, __pyx_mstate->__pyx_n_u_p2, __pyx_mstate->__pyx_n_u_po, __pyx_mstate->__pyx_n_u_c1, __pyx_mstate->__pyx_n_u_c2, __pyx_mstate->__pyx_n_u_saddle_density_tmp, __pyx_mstate->__pyx_n_u_saddle_density, __pyx_mstate->__pyx_n_u_saddle_indices_tmp, __pyx_mstate->__pyx_n_u_saddle_indices, __pyx_mstate->__pyx_n_u_cluster_init_2, __pyx_mstate->__pyx_n_u_check, __pyx_mstate->__pyx_n_u_to_remove_2, __pyx_mstate->__pyx_n_u_center1, __pyx_mstate->__pyx_n_u_center2, __pyx_mstate->__pyx_n_u_max_a1, __pyx_mstate->__pyx_n_u_max_a2, __pyx_mstate->__pyx_n_u_max_sum_err1, __pyx_mstate->__pyx_n_u_max_sum_err2, __pyx_mstate->__pyx_n_u_a1, __pyx_mstate->__pyx_n_u_a2, __pyx_mstate->__pyx_n_u_sum_err1, __pyx_mstate->__pyx_n_u_sum_err2, __pyx_mstate->__pyx_n_u_current_saddle, __pyx_mstate->__pyx_n_u_margin1, __pyx_mstate->__pyx_n_u_margin2, __pyx_mstate->__pyx_n_u_surviving_clusters, __pyx_mstate->__pyx_n_u_len1, __pyx_mstate->__pyx_n_u_len2, __pyx_mstate->__pyx_n_u_index1, __pyx_mstate->__pyx_n_u_index2, __pyx_mstate->__pyx_n_u_c2_index, __pyx_mstate->__pyx_n_u_neighbors1_tmp, __pyx_mstate->__pyx_n_u_neighbors2_tmp, __pyx_mstate->__pyx_n_u_neighbors1, __pyx_mstate->__pyx_n_u_neighbors2, __pyx_mstate->__pyx_n_u_cluster_couple, __pyx_mstate->__pyx_n_u_N_clusters, __pyx_mstate->__pyx_n_u_cluster_indices, __pyx_mstate->__pyx_n_u_cluster_centers, __pyx_mstate->__pyx_n_u_mapping, __pyx_mstate->__pyx_n_u_bord_indices_m, __pyx_mstate->__pyx_n_u_log_den_bord_m, __pyx_mstate->__pyx_n_u_log_den_bord_err_m, __pyx_mstate->__pyx_n_u_Last_cls, __pyx_mstate->__pyx_n_u_Last_cls_halo, __pyx_mstate->__pyx_n_u_nh, __pyx_mstate->__pyx_n_u_log_den_halo, __pyx_mstate->__pyx_n_u_cluster_assignment};
-    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_dadapy__cython_cython_clustering_2, __pyx_mstate->__pyx_n_u_compute_clustering, __pyx_mstate->__pyx_kp_b_iso88591_7a_8_2_4BgRs_q_D_Q_1A_U_1_A_E_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_cython_clustering_v2_pyx, __pyx_mstate->__pyx_n_u_compute_clustering, __pyx_mstate->__pyx_kp_b_iso88591_7a_8_2_4BgRs_q_D_Q_1A_U_1_A_E_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

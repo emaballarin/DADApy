@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
 """
 The *density_advanced* module contains the *DensityEstimation* class.
 
@@ -165,13 +164,9 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             )
 
             # Bessel's correction for the unbiased sample variance estimator
-            self.grads_covmat = np.einsum(
-                "ijk, i -> ijk", self.grads_covmat, self.kstar / (self.kstar - 1)
-            )
+            self.grads_covmat = np.einsum("ijk, i -> ijk", self.grads_covmat, self.kstar / (self.kstar - 1))
             smallnumber = 1.0e-10
-            self.grads_covmat += smallnumber * np.tile(
-                np.eye(self.dims), (self.N, 1, 1)
-            )
+            self.grads_covmat += smallnumber * np.tile(np.eye(self.dims), (self.N, 1, 1))
 
             # get diagonal elements of the covariance matrix
             self.grads_var = np.zeros((self.N, self.dims))
@@ -207,21 +202,13 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
 
         sec = time.time()
         # estimate pearson sign
-        Fij_i_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 0]], self.neigh_vector_diffs
-        )
-        Fij_j_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 1]], self.neigh_vector_diffs
-        )
+        Fij_i_oneway = np.einsum("ij, ij -> i", self.grads[self.nind_list[:, 0]], self.neigh_vector_diffs)
+        Fij_j_oneway = np.einsum("ij, ij -> i", self.grads[self.nind_list[:, 1]], self.neigh_vector_diffs)
         psign_est = np.sign(Fij_i_oneway * Fij_j_oneway)
         self.pearson_array = self.neigh_similarity_index * psign_est
         sec2 = time.time()
         if self.verb:
-            print(
-                "{0:0.2f} seconds to carry out Pearson coefficients estimation.".format(
-                    sec2 - sec
-                )
-            )
+            print("{0:0.2f} seconds to carry out Pearson coefficients estimation.".format(sec2 - sec))
 
     def compute_deltaFs(self, similarity_method="jaccard", comp_p_mat=False):
         """Compute deviations deltaFij to standard kNN log-densities at point j as seen from point i using
@@ -244,37 +231,20 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             self.compute_grads(comp_covmat=True)
 
         if self.verb:
-            print(
-                "Estimation of the gradient semisum (linear) corrections deltaFij to the log-density started"
-            )
+            print("Estimation of the gradient semisum (linear) corrections deltaFij to the log-density started")
         sec = time.time()
 
         Fij_array = np.zeros(self.nspar)
         self.Fij_var_array = np.zeros(self.nspar)
 
-        g0 = self.grads[self.nind_list[:, 0]]
-        g1 = self.grads[self.nind_list[:, 1]]
-        g_var0 = self.grads_covmat[self.nind_list[:, 0]]
-        g_var1 = self.grads_covmat[self.nind_list[:, 1]]
+        Fij_array = cgr.return_fij(self.nind_list, self.grads, self.neigh_vector_diffs)
 
         # check or compute common_neighs
         if self.pearson_array is None:
             self.compute_pearson(similarity_method=similarity_method)
 
-        Fij_array = 0.5 * np.einsum("ij, ij -> i", g0 + g1, self.neigh_vector_diffs)
-        vari = np.einsum(
-            "ij, ij -> i",
-            self.neigh_vector_diffs,
-            np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
-        )
-        varj = np.einsum(
-            "ij, ij -> i",
-            self.neigh_vector_diffs,
-            np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
-        )
-        self.Fij_var_array = 0.25 * (
-            vari + varj + 2 * self.pearson_array * np.sqrt(vari * varj)
-        )
+        vari, varj = cgr.return_fij_var(self.nind_list, self.neigh_vector_diffs, self.grads_covmat)
+        self.Fij_var_array = 0.25 * (vari + varj + 2 * self.pearson_array * np.sqrt(vari * varj))
 
         sec2 = time.time()
         if self.verb:
@@ -285,9 +255,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
 
     # ----------------------------------------------------------------------------------------------
 
-    def compute_diag_inv_deltaFs_cross_covariance_LSDI(
-        self, similarity_method="jaccard"
-    ):
+    def compute_diag_inv_deltaFs_cross_covariance_LSDI(self, similarity_method="jaccard"):
         """Compute the diagonal of the appoximate inverse of the deltaFs cross-covariance cov[deltaFij,deltaFlm] using
         the LSDI approximation (see compute_density_BMTI docs)
 
@@ -307,43 +275,22 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         if self.verb:
             print("Estimation of the directional deltaFs started")
         sec = time.time()
-        Fij_i_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 0]], self.neigh_vector_diffs
-        )
-        Fij_j_oneway = np.einsum(
-            "ij, ij -> i", self.grads[self.nind_list[:, 1]], self.neigh_vector_diffs
-        )
+
+        Fij_i_oneway, Fij_j_oneway = cgr.return_fij_oneway(self.nind_list, self.grads, self.neigh_vector_diffs)
+
         sec2 = time.time()
         if self.verb:
-            print(
-                "{0:0.2f} seconds estimating the directional deltaFs".format(sec2 - sec)
-            )
-        # get grads covariance matrices
-        g_var0 = self.grads_covmat[self.nind_list[:, 0]]
-        g_var1 = self.grads_covmat[self.nind_list[:, 1]]
+            print("{0:0.2f} seconds estimating the directional deltaFs".format(sec2 - sec))
         # estimate standard deviations on directional deltaFs
-        epsi = np.sqrt(
-            np.einsum(
-                "ij, ij -> i",
-                self.neigh_vector_diffs,
-                np.einsum("ijk, ik -> ij", g_var0, self.neigh_vector_diffs),
-            )
-        )
-        epsj = np.sqrt(
-            np.einsum(
-                "ij, ij -> i",
-                self.neigh_vector_diffs,
-                np.einsum("ijk, ik -> ij", g_var1, self.neigh_vector_diffs),
-            )
-        )
+        epsi, epsj = cgr.return_fij_var(self.nind_list, self.neigh_vector_diffs, self.grads_covmat)
+        epsi = np.sqrt(epsi)
+        epsj = np.sqrt(epsj)
         # compute epsilon^i_ij * sgn(deltaF^i_ij)
         seps0 = epsi * np.sign(Fij_i_oneway)
         seps1 = epsj * np.sign(Fij_j_oneway)
 
         if self.verb:
-            print(
-                "Estimation of the diagonal of the inverse of the deltaFs cross-covariance started"
-            )
+            print("Estimation of the diagonal of the inverse of the deltaFs cross-covariance started")
         sec = time.time()
 
         # compute a diagonal approximation of the inverse of the cross-covariance matrix
@@ -364,6 +311,38 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             )
 
     # ----------------------------------------------------------------------------------------------
+    def _sparse_pinv(self, A, threshold=None):
+        """Compute the pseudoinverse of a sparse matrix using truncated SVD.
+
+        Args:
+            A (scipy.sparse matrix): sparse matrix to pseudoinvert.
+            threshold (float) optional: Threshold for singular value cutoff. If None, determined automatically.
+
+        Returns:
+            A_pinv (numpy.ndarray): Pseudoinverse of A as a dense array.
+        """
+        # Ensure A is in a compatible format (CSR or CSC)
+        if A.format not in ("csr", "csc"):
+            A = A.asformat("csr")
+
+        # Number of singular values to compute (max allowed by svds)
+        k = min(A.shape) - 1
+        print("svd")
+        u, s, vt = sparse.linalg.svds(A, k=k)
+
+        # Set threshold based on largest singular value and precision
+        if threshold is None:
+            max_s = s[0]  # Largest singular value
+            eps = np.finfo(A.dtype).eps
+            threshold = eps * max(A.shape) * max_s
+
+        # Invert significant singular values
+        s_inv = np.where(s > threshold, 1 / s, 0)
+
+        # Construct the pseudoinverse matrix
+        A_pinv = (vt.T @ np.diag(s_inv)) @ u.T
+
+        return A_pinv
 
     def compute_density_BMTI(
         self,
@@ -449,31 +428,60 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
 
         if self.verb:
             print("BMTI density estimation started")
-            sec = time.time()
 
+        sec = time.time()
         # define the likelihood covarince matrix
         A, deltaFcum = self._get_BMTI_reg_linear_system(delta_F_inv_cov, alpha)
         sec2 = time.time()
 
         if self.verb:
+            sec2 = time.time()
             print("{0:0.2f} seconds to fill get linear system ready".format(sec2 - sec))
 
         # solve linear system
-        log_den = self._solve_BMTI_reg_linar_system(
-            A, deltaFcum, solver, sp_direct_perm_spec
-        )
+        log_den = self._solve_BMTI_reg_linar_system(A, deltaFcum, solver, sp_direct_perm_spec)
         self.log_den = log_den
 
         if self.verb:
             print("{0:0.2f} seconds to solve linear system".format(time.time() - sec2))
-        sec2 = time.time()
+            sec2 = time.time()
 
         # compute error
-        if comp_log_den_err is True:
+        if not (comp_log_den_err in ["no", "svd", "LSDI", "diag"]):
+            print(f"Got comp_log_den_err = {comp_log_den_err}, unrecognized option defaulting to `no`")
+            comp_log_den_err = "no"
+
+        if comp_log_den_err == "svd":
+            print("Getting approximate inverse through svd and Moore-Penrose")
             A = A.todense()
             B = slin.pinvh(A)
             self.log_den_err = np.sqrt(np.diag(B))
+            if self.verb:
+                print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
 
+        elif comp_log_den_err == "LSDI":
+            sec2 = time.time()
+            print("Getting approximate inverse through LSDI")
+            A_sq = A**2
+            A_sq_sum = A_sq.sum(axis=0)
+
+            if np.any(np.isclose(A_sq_sum, 0)):
+                print("Found in denominators elements nearby 0, falling back to diagonal approximate")
+                B = 1 / A.diagonal()
+            else:
+                B = A.diagonal() / A_sq.sum(axis=0)
+
+            self.log_den_err = np.sqrt(B)
+            self.B = B
+            if self.verb:
+                print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
+
+            sec2 = time.time()
+
+        if comp_log_den_err == "diag":
+            print("Getting approximate inverse through inverse diagonal")
+            B = 1 / A.diagonal()
+            self.log_den_err = np.sqrt(B)
             if self.verb:
                 print("{0:0.2f} seconds inverting A matrix".format(time.time() - sec2))
 
@@ -493,9 +501,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             k2 = self.kstar[self.nind_list[:, 1]]
             redundancy = np.sqrt(k1 * k2)
 
-            tmpvec = (
-                np.ones(self.nspar, dtype=np.float64) / self.Fij_var_array / redundancy
-            )
+            tmpvec = np.ones(self.nspar, dtype=np.float64) / self.Fij_var_array / redundancy
         elif delta_F_inv_cov == "LSDI":
             # self.compute_deltaFs_inv_cross_covariance()
             self.compute_diag_inv_deltaFs_cross_covariance_LSDI()
@@ -505,14 +511,10 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
             tmpvec = np.ones(self.nspar, dtype=np.float64)
 
         else:
-            raise ValueError(
-                "The delta_F_inv_cov parameter is not valid, choose 'uncorr', 'LSDI' or 'none'"
-            )
+            raise ValueError("The delta_F_inv_cov parameter is not valid, choose 'uncorr', 'LSDI' or 'none'")
         if self.verb:
             print(
-                "{0:0.2f} seconds finding the diagonal of the deltaFs cross-covariance matrix".format(
-                    time.time() - sec
-                )
+                "{0:0.2f} seconds finding the diagonal of the deltaFs cross-covariance matrix".format(time.time() - sec)
             )
 
         sec = time.time()
@@ -535,10 +537,7 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
 
         # insert kstarNN with factor 1-alpha in the Gaussian approximation
         # ALREADY MULTIPLIED A BY ALPHA
-        diag = (
-            np.array(-A.sum(axis=1)).reshape((self.N,))
-            + (1.0 - alpha) / self.log_den_err**2
-        )
+        diag = np.array(-A.sum(axis=1)).reshape((self.N,)) + (1.0 - alpha) / self.log_den_err**2
 
         A.setdiag(diag)
 
@@ -564,18 +563,12 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         elif solver == "sp_cg":
             # conjugate gradient without preconditioner
             if self.verb:
-                print(
-                    "Solving by conjugate gradient sparse solver without preconditioner"
-                )
-            log_den = sparse.linalg.cg(
-                A.tocsr(), deltaFcum, x0=self.log_den, atol=0.0, maxiter=None
-            )[0]
+                print("Solving by conjugate gradient sparse solver without preconditioner")
+            log_den = sparse.linalg.cg(A.tocsr(), deltaFcum, x0=self.log_den, atol=0.0, maxiter=None)[0]
         elif solver == "sp_cg_precond":
             # conjugate gradient with preconditioner
             if self.verb:
-                print(
-                    "Solving by conjugate gradient sparse solver with estimated (spilu) preconditioner"
-                )
+                print("Solving by conjugate gradient sparse solver with estimated (spilu) preconditioner")
             # Create preconditioner
             sec = time.time()
             A_csc = sparse.csc_matrix(A)  # Ensure CSC format for spilu
@@ -594,16 +587,10 @@ class DensityAdvanced(DensityEstimation, NeighGraph):
         else:
             # default solver: sp_direct
             if solver != "sp_direct":
-                warnings.warn(
-                    f"The solver '{solver}' selected is not among the options. Using 'sp_direct' instead."
-                )
+                warnings.warn(f"The solver '{solver}' selected is not among the options. Using 'sp_direct' instead.")
             if self.verb:
-                print(
-                    f"Solving with 'sp_direct' sparse solver with perm_spec='{sp_direct_perm_spec}'"
-                )
+                print(f"Solving with 'sp_direct' sparse solver with perm_spec='{sp_direct_perm_spec}'")
             print("cast to csr")
-            log_den = sparse.linalg.spsolve(
-                A.tocsr(), deltaFcum, permc_spec=sp_direct_perm_spec
-            )
+            log_den = sparse.linalg.spsolve(A.tocsr(), deltaFcum, permc_spec=sp_direct_perm_spec)
 
         return log_den

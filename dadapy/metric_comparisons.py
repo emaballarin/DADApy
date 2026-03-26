@@ -12,27 +12,24 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 # ==============================================================================
-
 """
 The *metric_comparisons* module contains the *MetricComparisons* class.
 
 Algorithms for comparing different spaces are implemented as methods of this class.
 """
-
 import multiprocessing
 import warnings
 from collections import Counter
 
 import numpy as np
-from joblib import Parallel, delayed
+from joblib import delayed
+from joblib import Parallel
 
 from dadapy._cython import cython_overlap as c_ov
-from dadapy._utils.metric_comparisons import (
-    _compute_2d_grid,
-    _return_imbalance,
-    _return_period_mixed,
-    _return_period_present,
-)
+from dadapy._utils.metric_comparisons import _compute_2d_grid
+from dadapy._utils.metric_comparisons import _return_imbalance
+from dadapy._utils.metric_comparisons import _return_period_mixed
+from dadapy._utils.metric_comparisons import _return_period_present
 from dadapy._utils.utils import compute_nn_distances
 from dadapy.base import Base
 
@@ -446,11 +443,11 @@ class MetricComparisons(Base):
             selected_coords[i : i + 1] for i in range(0, len(selected_coords))
         ]
         best_one = selected_coords[0]
-        best_tuples = [[int(best_one[0])]]  # start with the best 1-tuple
+        best_tuples = [[int(best_one)]]  # start with the best 1-tuple
         best_imbalances = [
             [
-                round(float(imbalances[0][best_one[0]]), 3),
-                round(float(imbalances[1][best_one[0]]), 3),
+                round(float(imbalances[0][best_one]), 3),
+                round(float(imbalances[1][best_one]), 3),
             ]
         ]
         all_imbalances = [

@@ -20,6 +20,7 @@ documentation = "https://dadapy.readthedocs.io/"
 repository = "https://github.com/sissa-data-science/DADApy"
 
 [project.optional-dependencies]
+dadac = ["dadac @ git+https://github.com/lykos98/dadaC"]
 dev = ["tox", "black", "isort", "pytest"]
 
 [build-system]

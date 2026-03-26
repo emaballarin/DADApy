@@ -1,38 +1,40 @@
 name: lint
 
 on:
-  push:
-    branches:
-      - develop
-      - main
-  pull_request:
+    workflow_dispatch:
+    push:
+        branches:
+            - develop
+            - main
+    pull_request:
 
 jobs:
-  run:
-    continue-on-error: True
-    runs-on: ${{ matrix.os }}
+    run:
+        continue-on-error: True
+        runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        python-version: [3.12]
+        strategy:
+            matrix:
+                os: [ubuntu-latest]
+                python-version: [3.12]
 
-    timeout-minutes: 25
+        timeout-minutes: 25
 
-    steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-python@master
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Install dependencies
-      run:  pip install tox
-#    - name: Pylint
-#      run: tox -e pylint
-    - name: Code style check
-      run: |
-        tox -e black-check
-        tox -e isort-check
-        tox -e flake8
+        steps:
+            - uses: actions/checkout@master
+            - uses: actions/setup-python@master
+              with:
+                  python-version: ${{ matrix.python-version }}
+            - name: Install dependencies
+              run: pip install tox
+            #    - name: Pylint
+            #      run: tox -e pylint
+            - name: Code style check
+              run: |
+                  tox -e black-check
+                  tox -e isort-check
+                  tox -e flake8
+
 #        tox -e vulture
 #        tox -e darglint
 #    - name: Check copyright

@@ -1,4 +1,6 @@
+import os
 import sys
+os.environ["JAX_ENABLE_X64"] = "True"  # Allowing double precision on JAX before any JAX import
 
 from ._utils.utils import *
 from .base import Base
@@ -13,6 +15,7 @@ from .id_estimation import IdEstimation
 from .kstar import KStar
 from .metric_comparisons import MetricComparisons
 from .neigh_graph import NeighGraph
+from .hamming import Hamming, BID
 
 if sys.version_info >= (3, 9):
     from .diff_imbalance import DiffImbalance
